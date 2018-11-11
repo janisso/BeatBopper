@@ -1,1 +1,1 @@
-import mido as *
+import mido
