@@ -17,80 +17,65 @@ import lib
 def phase_advance(beats,stop_all):
     playhead = 0
     while True:
-        playhead = playhead + 0.01
+        playhead += 0.01
+        #print playhead
         beats.value = playhead
-        #print 'Playhead: ', beats.value
         lib.time.sleep(0.005)
         if stop_all.value == True:
             break
-        if playhead > 10.0:
-            break
+        #if playhead > 10.0:
+        #    break
 
 
 
-def play_midi(midi_path, save_path, beats, amp, stop_all):
-
-    #path = '/Users/mb/Desktop/Janis.So/06_qmul/BB/02_inputs/inscore_stuff/main_menu/l_' + str(g) + '/'
-    f = open(save_path + '/play_midi.csv', 'w+')
-    f.write('time,beats,midi_note,midi_vel\n')
-    #mids = ['demo', '01', '02', '03', '04', '05', '06']
-    # times = [45]
-
-    mid = lib.mido.MidiFile(midi_path)
-    s_times = []  # np.zeros((times[0],2))
-    port = lib.mido.open_output(lib.mido.get_output_names()[0])
-    #print lib.mido.get_output_names()
-    all_time = 0
-    msg_count = 0
-    all_messages = []
-    for msg in mid:
-        all_time += msg.time
-        # if not msg.is_meta:
-        if hasattr(msg, 'note'):
-            all_time += msg.time
-            all_messages.append(msg)
-            s_times.append([msg_count, all_time])
-            msg_count += 1
-    s_times = lib.np.array(s_times)
-    yo = lib.copy.deepcopy(s_times)
+def play_midi(midi_path, save_path, beats, vel, stop_all):
+    f = open(save_path + '/play_midi.csv', 'w+')                # open file to save log values
+    f.write('time,beats,midi_note,midi_vel\n')                  # write first line with corresponding titles
+    mid = lib.mido.MidiFile(midi_path)                          # save parsed MIDI file using mido library
+    s_times = []  # np.zeros((times[0],2))                      # create an empty array to storenote events in the MIDI file
+    port = lib.mido.open_output(lib.mido.get_output_names()[0]) # open port to send MIDI messages
+    all_time = 0                                                # aggregate time for all the messages
+    msg_count = 0                                               # this is to count MIDI messages with note information
+    all_messages = []                                           # create an ampty array to only store note information and their position in the score
+    for msg in mid:                                             # for every message in the midi file
+        all_time += msg.time                                    # the file stores midi time based on previous onset, we h
+        if hasattr(msg, 'note'):                                # checks that the MIDI message is Note
+            #all_time += msg.time                                #
+            all_messages.append(msg)                            # adds note message from MIDI file to our playback thing
+            s_times.append([msg_count, all_time])               # array to store note score time
+            msg_count += 1                                      # count of how many note messages there are in total
+    s_times = lib.np.array(s_times)                             # convert array to numpy.array
+    yo = lib.copy.deepcopy(s_times)                             # deepcopy the array so the original doesn't get manipulated
     while True:
-        if len(yo) != 0:
+        if len(yo) != 0:                                        # keep running the loop until there are no more notes to play
             # print 'hello',yo[0,1],unravelTime.value
             # print yo[0,1],'dfsdfsdfsdfsdfs',unravelTime.value
-            if yo[0, 1] < beats.value:
-                # print 'hello'
-                bim = amp.value
-                # oscSend(str(int(unravelTime.value*4)))
-                midiVel = 127 #int(abs(bim) / 1200 * 127)
-                #if midiVel > 127:
-                #    midiVel = 127
-                msgMIDI = all_messages[int(yo[0, 0])]
-                msgMIDI.velocity = midiVel
-                f.write(
-                    "%f, %f, %f, %f\n" % (lib.time.time(), beats.value, all_messages[int(yo[0, 0])].note, midiVel))
-                # print msgMIDI.velocity,midiVel
-                port.send(msgMIDI)
-                # oscSend(int(unravelTime.value*4))
-                # print 'Play Midi ',unravelTime.value, all_messages[int(yo[0,0])]
-                msg_count += 1
-                yo = lib.np.delete(yo, 0, 0)
-                # sleep(0.001)
-        else:
-            f.close
-            stop_all.value = 1
-            print 'MIDI Playback Finished'
+            if yo[0, 1] < beats.value:                          # if the playhead is larger than the first note in the array play the first note and then delete
+                msgMIDI = all_messages[int(yo[0, 0])]           # add note information and it's timing to the midi message to be sent
+                msgMIDI.velocity = vel.value                    # add velocity to the MIDI message to be sent
+                f.write(                                        # store values for later analysis
+                    "%f, %f, %f, %f\n" % (lib.time.time(), beats.value, all_messages[int(yo[0, 0])].note, vel.value))
+                port.send(msgMIDI)                              # send the message using predefined port (midi device)
+                #msg_count += 1
+                yo = lib.np.delete(yo, 0, 0)                    # once the note has been played delete the first message
+        else:                                                   # if there are no more notes to play
+            f.close                                             # stop storing the values in csv
+            stop_all.value = 1                                  # flag to indicate to the rest of the system that the file has finished.
+            print 'MIDI Playback Finished'                      # print for use rto acknowledge
             break
 
 def play(midi_path,save_path):
-    amp = lib.multiprocessing.Value('d', 0.0)   # variable to store amplitude value received from Leap Motion to convert into MIDI velocity
+    vel = lib.multiprocessing.Value('i', 127)   # variable to store amplitude value received from Leap Motion to convert into MIDI velocity
     beats = lib.multiprocessing.Value('d', 0.0) # variable holding the advanceing beat information of the MIDI file
     stop_all = lib.multiprocessing.Value('i', False)    # boolean variable that tell rest of the system that the MIDI file has finished playing
 
-    p_phase_advance = lib.multiprocessing.Process(target=phase_advance,args=(beats,stop_all))
-    p_play_midi =  lib.multiprocessing.Process(target=play_midi,args=(midi_path,save_path,beats,amp,stop_all))
+    p_play_midi =  lib.multiprocessing.Process(target=play_midi,args=(midi_path,save_path,beats,vel,stop_all))  # process to play MIDI
+    p_phase_advance = lib.multiprocessing.Process(target=phase_advance,args=(beats,stop_all))                   # process to count phase informatioin
 
-    p_phase_advance.start()
     p_play_midi.start()
+    lib.time.sleep(0.5)
+    p_phase_advance.start()
 
-    p_phase_advance.join()
     p_play_midi.join()
+    lib.time.sleep(0.5)
+    p_phase_advance.join()
