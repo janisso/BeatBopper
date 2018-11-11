@@ -15,11 +15,11 @@ if __name__ == '__main__':
     midi_file = args.midi                                                           # variable to store the name of the MIDI file, all the MIDI files should be stored in midi_files folder of the project
     #save_path = args.save_path                                                     # variable to save log files
 
-    curr_path = os.path.dirname(os.path.abspath(__file__))
-    save_path = curr_path + '/users/' + str(user_id)
-    midi_path = curr_path + '/midi_files/' + midi_file + '.mid'
+    curr_path = os.path.dirname(os.path.abspath(__file__))                          # paht where this file is running from
+    save_path = curr_path + '/users/' + str(user_id)                                # path to store data in csv file
+    midi_path = curr_path + '/midi_files/' + midi_file + '.mid'                     # paht of the midi file to play
 
-    if not os.path.exists(save_path):
+    if not os.path.exists(save_path):                                               # if the path does not exist create it
          os.makedirs(save_path)
 
     print 'User ID: ', user_id
