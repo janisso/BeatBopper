@@ -8,18 +8,42 @@
 
 import lib
 
+# Function for advnacing the playhead
 def phase_advance(beats,stop_all):
     playhead = 0
     while True:
         playhead += 0.01
-        #print playhead
         beats.value = playhead
         lib.time.sleep(0.005)
+        #print playhead
         if stop_all.value == True:
             break
-        #if playhead > 10.0:
-        #    break
 
+# Function to send OSC messages to InScore
+def osc_cursor(beats,stop_all):
+    #SETTING UP OSC CLIENT FOR INSCORE
+    osc_port =lib. OSC.OSCClient()
+    osc_port.connect(('localhost', 7000))   # INSCORE
+    osc_msg_cursor = lib.OSC.OSCMessage()
+    osc_msg_cursor.setAddress('/ITL/scene/sync')
+    osc_msg_cursor.append('cursor')
+    osc_msg_cursor.append('score')
+    osc_port.send(osc_msg_cursor)
+    while True:
+        #msg2send = oscQ.get()
+        oscmsgI = lib.OSC.OSCMessage()
+        oscmsgI.setAddress('/ITL/scene/cursor')
+        oscmsgI.append('date')
+        oscmsgI.append(int(beats.value*8))
+        oscmsgI.append(16)
+        print int(beats.value/2)
+        osc_port.send(oscmsgI)
+        lib.time.sleep(0.01)
+        if stop_all.value == True:
+            osc_port.close()
+            break
+
+# Function to send MIDI messages
 def play_midi(midi_path, save_path, beats, vel, stop_all):
     f = open(save_path + '/play_midi.csv', 'w+')                # open file to save log values
     f.write('time,beats,midi_note,midi_vel\n')                  # write first line with corresponding titles
@@ -49,7 +73,7 @@ def play_midi(midi_path, save_path, beats, vel, stop_all):
                 yo = lib.np.delete(yo, 0, 0)                    # once the note has been played delete the first message
         else:                                                   # if there are no more notes to play
             f.close                                             # stop storing the values in csv
-            stop_all.value = 1                                  # flag to indicate to the rest of the system that the file has finished.
+            stop_all.value = True                                 # flag to indicate to the rest of the system that the file has finished.
             print 'MIDI Playback Finished'                      # print for use rto acknowledge
             break
 
@@ -60,11 +84,14 @@ def play(midi_path,save_path):
 
     p_play_midi =  lib.multiprocessing.Process(target=play_midi,args=(midi_path,save_path,beats,vel,stop_all))  # process to play MIDI
     p_phase_advance = lib.multiprocessing.Process(target=phase_advance,args=(beats,stop_all))                   # process to count phase informatioin
+    p_osc_cursor = lib.multiprocessing.Process(target=osc_cursor,args=(beats,stop_all))
 
     p_play_midi.start()
     lib.time.sleep(0.5)
     p_phase_advance.start()
+    p_osc_cursor.start()
 
     p_play_midi.join()
     lib.time.sleep(0.5)
     p_phase_advance.join()
+    p_osc_cursor.join()
