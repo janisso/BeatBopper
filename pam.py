@@ -5,14 +5,8 @@
 #   stop_all - this is a global variable that acts as a flag to let the rest of the system know that there are no more midi messages to plahy. i.e. the file is finished
 #   g - grade of the performance
 #   e - which excerpt to play from the g foler
-# Outputs:
-#   OSC - File to load in Inscore
-#   OSC - shared variable that gets
-#   stop_all - global variable that is set to '1' when there are no more messages to play from the MIDI file
-
 
 import lib
-
 
 def phase_advance(beats,stop_all):
     playhead = 0
@@ -25,8 +19,6 @@ def phase_advance(beats,stop_all):
             break
         #if playhead > 10.0:
         #    break
-
-
 
 def play_midi(midi_path, save_path, beats, vel, stop_all):
     f = open(save_path + '/play_midi.csv', 'w+')                # open file to save log values
@@ -48,15 +40,12 @@ def play_midi(midi_path, save_path, beats, vel, stop_all):
     yo = lib.copy.deepcopy(s_times)                             # deepcopy the array so the original doesn't get manipulated
     while True:
         if len(yo) != 0:                                        # keep running the loop until there are no more notes to play
-            # print 'hello',yo[0,1],unravelTime.value
-            # print yo[0,1],'dfsdfsdfsdfsdfs',unravelTime.value
             if yo[0, 1] < beats.value:                          # if the playhead is larger than the first note in the array play the first note and then delete
                 msgMIDI = all_messages[int(yo[0, 0])]           # add note information and it's timing to the midi message to be sent
                 msgMIDI.velocity = vel.value                    # add velocity to the MIDI message to be sent
                 f.write(                                        # store values for later analysis
                     "%f, %f, %f, %f\n" % (lib.time.time(), beats.value, all_messages[int(yo[0, 0])].note, vel.value))
                 port.send(msgMIDI)                              # send the message using predefined port (midi device)
-                #msg_count += 1
                 yo = lib.np.delete(yo, 0, 0)                    # once the note has been played delete the first message
         else:                                                   # if there are no more notes to play
             f.close                                             # stop storing the values in csv

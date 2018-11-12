@@ -2,7 +2,7 @@
 
 import argparse
 import os
-import midi_play
+import pam
 
 if __name__ == '__main__':
 
@@ -26,4 +26,4 @@ if __name__ == '__main__':
     print 'MIDI File: ', midi_path
     print 'Save Path: ', save_path
 
-    midi_play.play(midi_path,save_path)
+    pam.play(midi_path, save_path)
