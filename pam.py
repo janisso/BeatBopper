@@ -19,6 +19,14 @@ def phase_advance(beats,stop_all):
         if stop_all.value == True:
             break
 
+# Function to change velocity using keyboard
+def user_input(newstdin, vel):
+    while True:
+        lib.sys.stdin = newstdin
+        #print 'test'
+        vel.value = int(raw_input()) #this is where this process doesn't fail anymore
+        print 'Velocity is: ', vel.value
+
 # Function to send OSC messages to InScore
 def osc_cursor(beats,stop_all):
     #SETTING UP OSC CLIENT FOR INSCORE
@@ -30,16 +38,14 @@ def osc_cursor(beats,stop_all):
     osc_msg_cursor.append('score')
     osc_port.send(osc_msg_cursor)
     while True:
-        #msg2send = oscQ.get()
-        oscmsgI = lib.OSC.OSCMessage()
-        oscmsgI.setAddress('/ITL/scene/cursor')
-        oscmsgI.append('date')
-        oscmsgI.append(int(beats.value*8))
-        oscmsgI.append(16)
-        #print int(beats.value/2)
-        osc_port.send(oscmsgI)
+        osc_msg_i = lib.OSC.OSCMessage()
+        osc_msg_i.setAddress('/ITL/scene/cursor')
+        osc_msg_i.append('date')
+        osc_msg_i.append(int(beats.value*8))
+        osc_msg_i.append(16)
+        osc_port.send(osc_msg_i)
         lib.time.sleep(0.01)
-        if stop_all.value == True:
+        if stop_all.value:# == True:
             osc_port.close()
             break
 
@@ -78,18 +84,26 @@ def play_midi(midi_path, save_path, beats, vel, stop_all):
             break
 
 def play(midi_path,save_path):
-    vel = lib.multiprocessing.Value('i', 127)   # variable to store amplitude value received from Leap Motion to convert into MIDI velocity
-    beats = lib.multiprocessing.Value('d', 0.0) # variable holding the advanceing beat information of the MIDI file
-    stop_all = lib.multiprocessing.Value('i', False)    # boolean variable that tell rest of the system that the MIDI file has finished playing
+    newstdin = lib.os.fdopen(lib.os.dup(lib.sys.stdin.fileno()))
+
+    vel = lib.multiprocessing.Value('i', 127)                   # variable to store amplitude value received from Leap Motion to convert into MIDI velocity
+    beats = lib.multiprocessing.Value('d', 0.0)                 # variable holding the advanceing beat information of the MIDI file
+    stop_all = lib.multiprocessing.Value('i', False)            # boolean variable that tell rest of the system that the MIDI file has finished playing
+
+    p_user_input = lib.multiprocessing.Process(target=user_input, args=(newstdin,vel))
 
     p_play_midi =  lib.multiprocessing.Process(target=play_midi,args=(midi_path,save_path,beats,vel,stop_all))  # process to play MIDI
     p_phase_advance = lib.multiprocessing.Process(target=phase_advance,args=(beats,stop_all))                   # process to count phase informatioin
     p_osc_cursor = lib.multiprocessing.Process(target=osc_cursor,args=(beats,stop_all))
 
+    p_user_input.start()
+
     p_play_midi.start()
     lib.time.sleep(0.5)
     p_phase_advance.start()
     p_osc_cursor.start()
+
+    p_user_input.join()
 
     p_play_midi.join()
     lib.time.sleep(0.5)
