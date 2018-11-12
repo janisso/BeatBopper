@@ -24,8 +24,13 @@ def user_input(newstdin, vel):
     while True:
         lib.sys.stdin = newstdin
         #print 'test'
-        vel.value = int(raw_input()) #this is where this process doesn't fail anymore
-        print 'Velocity is: ', vel.value
+        u_input  = raw_input()
+
+        t = u_input.split()[0]
+        v = u_input.split()[1]
+
+        vel.value = int(v) #this is where this process doesn't fail anymore
+        print 'Tempo: ', t, 'Velocity: ', v
 
 # Function to send OSC messages to InScore
 def osc_cursor(beats,stop_all):

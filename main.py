@@ -36,18 +36,18 @@ if __name__ == '__main__':
     print 'MIDI File: ', midi_path
     print 'Save Path: ', save_path
 
-    # Open InScore app
+    # Open InScore appR
     os.system('open /Applications/INScoreViewer-1.21.app')                          # Open up InScore
     time.sleep(5)                                                                   # Give some time to load
 
     # Set up global OSC client
-    osc_client = OSC.OSCClient()                                                    # Create and OSC client
+    osc_client = OSC.OSCClient()                                                    # Create an OSC client
     osc_client.connect(('localhost', 7000))                                         # Connect to InScore
 
     os.system('open '+ curr_path+'/inscore_stuff/demo/demo.inscore')                # Load the score
     time.sleep(2)                                                                   # Give some time to laod
 
     pam.play(midi_path, save_path)                                                  # Initialize MIDI playback
-    osc_client.close()                                                              # Close OSC client
+    osc_client.close()                                                              # Close OSC client once the playback has finished
 
     print 'Program Terminated'
