@@ -3,6 +3,16 @@
 import argparse
 import os
 import pam
+import OSC
+import time
+
+#FUNCTION TO SEND OSC MESSAGES TO INSCORE
+def osc_send_i(address,var):
+    osc_msg = OSC.OSCMessage()
+    osc_msg.setAddress(address)
+    for i in range(len(var)):
+        osc_msg.append(var[i])
+    osc_client.send(osc_msg)
 
 if __name__ == '__main__':
 
@@ -22,8 +32,22 @@ if __name__ == '__main__':
     if not os.path.exists(save_path):                                               # if the path does not exist create it
          os.makedirs(save_path)
 
-    print 'User ID: ', user_id
+    print 'User ID: ', user_id                                                      # Printing stuff for debugging
     print 'MIDI File: ', midi_path
     print 'Save Path: ', save_path
 
-    pam.play(midi_path, save_path)
+    # Open InScore app
+    os.system('open /Applications/INScoreViewer-1.21.app')                          # Open up InScore
+    time.sleep(5)                                                                   # Give some time to load
+
+    # Set up global OSC client
+    osc_client = OSC.OSCClient()                                                    # Create and OSC client
+    osc_client.connect(('localhost', 7000))                                         # Connect to InScore
+
+    os.system('open '+ curr_path+'/inscore_stuff/demo/demo.inscore')                # Load the score
+    time.sleep(2)                                                                   # Give some time to laod
+
+    pam.play(midi_path, save_path)                                                  # Initialize MIDI playback
+    osc_client.close()                                                              # Close OSC client
+
+    print 'Program Terminated'

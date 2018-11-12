@@ -22,7 +22,7 @@ def phase_advance(beats,stop_all):
 # Function to send OSC messages to InScore
 def osc_cursor(beats,stop_all):
     #SETTING UP OSC CLIENT FOR INSCORE
-    osc_port =lib. OSC.OSCClient()
+    osc_port =lib.OSC.OSCClient()
     osc_port.connect(('localhost', 7000))   # INSCORE
     osc_msg_cursor = lib.OSC.OSCMessage()
     osc_msg_cursor.setAddress('/ITL/scene/sync')
@@ -36,7 +36,7 @@ def osc_cursor(beats,stop_all):
         oscmsgI.append('date')
         oscmsgI.append(int(beats.value*8))
         oscmsgI.append(16)
-        print int(beats.value/2)
+        #print int(beats.value/2)
         osc_port.send(oscmsgI)
         lib.time.sleep(0.01)
         if stop_all.value == True:
