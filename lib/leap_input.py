@@ -11,6 +11,7 @@ def get_samples(palm_pos, hand_vel,hand_span,stop_all, save_path):
         for hand in frame.hands:
             # GETTING PALM VELOCITY
             palm_pos.value = hand.palm_position.y
+            #print palm_pos.value
             hand_vel.value = hand.palm_velocity.y
             # print hand.fingers[0].position
             for finger in hand.fingers:
@@ -21,7 +22,7 @@ def get_samples(palm_pos, hand_vel,hand_span,stop_all, save_path):
             hand_span.value = np.sqrt(
                 (thumb_pos.x - pinky_pos.x) ** 2 + (thumb_pos.y - pinky_pos.y) ** 2 + (thumb_pos.z - pinky_pos.z) ** 2)
         f.write("%f, %f, %f, %f\n" % (time.time(), palm_pos.value, hand_vel.value, hand_span.value))
-        time.sleep(0.01)
+        time.sleep(0.005)
         if stop_all.value == 1:
             f.close
             break

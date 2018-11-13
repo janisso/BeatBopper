@@ -105,6 +105,9 @@ def play(midi_path,save_path):
     hand_vel = lib.multiprocessing.Value('d',0.0)
     hand_span = lib.multiprocessing.Value('d',0.0)
 
+    arm_flag = lib.multiprocessing.Value('i', False)            # boolean variable
+    play_flag = lib.multiprocessing.Value('i', False)            # boolean variable
+
     #p_user_input = lib.multiprocessing.Process(target=user_input, args=(newstdin,tempo,midi_vel))
 
     p_play_midi =  lib.multiprocessing.Process(target=play_midi,args=(midi_path,save_path,beats,midi_vel,stop_all))  # process to play MIDI
@@ -112,23 +115,23 @@ def play(midi_path,save_path):
     p_osc_cursor = lib.multiprocessing.Process(target=osc_cursor,args=(beats,stop_all))
 
     p_get_samples = lib.multiprocessing.Process(target=lib.leap_input.get_samples, args=(palm_pos, hand_vel, hand_span, stop_all, save_path))
-    p_naive = lib.multiprocessing.Process(target= naive.naive_tempo, args=(palm_pos, hand_vel, hand_span, stop_all))
+    p_naive = lib.multiprocessing.Process(target= naive.naive_tempo, args=(palm_pos, hand_vel, hand_span, stop_all, arm_flag))
     #p_user_input.start()
 
+    p_get_samples.start()
+    p_naive.start()
     p_play_midi.start()
     lib.time.sleep(0.5)
     p_phase_advance.start()
     p_osc_cursor.start()
 
-    p_get_samples.start()
-    p_naive.start()
 
     #p_user_input.join()
+
+    p_get_samples.join()
+    p_naive.join()
 
     p_play_midi.join()
     lib.time.sleep(0.5)
     p_phase_advance.join()
     p_osc_cursor.join()
-
-    p_get_samples.join()
-    p_naive.join()
