@@ -9,18 +9,22 @@
 import lib
 
 # Function for advnacing the playhead
-def phase_advance(beats,stop_all):
+def phase_advance(save_path,beats,tempo,stop_all):
+    f = open(save_path + '/phase_advance.csv', 'w+')                # open file to save log values
+    f.write('time, beats\n')                  # write first line with corresponding titles
     playhead = 0
     while True:
-        playhead += 0.01
+        playhead += (tempo.value/2/60.0)*0.0056
         beats.value = playhead
+        f.write(  # store values for later analysis
+            "%f, %f\n" % (lib.time.time(), beats.value))
         lib.time.sleep(0.005)
         #print playhead
         if stop_all.value == True:
             break
 
-# Function to change velocity using keyboard
-def user_input(newstdin, vel):
+# Function to change tempo and velocity using keyboard
+def user_input(newstdin, tempo,vel):
     while True:
         lib.sys.stdin = newstdin
         #print 'test'
@@ -28,7 +32,7 @@ def user_input(newstdin, vel):
 
         t = u_input.split()[0]
         v = u_input.split()[1]
-
+        tempo.value = float(t)
         vel.value = int(v) #this is where this process doesn't fail anymore
         print 'Tempo: ', t, 'Velocity: ', v
 
@@ -91,14 +95,15 @@ def play_midi(midi_path, save_path, beats, vel, stop_all):
 def play(midi_path,save_path):
     newstdin = lib.os.fdopen(lib.os.dup(lib.sys.stdin.fileno()))
 
+    tempo = lib.multiprocessing.Value('d', 120.0)
     vel = lib.multiprocessing.Value('i', 127)                   # variable to store amplitude value received from Leap Motion to convert into MIDI velocity
     beats = lib.multiprocessing.Value('d', 0.0)                 # variable holding the advanceing beat information of the MIDI file
     stop_all = lib.multiprocessing.Value('i', False)            # boolean variable that tell rest of the system that the MIDI file has finished playing
 
-    p_user_input = lib.multiprocessing.Process(target=user_input, args=(newstdin,vel))
+    p_user_input = lib.multiprocessing.Process(target=user_input, args=(newstdin,tempo,vel))
 
     p_play_midi =  lib.multiprocessing.Process(target=play_midi,args=(midi_path,save_path,beats,vel,stop_all))  # process to play MIDI
-    p_phase_advance = lib.multiprocessing.Process(target=phase_advance,args=(beats,stop_all))                   # process to count phase informatioin
+    p_phase_advance = lib.multiprocessing.Process(target=phase_advance,args=(save_path,beats,tempo,stop_all))                   # process to count phase informatioin
     p_osc_cursor = lib.multiprocessing.Process(target=osc_cursor,args=(beats,stop_all))
 
     p_user_input.start()
