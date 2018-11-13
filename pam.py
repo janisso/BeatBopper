@@ -7,6 +7,7 @@
 #   e - which excerpt to play from the g foler
 
 import lib
+import naive
 
 # Function for advnacing the playhead
 def phase_advance(save_path,beats,tempo,stop_all):
@@ -59,7 +60,7 @@ def osc_cursor(beats,stop_all):
             break
 
 # Function to send MIDI messages
-def play_midi(midi_path, save_path, beats, vel, stop_all):
+def play_midi(midi_path, save_path, beats, midi_vel, stop_all):
     f = open(save_path + '/play_midi.csv', 'w+')                # open file to save log values
     f.write('time,beats,midi_note,midi_vel\n')                  # write first line with corresponding titles
     mid = lib.mido.MidiFile(midi_path)                          # save parsed MIDI file using mido library
@@ -81,9 +82,9 @@ def play_midi(midi_path, save_path, beats, vel, stop_all):
         if len(yo) != 0:                                        # keep running the loop until there are no more notes to play
             if yo[0, 1] < beats.value:                          # if the playhead is larger than the first note in the array play the first note and then delete
                 msgMIDI = all_messages[int(yo[0, 0])]           # add note information and it's timing to the midi message to be sent
-                msgMIDI.velocity = vel.value                    # add velocity to the MIDI message to be sent
+                msgMIDI.velocity = midi_vel.value                    # add velocity to the MIDI message to be sent
                 f.write(                                        # store values for later analysis
-                    "%f, %f, %f, %f\n" % (lib.time.time(), beats.value, all_messages[int(yo[0, 0])].note, vel.value))
+                    "%f, %f, %f, %f\n" % (lib.time.time(), beats.value, all_messages[int(yo[0, 0])].note, midi_vel.value))
                 port.send(msgMIDI)                              # send the message using predefined port (midi device)
                 yo = lib.np.delete(yo, 0, 0)                    # once the note has been played delete the first message
         else:                                                   # if there are no more notes to play
@@ -96,26 +97,38 @@ def play(midi_path,save_path):
     newstdin = lib.os.fdopen(lib.os.dup(lib.sys.stdin.fileno()))
 
     tempo = lib.multiprocessing.Value('d', 120.0)
-    vel = lib.multiprocessing.Value('i', 127)                   # variable to store amplitude value received from Leap Motion to convert into MIDI velocity
+    midi_vel = lib.multiprocessing.Value('i', 127)                   # variable to store amplitude value received from Leap Motion to convert into MIDI velocity
     beats = lib.multiprocessing.Value('d', 0.0)                 # variable holding the advanceing beat information of the MIDI file
     stop_all = lib.multiprocessing.Value('i', False)            # boolean variable that tell rest of the system that the MIDI file has finished playing
 
-    p_user_input = lib.multiprocessing.Process(target=user_input, args=(newstdin,tempo,vel))
+    palm_pos = lib.multiprocessing.Value('d',0.0)
+    hand_vel = lib.multiprocessing.Value('d',0.0)
+    hand_span = lib.multiprocessing.Value('d',0.0)
 
-    p_play_midi =  lib.multiprocessing.Process(target=play_midi,args=(midi_path,save_path,beats,vel,stop_all))  # process to play MIDI
+    #p_user_input = lib.multiprocessing.Process(target=user_input, args=(newstdin,tempo,midi_vel))
+
+    p_play_midi =  lib.multiprocessing.Process(target=play_midi,args=(midi_path,save_path,beats,midi_vel,stop_all))  # process to play MIDI
     p_phase_advance = lib.multiprocessing.Process(target=phase_advance,args=(save_path,beats,tempo,stop_all))                   # process to count phase informatioin
     p_osc_cursor = lib.multiprocessing.Process(target=osc_cursor,args=(beats,stop_all))
 
-    p_user_input.start()
+    p_get_samples = lib.multiprocessing.Process(target=lib.leap_input.get_samples, args=(palm_pos, hand_vel, hand_span, stop_all, save_path))
+    p_naive = lib.multiprocessing.Process(target= naive.naive_tempo, args=(palm_pos, hand_vel, hand_span, stop_all))
+    #p_user_input.start()
 
     p_play_midi.start()
     lib.time.sleep(0.5)
     p_phase_advance.start()
     p_osc_cursor.start()
 
-    p_user_input.join()
+    p_get_samples.start()
+    p_naive.start()
+
+    #p_user_input.join()
 
     p_play_midi.join()
     lib.time.sleep(0.5)
     p_phase_advance.join()
     p_osc_cursor.join()
+
+    p_get_samples.join()
+    p_naive.join()

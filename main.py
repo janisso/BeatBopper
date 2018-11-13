@@ -15,7 +15,6 @@ def osc_send_i(address,var):
     osc_client.send(osc_msg)
 
 if __name__ == '__main__':
-
     parser = argparse.ArgumentParser()                                              # declaration of arguments
     parser.add_argument('-u', '--user_id', help='Enter user ID')                    # user_id
     parser.add_argument('-m', '--midi', help='Enter MIDI file to played back')      # MIDI file to open
