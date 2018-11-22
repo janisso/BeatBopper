@@ -5,7 +5,7 @@ from scipy import stats
 
 curr_path = os.path.dirname(os.path.abspath(__file__))                          # paht where this file is running from
 
-data = np.genfromtxt(curr_path+'/2/phase_advance.csv',delimiter=',')[1:]
+data = np.genfromtxt(curr_path+'/0/phase_advance.csv',delimiter=',')[1:]
 
 time = data[:,0]
 phase = data[:,1]

@@ -110,12 +110,12 @@ def play(midi_path,save_path):
 
     #p_user_input = lib.multiprocessing.Process(target=user_input, args=(newstdin,tempo,midi_vel))
 
-    p_play_midi =  lib.multiprocessing.Process(target=play_midi,args=(midi_path,save_path,beats,midi_vel,stop_all))  # process to play MIDI
+    p_play_midi = lib.multiprocessing.Process(target=play_midi,args=(midi_path,save_path,beats,midi_vel,stop_all))  # process to play MIDI
     p_phase_advance = lib.multiprocessing.Process(target=phase_advance,args=(save_path,beats,tempo,stop_all))                   # process to count phase informatioin
     p_osc_cursor = lib.multiprocessing.Process(target=osc_cursor,args=(beats,stop_all))
 
-    p_get_samples = lib.multiprocessing.Process(target=lib.leap_input.get_samples, args=(palm_pos, hand_vel, hand_span, stop_all, save_path))
-    p_naive = lib.multiprocessing.Process(target= naive.naive_tempo, args=(palm_pos, hand_vel, hand_span, stop_all, arm_flag))
+    p_get_samples = lib.multiprocessing.Process(target=lib.get_samples, args=(palm_pos, hand_vel, hand_span, stop_all, save_path))
+    p_naive = lib.multiprocessing.Process(target= naive.naive_tempo, args=(palm_pos, hand_vel, hand_span, stop_all, arm_flag, save_path))
     #p_user_input.start()
 
     p_get_samples.start()

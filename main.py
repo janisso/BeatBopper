@@ -44,7 +44,8 @@ if __name__ == '__main__':
     osc_client.connect(('localhost', 7000))                                         # Connect to InScore
 
     os.system('open '+ curr_path+'/inscore_stuff/demo/demo.inscore')                # Load the score
-    time.sleep(2)                                                                   # Give some time to laod
+    time.sleep(2)
+    os.system('open -a Terminal')                                                                   # Give some time to laod
 
     pam.play(midi_path, save_path)                                                  # Initialize MIDI playback
     osc_client.close()                                                              # Close OSC client once the playback has finished
