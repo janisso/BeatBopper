@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2e055b4a-3002-428c-843e-fcf4854b63ed" name="Default Changelist" comment="Added still module and naive tempo estimation. ToDo: a) implement MIDI playback with naive tempo estimation; b) copy paste some of the code for verification module">
+    <list default="true" id="2e055b4a-3002-428c-843e-fcf4854b63ed" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/leap_input.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/naive.py" beforeDir="false" afterPath="$PROJECT_DIR$/naive.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pam.py" beforeDir="false" afterPath="$PROJECT_DIR$/pam.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/delta_t_analysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/delta_t_analysis.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/1/get_samples.csv" beforeDir="false" afterPath="$PROJECT_DIR$/users/1/get_samples.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/1/naive_phase.csv" beforeDir="false" afterPath="$PROJECT_DIR$/users/1/naive_phase.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/1/naive_tempo_data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/users/1/naive_tempo_data.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/1/phase_advance.csv" beforeDir="false" afterPath="$PROJECT_DIR$/users/1/phase_advance.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/1/play_midi.csv" beforeDir="false" afterPath="$PROJECT_DIR$/users/1/play_midi.csv" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,7 +21,7 @@
     <session id="492851201">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="4" />
+          <entry key="project.closed" value="5" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.10" value="2" />
           <entry key="project.open.time.13" value="1" />
@@ -28,33 +29,34 @@
           <entry key="project.open.time.24" value="1" />
           <entry key="project.open.time.4" value="1" />
           <entry key="project.open.time.6" value="1" />
+          <entry key="project.open.time.7" value="1" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="9" />
+          <entry key="project.opened" value="10" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="3" />
-          <entry key="py" value="12275" />
-          <entry key="txt" value="907" />
+          <entry key="py" value="12304" />
+          <entry key="txt" value="1031" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="910" />
-          <entry key="Python" value="12275" />
+          <entry key="PLAIN_TEXT" value="1034" />
+          <entry key="Python" value="12304" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="csv" value="1" />
-          <entry key="py" value="12" />
+          <entry key="py" value="14" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="PLAIN_TEXT" value="1" />
-          <entry key="Python" value="12" />
+          <entry key="Python" value="14" />
         </counts>
       </usages-collector>
     </session>
@@ -64,7 +66,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
+            <state relative-caret-position="390">
               <caret line="30" column="35" selection-start-line="30" selection-start-column="35" selection-end-line="30" selection-end-column="35" />
               <folding>
                 <element signature="e#110#125#0" expanded="true" />
@@ -76,8 +78,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pam.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="548">
-              <caret line="89" column="39" selection-start-line="89" selection-start-column="39" selection-end-line="89" selection-end-column="39" />
+            <state relative-caret-position="664">
+              <caret line="117" column="133" selection-start-line="117" selection-start-column="133" selection-end-line="117" selection-end-column="133" />
               <folding>
                 <element signature="e#436#446#0" expanded="true" />
               </folding>
@@ -88,10 +90,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/naive.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="51" column="37" selection-start-line="51" selection-start-column="37" selection-end-line="51" selection-end-column="37" />
+            <state relative-caret-position="285">
+              <caret line="78" column="41" lean-forward="true" selection-start-line="78" selection-start-column="41" selection-end-line="78" selection-end-column="41" />
               <folding>
-                <marker date="1542900307000" expanded="true" signature="1187:1191" ph="..." />
+                <marker date="1542924713000" expanded="true" signature="1195:1199" ph="..." />
               </folding>
             </state>
           </provider>
@@ -100,8 +102,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="22" column="13" lean-forward="true" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+            <state relative-caret-position="180">
+              <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
                 <marker date="1542899624000" expanded="true" signature="2045:2046" ph="..." />
@@ -133,6 +135,7 @@
       <find>leap</find>
       <find>prev_avg_vel_schm</find>
       <find>still_buff</find>
+      <find>tempo</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -146,17 +149,16 @@
         <option value="$PROJECT_DIR$/users/delta_t_analysis.py" />
         <option value="$PROJECT_DIR$/lib/Leap.py" />
         <option value="$PROJECT_DIR$/lib/leap_input.py" />
-        <option value="$PROJECT_DIR$/pam.py" />
         <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/lib/__init__.py" />
+        <option value="$PROJECT_DIR$/pam.py" />
         <option value="$PROJECT_DIR$/naive.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="762" />
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="y" value="22" />
-    <option name="width" value="907" />
+    <option name="width" value="1920" />
     <option name="height" value="1024" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -414,7 +416,14 @@
       <option name="project" value="LOCAL" />
       <updated>1542146125967</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Added still hand function. There is a trade-off between setting low and high values for the threshold of stillness">
+      <created>1542900503267</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1542900503268</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TodoView">
@@ -427,10 +436,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="762" y="22" width="907" height="1024" extended-state="0" />
+    <frame x="0" y="22" width="1680" height="1024" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21218961" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.09885473" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -439,9 +448,9 @@
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39806867" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info active="true" anchor="bottom" id="TODO" order="6" visible="true" weight="0.32939914" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.31780538" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.3295964" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32919255" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50171524" side_tool="true" weight="0.3295964" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.3295964" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -485,7 +494,8 @@
     <MESSAGE value="Added LeapMotion hand positon, velocity and palm width" />
     <MESSAGE value="Added armed before playback starts" />
     <MESSAGE value="Added still module and naive tempo estimation. ToDo: a) implement MIDI playback with naive tempo estimation; b) copy paste some of the code for verification module" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added still module and naive tempo estimation. ToDo: a) implement MIDI playback with naive tempo estimation; b) copy paste some of the code for verification module" />
+    <MESSAGE value="Added still hand function. There is a trade-off between setting low and high values for the threshold of stillness" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added still hand function. There is a trade-off between setting low and high values for the threshold of stillness" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/users/0/play_midi.csv">
@@ -505,17 +515,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/Leap.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/leap_input.py" />
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
+        <state relative-caret-position="390">
           <caret line="30" column="35" selection-start-line="30" selection-start-column="35" selection-end-line="30" selection-end-column="35" />
           <folding>
             <element signature="e#110#125#0" expanded="true" />
@@ -523,20 +526,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pam.py">
+    <entry file="file://$PROJECT_DIR$/lib/Leap.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="548">
-          <caret line="89" column="39" selection-start-line="89" selection-start-column="39" selection-end-line="89" selection-end-column="39" />
-          <folding>
-            <element signature="e#436#446#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="270">
+          <caret line="18" column="16" lean-forward="true" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="13" lean-forward="true" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+        <state relative-caret-position="180">
+          <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
             <marker date="1542899624000" expanded="true" signature="2045:2046" ph="..." />
@@ -544,12 +544,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/pam.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="664">
+          <caret line="117" column="133" selection-start-line="117" selection-start-column="133" selection-end-line="117" selection-end-column="133" />
+          <folding>
+            <element signature="e#436#446#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/naive.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="51" column="37" selection-start-line="51" selection-start-column="37" selection-end-line="51" selection-end-column="37" />
+        <state relative-caret-position="285">
+          <caret line="78" column="41" lean-forward="true" selection-start-line="78" selection-start-column="41" selection-end-line="78" selection-end-column="41" />
           <folding>
-            <marker date="1542900307000" expanded="true" signature="1187:1191" ph="..." />
+            <marker date="1542924713000" expanded="true" signature="1195:1199" ph="..." />
           </folding>
         </state>
       </provider>

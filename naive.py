@@ -1,6 +1,6 @@
 import lib
 
-def naive_tempo(palm_pos,hand_vel,hand_span,stop_all,arm_flag, save_path):
+def naive_tempo(palm_pos,hand_vel,hand_span,stop_all,arm_flag, tempo, save_path):
     f_data = open(save_path+'/naive_tempo_data.csv', 'w+')
     f_phase = open(save_path+'/naive_phase.csv', 'w+')
 
@@ -30,7 +30,7 @@ def naive_tempo(palm_pos,hand_vel,hand_span,stop_all,arm_flag, save_path):
     prev_beat_time = 0
 
     beat_dt = 0
-    tempo = 0
+    #tempo = 0
 
     #SETUP CIRCULAR BUFFER FOR LPF
     circ_buff = lib.CircularBuffer(size=lib.window_length)
@@ -46,9 +46,9 @@ def naive_tempo(palm_pos,hand_vel,hand_span,stop_all,arm_flag, save_path):
 
         # getting filtered values for average
         avg_vel = sum(circ_buff*lib.coeffs)                         # filtered avg_vel
-        avg_vel_schm = lib.schmit(avg_vel, 20)                     # filtered avg_vel with schmitt trigger
+        avg_vel_schm = lib.schmit(avg_vel, 20)                      # filtered avg_vel with schmitt trigger
 
-        still_point = lib.is_still(avg_vel,0.2)                     # function for checking if the hand is still,
+        still_point = lib.is_still(avg_vel,0.5)                     # function for checking if the hand is still,
                                                                     # if the number is set low -> hand tremor will trigger beats
                                                                     # if the number is set to high -> some of the smaller movements will not trigger beats, this needs to be explained to the user
 
@@ -76,11 +76,11 @@ def naive_tempo(palm_pos,hand_vel,hand_span,stop_all,arm_flag, save_path):
                 beat_phase = 0
                 curr_beat_time = lib.time.time()
                 beat_dt = curr_beat_time - prev_beat_time
-                tempo = 60./beat_dt
+                tempo.value = 60./beat_dt
                 prev_beat_time = curr_beat_time
                 #timer = timer_up
                 f_phase.write('%f, %i\n' % (lib.time.time(), beat_phase))
-                print 'Beat ', tempo, ' dt ', beat_dt
+                print 'Beat ', tempo.value, ' dt ', beat_dt
 
             '''if ((avg_acc_schm * prev_avg_acc_schm < 0) and (beat_phase == 0) and (timer < 0) and (avg_vel_schm > 0)):
                 timer = timer_up

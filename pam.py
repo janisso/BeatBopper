@@ -115,7 +115,7 @@ def play(midi_path,save_path):
     p_osc_cursor = lib.multiprocessing.Process(target=osc_cursor,args=(beats,stop_all))
 
     p_get_samples = lib.multiprocessing.Process(target=lib.get_samples, args=(palm_pos, hand_vel, hand_span, stop_all, save_path))
-    p_naive = lib.multiprocessing.Process(target= naive.naive_tempo, args=(palm_pos, hand_vel, hand_span, stop_all, arm_flag, save_path))
+    p_naive = lib.multiprocessing.Process(target= naive.naive_tempo, args=(palm_pos, hand_vel, hand_span, stop_all, arm_flag, tempo, save_path))
     #p_user_input.start()
 
     p_get_samples.start()
