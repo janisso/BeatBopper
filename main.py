@@ -17,11 +17,13 @@ def osc_send_i(address,var):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()                                              # declaration of arguments
     parser.add_argument('-u', '--user_id', help='Enter user ID')                    # user_id
-    parser.add_argument('-m', '--midi', help='Enter MIDI file to played back')      # MIDI file to open
+    parser.add_argument('-mf', '--midi_file', help='Enter MIDI file to be played back')      # MIDI file to open
+    parser.add_argument('-md', '--midi_device', help='Enter MIDI device Nr.')  # MIDI file to open
     #parser.add_argument('-s', '--save_path', help='Enter path to save log files')   # path to save log files
     args = parser.parse_args()                                                      # variable to store list of user input variables
     user_id = int(args.user_id)                                                     # variable to store User ID
-    midi_file = args.midi                                                           # variable to store the name of the MIDI file, all the MIDI files should be stored in midi_files folder of the project
+    midi_file = args.midi_file                                                           # variable to store the name of the MIDI file, all the MIDI files should be stored in midi_files folder of the project
+    midi_device = int(args.midi_device)
     #save_path = args.save_path                                                     # variable to save log files
 
     curr_path = os.path.dirname(os.path.abspath(__file__))                          # paht where this file is running from
@@ -45,9 +47,9 @@ if __name__ == '__main__':
 
     os.system('open '+ curr_path+'/inscore_stuff/demo/demo.inscore')                # Load the score
     time.sleep(2)
-    os.system('open -a Terminal')                                                                   # Give some time to laod
+    os.system('open -a Terminal')                                                   # Give some time to laod
 
-    pam.play(midi_path, save_path)                                                  # Initialize MIDI playback
+    pam.play(midi_path, save_path, midi_device)                                     # Initialize MIDI playback
     osc_client.close()                                                              # Close OSC client once the playback has finished
 
     print 'Program Terminated'
