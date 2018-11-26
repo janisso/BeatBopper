@@ -1,6 +1,6 @@
 import lib
 
-def naive_tempo(palm_pos,hand_vel,hand_span,midi_vel,stop_all,arm_flag, tempo, save_path):
+def naive_tempo(palm_pos,hand_vel,hand_span,stop_all,arm_flag, tempo, save_path):
     f_data = open(save_path+'/naive_tempo_data.csv', 'w+')
     f_phase = open(save_path+'/naive_phase.csv', 'w+')
 
@@ -12,8 +12,19 @@ def naive_tempo(palm_pos,hand_vel,hand_span,midi_vel,stop_all,arm_flag, tempo, s
 
     avg_acc = 0
     prev_avg_acc = 0
-                                      # set the beat phase to 3, to set the system to start counting phase cycles from 0
+
+    avg_vel_schm = 0
+    prev_avg_vel_schm = 0
+
+    avg_acc_schm = 0
+    prev_avg_acc_schm = 0
+
+    beat_phase = 3                                                  # set the beat phase to 3, to set the system to start counting phase cycles from 0
+
     timer = -1                                                      # timer to dissalow phases that occur too soon
+    timer_up = 5
+
+    is_still = False
 
     curr_beat_time = lib.time.time()
     prev_beat_time = 0
@@ -71,18 +82,32 @@ def naive_tempo(palm_pos,hand_vel,hand_span,midi_vel,stop_all,arm_flag, tempo, s
                 f_phase.write('%f, %i\n' % (lib.time.time(), beat_phase))
                 print 'Beat ', tempo.value, ' dt ', beat_dt
 
-            if ((prev_avg_acc * avg_acc) <= 0):
-                midi_vel.value = abs(int((avg_vel/1500.)*127.))
-                if (midi_vel.value > 127):
-                    midi_vel.value = 127
-                print 'Amp ',midi_vel.value
+            '''if ((avg_acc_schm * prev_avg_acc_schm < 0) and (beat_phase == 0) and (timer < 0) and (avg_vel_schm > 0)):
+                timer = timer_up
+                beat_phase = 1
+                f_phase.write('%f, %i\n' % (lib.time.time(), beat_phase))
+                print 'Beat 1'
+
+            if ((avg_vel_schm * prev_avg_vel_schm < 0) and (beat_phase == 1) and (timer < 0)):
+                timer = timer_up
+                beat_phase = 2
+                f_phase.write('%f, %i\n' % (lib.time.time(), beat_phase))
+                print 'Beat 2'
+
+            if ((avg_acc_schm * prev_avg_acc_schm < 0) and (beat_phase == 2) and (timer < 0) and (avg_vel_schm < 0)):
+                timer = timer_up
+                beat_phase = 3
+                f_phase.write('%f, %i\n' % (lib.time.time(), beat_phase))
+                print 'Beat 3'''
 
         timer -= 1
         #f_data.write('time, palm_pos, vel, avg_vel, avg_vel_schm, avg_acc, avg_acc_schm')
         f_data.write('%f, %f, %f, %f, %f, %f, %f, %f\n'%(lib.time.time(), palm_pos.value, hand_vel.value, avg_vel, avg_vel_schm, avg_acc, avg_acc_schm, still_buff_avg))
         prev_avg_vel = avg_vel
-        prev_avg_acc = avg_acc
+        prev_avg_vel_schm = avg_vel_schm
 
+        prev_avg_acc = avg_acc
+        prev_avg_acc_schm = avg_acc_schm
 
         #print 'palm_pos ',palm_pos.value,' hand_vel ',hand_vel.value,' hand_span ',hand_span.value
 
