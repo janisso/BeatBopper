@@ -11,12 +11,66 @@ import naive
 
 # Function for advnacing the playhead
 def phase_advance(save_path,beats,tempo,stop_all,play_flag):
-    f = open(save_path + '/phase_advance.csv', 'w+')                # open file to save log values
-    f.write('time, beats\n')                  # write first line with corresponding titles
+    f = open(save_path + '/phase_advance_naive.csv', 'w+')                # open file to save log values
+    f.write('time, beats\n')                                        # write first line with corresponding titles
     playhead = 0
+    tempo_change = 0
+    beat_counter = 0
     while True:
         if play_flag.value:
             playhead += (tempo.value/2/60.0)*0.0064
+            beats.value = playhead
+            f.write(  # store values for later analysis
+                "%f, %f\n" % (lib.time.time(), beats.value))
+            lib.time.sleep(0.005)
+            #print playhead
+        if stop_all.value == True:
+            break
+
+def phase_advance_comp(save_path,beats,tempo,stop_all,play_flag):
+    f = open(save_path + '/phase_advance_comp.csv', 'w+')                # open file to save log values
+    f.write('time, beats\n')                                        # write first line with corresponding titles
+    playhead = 0
+    tempo_change = 120
+    beat_counter = 0
+
+    t = 0
+    dt = 0
+    dt1 = 0
+
+    vu = 0
+    vu1 = 0
+
+    rem = 0
+    rem1 = 0
+
+    advanced = 0
+
+    prev_tempo = tempo.value
+
+    new_val = False
+
+    while True:
+
+        # COMPARATOR
+        if (prev_tempo != tempo.value):
+            prev_tempo = tempo.value
+            new_val = True
+            print 'Change detected', beat_counter, playhead * 2
+
+        # ONLY CHANGE TEMPO WHEN TEMPO CHANGE HAS BEEN DETECTED
+        if new_val == True:# and play_flag.value:
+            #tempo_change = tempo.value
+            rem = beat_counter + 1 - playhead * 2
+            tempo_change = prev_tempo * rem
+            #if (playhead * 2) < beat_counter:
+            #    tempo_change = tempo.value
+            if play_flag.value:
+                beat_counter += 1
+            new_val = False
+
+        if play_flag.value:
+            playhead += (tempo_change/2/60.0)*0.0064
             beats.value = playhead
             f.write(  # store values for later analysis
                 "%f, %f\n" % (lib.time.time(), beats.value))
@@ -114,7 +168,9 @@ def play(midi_path,save_path,midi_device):
     #p_user_input = lib.multiprocessing.Process(target=user_input, args=(newstdin,tempo,midi_vel))
 
     p_play_midi = lib.multiprocessing.Process(target=play_midi,args=(midi_path,save_path,beats,midi_vel,stop_all,midi_device_nr))  # process to play MIDI
-    p_phase_advance = lib.multiprocessing.Process(target=phase_advance,args=(save_path,beats,tempo,stop_all,play_flag))                   # process to count phase informatioin
+    #p_phase_advance = lib.multiprocessing.Process(target=phase_advance,args=(save_path,beats,tempo,stop_all,play_flag))                   # process to count phase informatioin
+    p_phase_advance = lib.multiprocessing.Process(target=phase_advance_comp,args=(save_path,beats,tempo,stop_all,play_flag))                   # process to count phase informatioin
+
     p_osc_cursor = lib.multiprocessing.Process(target=osc_cursor,args=(beats,stop_all))
 
     p_get_samples = lib.multiprocessing.Process(target=lib.get_samples, args=(palm_pos, hand_vel, hand_span, stop_all, save_path))

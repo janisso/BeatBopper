@@ -1,8 +1,10 @@
 import lib
 
-def naive_tempo(palm_pos,hand_vel,hand_span,midi_vel,stop_all,arm_flag, play_flag, tempo, save_path):
-    f_data = open(save_path+'/naive_tempo_data.csv', 'w+')
-    f_phase = open(save_path+'/naive_phase.csv', 'w+')
+def phase_comp()
+
+def borch_comp(palm_pos,hand_vel,hand_span,midi_vel,stop_all,arm_flag, play_flag, tempo, save_path):
+    f_data = open(save_path+'/borch_tempo_data.csv', 'w+')
+    f_phase = open(save_path+'/borch_phase.csv', 'w+')
 
     f_data.write('time, palm_pos, vel, avg_vel, avg_vel_schm, avg_acc, avg_acc_schm, avg_still_buff\n')
     f_phase.write('time, phase\n')
@@ -39,7 +41,7 @@ def naive_tempo(palm_pos,hand_vel,hand_span,midi_vel,stop_all,arm_flag, play_fla
         avg_vel = sum(circ_buff*lib.coeffs)                         # filtered avg_vel
         avg_vel_schm = lib.schmit(avg_vel, 20)                      # filtered avg_vel with schmitt trigger
 
-        still_point = lib.is_still(avg_vel,1)                     # function for checking if the hand is still,
+        still_point = lib.is_still(avg_vel,0.5)                     # function for checking if the hand is still,
                                                                     # if the number is set low -> hand tremor will trigger beats
                                                                     # if the number is set to high -> some of the smaller movements will not trigger beats, this needs to be explained to the user
 
@@ -62,7 +64,6 @@ def naive_tempo(palm_pos,hand_vel,hand_span,midi_vel,stop_all,arm_flag, play_fla
             arm_flag.value = 1
             #play_flag.value = 1
             print 'ARMED'
-
         if is_still == False:
             # verification module
             if ((avg_vel * prev_avg_vel < 0) and (prev_avg_vel < avg_vel)):# and (timer < 0)):
@@ -74,7 +75,6 @@ def naive_tempo(palm_pos,hand_vel,hand_span,midi_vel,stop_all,arm_flag, play_fla
                 #timer = timer_up
                 f_phase.write('%f, %i\n' % (lib.time.time(), beat_phase))
                 print 'Beat ', tempo.value, ' dt ', beat_dt
-
                 if (arm_flag.value == True) and (play_flag.value == False):
                     play_flag.value = True
                     print 'play now', play_flag.value
