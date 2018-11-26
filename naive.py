@@ -1,6 +1,6 @@
 import lib
 
-def naive_tempo(palm_pos,hand_vel,hand_span,midi_vel,stop_all,arm_flag, tempo, save_path):
+def naive_tempo(palm_pos,hand_vel,hand_span,midi_vel,stop_all,arm_flag, play_flag, tempo, save_path):
     f_data = open(save_path+'/naive_tempo_data.csv', 'w+')
     f_phase = open(save_path+'/naive_phase.csv', 'w+')
 
@@ -20,6 +20,8 @@ def naive_tempo(palm_pos,hand_vel,hand_span,midi_vel,stop_all,arm_flag, tempo, s
 
     beat_dt = 0
     #tempo = 0
+
+    start_play = False
 
     #SETUP CIRCULAR BUFFER FOR LPF
     circ_buff = lib.CircularBuffer(size=lib.window_length)
@@ -45,8 +47,8 @@ def naive_tempo(palm_pos,hand_vel,hand_span,midi_vel,stop_all,arm_flag, tempo, s
         still_buff_avg = sum(still_buff)/float(len(still_buff))
         if still_buff_avg > 0.8:
             is_still = True
-            print still_buff_avg
-        else:
+            #print still_buff_avg
+        if still_buff_avg <= 0.8:
             is_still = False
         #print is_still#, still_buff_avg
 
@@ -58,7 +60,8 @@ def naive_tempo(palm_pos,hand_vel,hand_span,midi_vel,stop_all,arm_flag, tempo, s
 
         if (hand_span.value > 80) and (arm_flag.value == False):
             arm_flag.value = 1
-            print 'Armed'
+            #play_flag.value = 1
+            print 'ARMED'
         if is_still == False:
             # verification module
             if ((avg_vel * prev_avg_vel < 0) and (prev_avg_vel < avg_vel)):# and (timer < 0)):
@@ -70,12 +73,15 @@ def naive_tempo(palm_pos,hand_vel,hand_span,midi_vel,stop_all,arm_flag, tempo, s
                 #timer = timer_up
                 f_phase.write('%f, %i\n' % (lib.time.time(), beat_phase))
                 print 'Beat ', tempo.value, ' dt ', beat_dt
+                if (arm_flag.value == True) and (play_flag.value == False):
+                    play_flag.value = True
+                    print 'play now', play_flag.value
 
             if ((prev_avg_acc * avg_acc) <= 0):
                 midi_vel.value = abs(int((avg_vel/1500.)*127.))
                 if (midi_vel.value > 127):
                     midi_vel.value = 127
-                print 'Amp ',midi_vel.value
+                #print 'Amp ',midi_vel.value
 
         timer -= 1
         #f_data.write('time, palm_pos, vel, avg_vel, avg_vel_schm, avg_acc, avg_acc_schm')

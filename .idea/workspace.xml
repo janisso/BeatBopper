@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2e055b4a-3002-428c-843e-fcf4854b63ed" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/phase_est.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/naive.py" beforeDir="false" afterPath="$PROJECT_DIR$/naive.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pam.py" beforeDir="false" afterPath="$PROJECT_DIR$/pam.py" afterDir="false" />
@@ -11,7 +10,7 @@
       <change beforePath="$PROJECT_DIR$/users/1/naive_tempo_data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/users/1/naive_tempo_data.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/users/1/phase_advance.csv" beforeDir="false" afterPath="$PROJECT_DIR$/users/1/phase_advance.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/users/1/play_midi.csv" beforeDir="false" afterPath="$PROJECT_DIR$/users/1/play_midi.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/hand_beat_analysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/hand_beat_analysis.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/delta_t_analysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/delta_t_analysis.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -39,14 +38,14 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="3" />
-          <entry key="py" value="12800" />
-          <entry key="txt" value="1096" />
+          <entry key="py" value="13370" />
+          <entry key="txt" value="1137" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="1099" />
-          <entry key="Python" value="12800" />
+          <entry key="PLAIN_TEXT" value="1140" />
+          <entry key="Python" value="13370" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -80,8 +79,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pam.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="106" lean-forward="true" selection-start-line="106" selection-end-line="106" />
+            <state relative-caret-position="1632">
+              <caret line="111" column="10" selection-start-line="111" selection-start-column="10" selection-end-line="111" selection-end-column="10" />
               <folding>
                 <element signature="e#436#446#0" expanded="true" />
               </folding>
@@ -92,10 +91,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/naive.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="66">
-              <caret line="54" column="46" selection-start-line="54" selection-start-column="46" selection-end-line="54" selection-end-column="46" />
+            <state relative-caret-position="182">
+              <caret line="61" column="24" selection-start-line="61" selection-start-column="24" selection-end-line="61" selection-end-column="24" />
               <folding>
-                <marker date="1543228712000" expanded="true" signature="1037:1041" ph="..." />
+                <marker date="1543233167000" expanded="true" signature="1072:1076" ph="..." />
               </folding>
             </state>
           </provider>
@@ -113,8 +112,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+            <state relative-caret-position="-166">
+              <caret line="15" column="8" lean-forward="true" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="8" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
                 <marker date="1542899624000" expanded="true" signature="2045:2046" ph="..." />
@@ -147,9 +146,10 @@
       <find>prev_avg_vel_schm</find>
       <find>still_buff</find>
       <find>tempo</find>
-      <find>midi_vel</find>
       <find>beat_dt</find>
       <find>avg_vel_schm</find>
+      <find>play_flag</find>
+      <find>midi_vel</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -172,7 +172,7 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="374" />
+    <option name="x" value="331" />
     <option name="y" value="22" />
     <option name="width" value="1306" />
     <option name="height" value="1024" />
@@ -192,6 +192,16 @@
             <path>
               <item name="BeatBopper" type="b2602c69:ProjectViewProjectNode" />
               <item name="BeatBopper" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BeatBopper" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BeatBopper" type="462c0819:PsiDirectoryNode" />
+              <item name="inscore_stuff" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BeatBopper" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BeatBopper" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -483,7 +493,14 @@
       <option name="project" value="LOCAL" />
       <updated>1543154472009</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="added midi_velocity from leap in naive">
+      <created>1543228775754</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1543228775754</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TodoView">
@@ -496,10 +513,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="374" y="22" width="1306" height="1024" extended-state="0" />
+    <frame x="331" y="22" width="1306" height="1024" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12762646" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12762646" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -511,7 +528,7 @@
       <window_info anchor="bottom" id="TODO" order="6" weight="0.31780538" />
       <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49883267" visible="true" weight="0.32939914" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.32919255" />
-      <window_info active="true" anchor="bottom" id="Event Log" order="9" sideWeight="0.5011673" side_tool="true" visible="true" weight="0.32939914" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5011673" side_tool="true" visible="true" weight="0.32939914" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.3295964" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -558,7 +575,8 @@
     <MESSAGE value="Naive works" />
     <MESSAGE value="updated readme" />
     <MESSAGE value="added midi device selection" />
-    <option name="LAST_COMMIT_MESSAGE" value="added midi device selection" />
+    <MESSAGE value="added midi_velocity from leap in naive" />
+    <option name="LAST_COMMIT_MESSAGE" value="added midi_velocity from leap in naive" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/users/0/play_midi.csv">
@@ -608,8 +626,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+        <state relative-caret-position="-166">
+          <caret line="15" column="8" lean-forward="true" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="8" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
             <marker date="1542899624000" expanded="true" signature="2045:2046" ph="..." />
@@ -619,8 +637,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pam.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="106" lean-forward="true" selection-start-line="106" selection-end-line="106" />
+        <state relative-caret-position="1632">
+          <caret line="111" column="10" selection-start-line="111" selection-start-column="10" selection-end-line="111" selection-end-column="10" />
           <folding>
             <element signature="e#436#446#0" expanded="true" />
           </folding>
@@ -629,10 +647,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/naive.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="54" column="46" selection-start-line="54" selection-start-column="46" selection-end-line="54" selection-end-column="46" />
+        <state relative-caret-position="182">
+          <caret line="61" column="24" selection-start-line="61" selection-start-column="24" selection-end-line="61" selection-end-column="24" />
           <folding>
-            <marker date="1543228712000" expanded="true" signature="1037:1041" ph="..." />
+            <marker date="1543233167000" expanded="true" signature="1072:1076" ph="..." />
           </folding>
         </state>
       </provider>

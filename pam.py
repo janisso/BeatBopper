@@ -10,17 +10,18 @@ import lib
 import naive
 
 # Function for advnacing the playhead
-def phase_advance(save_path,beats,tempo,stop_all):
+def phase_advance(save_path,beats,tempo,stop_all,play_flag):
     f = open(save_path + '/phase_advance.csv', 'w+')                # open file to save log values
     f.write('time, beats\n')                  # write first line with corresponding titles
     playhead = 0
     while True:
-        playhead += (tempo.value/2/60.0)*0.0056
-        beats.value = playhead
-        f.write(  # store values for later analysis
-            "%f, %f\n" % (lib.time.time(), beats.value))
-        lib.time.sleep(0.005)
-        #print playhead
+        if play_flag.value:
+            playhead += (tempo.value/2/60.0)*0.0064
+            beats.value = playhead
+            f.write(  # store values for later analysis
+                "%f, %f\n" % (lib.time.time(), beats.value))
+            lib.time.sleep(0.005)
+            #print playhead
         if stop_all.value == True:
             break
 
@@ -113,11 +114,11 @@ def play(midi_path,save_path,midi_device):
     #p_user_input = lib.multiprocessing.Process(target=user_input, args=(newstdin,tempo,midi_vel))
 
     p_play_midi = lib.multiprocessing.Process(target=play_midi,args=(midi_path,save_path,beats,midi_vel,stop_all,midi_device_nr))  # process to play MIDI
-    p_phase_advance = lib.multiprocessing.Process(target=phase_advance,args=(save_path,beats,tempo,stop_all))                   # process to count phase informatioin
+    p_phase_advance = lib.multiprocessing.Process(target=phase_advance,args=(save_path,beats,tempo,stop_all,play_flag))                   # process to count phase informatioin
     p_osc_cursor = lib.multiprocessing.Process(target=osc_cursor,args=(beats,stop_all))
 
     p_get_samples = lib.multiprocessing.Process(target=lib.get_samples, args=(palm_pos, hand_vel, hand_span, stop_all, save_path))
-    p_naive = lib.multiprocessing.Process(target= naive.naive_tempo, args=(palm_pos, hand_vel, hand_span, midi_vel, stop_all, arm_flag, tempo, save_path))
+    p_naive = lib.multiprocessing.Process(target= naive.naive_tempo, args=(palm_pos, hand_vel, hand_span, midi_vel, stop_all, arm_flag, play_flag, tempo, save_path))
     #p_user_input.start()
 
     p_get_samples.start()
