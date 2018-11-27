@@ -10,15 +10,24 @@ import lib
 import naive
 
 # Function for advnacing the playhead
-def phase_advance(save_path,beats,tempo,stop_all,play_flag):
+def phase_advance_naive(save_path,beats,tempo,stop_all,play_flag):
     f = open(save_path + '/phase_advance_naive.csv', 'w+')                # open file to save log values
     f.write('time, beats\n')                                        # write first line with corresponding titles
     playhead = 0
-    tempo_change = 0
+    tempo_change = 120
+    prev_tempo = tempo.value
     beat_counter = 0
     while True:
+        # COMPARATOR
+        if (prev_tempo != tempo.value):
+            prev_tempo = tempo.value
+            print 'Change detected', beat_counter, playhead * 2
+            if play_flag.value:
+                beat_counter += 1
+
+
         if play_flag.value:
-            playhead += (tempo.value/2/60.0)*0.0064
+            playhead += (prev_tempo/2/60.0)*0.0064
             beats.value = playhead
             f.write(  # store values for later analysis
                 "%f, %f\n" % (lib.time.time(), beats.value))
@@ -85,7 +94,6 @@ def user_input(newstdin, tempo,vel):
         lib.sys.stdin = newstdin
         #print 'test'
         u_input  = raw_input()
-
         t = u_input.split()[0]
         v = u_input.split()[1]
         tempo.value = float(t)
@@ -148,7 +156,7 @@ def play_midi(midi_path, save_path, beats, midi_vel, stop_all,midi_device_nr):
             print 'MIDI Playback Finished'                      # print for use rto acknowledge
             break
 
-def play(midi_path,save_path,midi_device):
+def play(midi_path,save_path,midi_device, tempo_method):
     newstdin = lib.os.fdopen(lib.os.dup(lib.sys.stdin.fileno()))
 
     tempo = lib.multiprocessing.Value('d', 120.0)
@@ -165,11 +173,17 @@ def play(midi_path,save_path,midi_device):
 
     midi_device_nr = lib.multiprocessing.Value('i', midi_device)
 
+    print 'Tempo Method ',tempo_method
+
     #p_user_input = lib.multiprocessing.Process(target=user_input, args=(newstdin,tempo,midi_vel))
 
     p_play_midi = lib.multiprocessing.Process(target=play_midi,args=(midi_path,save_path,beats,midi_vel,stop_all,midi_device_nr))  # process to play MIDI
-    #p_phase_advance = lib.multiprocessing.Process(target=phase_advance,args=(save_path,beats,tempo,stop_all,play_flag))                   # process to count phase informatioin
-    p_phase_advance = lib.multiprocessing.Process(target=phase_advance_comp,args=(save_path,beats,tempo,stop_all,play_flag))                   # process to count phase informatioin
+    if tempo_method == 0:
+        print tempo_method
+        p_phase_advance = lib.multiprocessing.Process(target=phase_advance_naive,args=(save_path,beats,tempo,stop_all,play_flag))                   # process to count phase informatioin
+    if tempo_method == 1:
+        print tempo_method
+        p_phase_advance = lib.multiprocessing.Process(target=phase_advance_comp,args=(save_path,beats,tempo,stop_all,play_flag))                   # process to count phase informatioin
 
     p_osc_cursor = lib.multiprocessing.Process(target=osc_cursor,args=(beats,stop_all))
 
@@ -183,7 +197,6 @@ def play(midi_path,save_path,midi_device):
     lib.time.sleep(0.5)
     p_phase_advance.start()
     p_osc_cursor.start()
-
 
     #p_user_input.join()
 

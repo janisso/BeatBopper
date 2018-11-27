@@ -1,8 +1,63 @@
 import lib
 
-def naive_tempo(palm_pos,hand_vel,hand_span,stop_all,arm_flag, tempo, save_path):
-    f_data = open(save_path+'/naive_tempo_data.csv', 'w+')
-    f_phase = open(save_path+'/naive_phase.csv', 'w+')
+#REGRESSION CLASS
+class REG():
+    def __init__(self,window_length,guess_amp):
+        self.est_frac = (5*2*lib.np.pi)/1000
+        self.est_phase = 0
+        self.est_std = 250
+        self.prev_std = 0
+        self.counts = 0
+        self.prev_phase = 0
+        self.wl = window_length
+        self.t = lib.np.linspace(0,window_length,num=window_length,endpoint=False)
+
+    def doReg(self,q,u_phase,q1,amp,stop_all,savePath):
+        f = open(savePath+'/do_reg.csv','w+')
+        f.write('time,est_amp,est_freq,est_phase\n')
+        while True:
+            if not q.empty():
+                start = lib.time.time()
+                yo = q.get()
+                data = yo[0]
+                if len(lib.np.unique(data))>1:
+                    #print data
+                    nr = yo[1]
+                    guess_std = 1000#self.est_std
+                    guess_phase = self.est_phase + self.est_frac*50/(2*lib.np.pi)
+                    guess_frac = self.est_frac+0.006
+                    optimize_func = lambda x: x[0]*lib.np.sin(self.t*x[1]+x[2]) - data
+                    #self.est_std, self.est_frac, self.est_phase = least_squares(optimize_func, [guess_std, guess_frac, guess_phase],bounds=([0,0,self.est_phase],[1500,5,self.est_phase+np.pi/2]),max_nfev=100).x
+                    self.est_std, self.est_frac, self.est_phase = lib.least_squares(optimize_func, [guess_std, guess_frac, guess_phase],bounds=([0.0000001,0.0005,self.est_phase],[3000,0.15,np.inf]),max_nfev=50).x
+                    if (self.est_phase < self.prev_phase) or (self.est_phase > self.prev_phase+lib.np.pi):
+                        #self.est_phase = self.prev_phase
+                        self.est_phase = u_phase.value
+                    if (self.est_std > 1200):
+                        self.est_std = self.prev_std
+                    amp.value = self.est_std
+                    #self.est_phase = self.est_phase * (0.4 * self.est_frac * (2 * np.pi) * 1000)
+                    #print amp.value
+                    #print amp.value
+                    self.prev_std = self.est_std
+                    self.prev_phase = self.est_phase
+                    self.prev_frac = self.est_frac
+                    q1.put([self.est_phase,self.est_frac])#+self.est_frac*self.wl/(2*np.pi))
+                    #data_fit = self.est_std*np.sin(t*self.est_frac+self.est_phase)
+                    #self.inv_phase = np.arcsin(data_fit[-1]/self.est_std)
+                    end = lib.time.time()
+                    #print self.est_phase, nr
+                    #print self.est_phase, self.counts, end-start,nr
+                    #if end-start > 0.05:
+                    #    print 'LONGER THAN 50ms'
+                    f.write("%f, %f, %f, %f\n"%(lib.time.time(),self.est_std,self.est_frac,self.est_phase))
+                    self.counts+=1
+            if stop_all.value == 1:
+                f.close
+                break
+
+def phase_tempo(q,palm_pos,hand_vel,hand_span,stop_all,arm_flag, tempo, save_path):
+    f_data = open(save_path+'/phase_tempo_data.csv', 'w+')
+    f_phase = open(save_path+'/phase_phase.csv', 'w+')
 
     f_data.write('time, palm_pos, vel, avg_vel, avg_vel_schm, avg_acc, avg_acc_schm, avg_still_buff\n')
     f_phase.write('time, phase\n')
@@ -37,12 +92,17 @@ def naive_tempo(palm_pos,hand_vel,hand_span,stop_all,arm_flag, tempo, save_path)
     for i in range(lib.window_length):
         circ_buff.append(0)
 
+    circ_buff_reg = lib.CircularBuffer(size = 400)
+    for i in range(400):
+        circ_buff_reg.append(0)
+
     still_buff = lib.CircularBuffer(size=10)
     for i in range(len(still_buff)):
         still_buff.append(0)
 
     while True:
         circ_buff.append(hand_vel.value)                            # getting hand_vel.value and putting itno circular buffer
+        circ_buff_reg.append(hand_vel.value)
 
         # getting filtered values for average
         avg_vel = sum(circ_buff*lib.coeffs)                         # filtered avg_vel
@@ -99,6 +159,7 @@ def naive_tempo(palm_pos,hand_vel,hand_span,stop_all,arm_flag, tempo, save_path)
                 beat_phase = 3
                 f_phase.write('%f, %i\n' % (lib.time.time(), beat_phase))
                 print 'Beat 3'''
+        #if (window_time >= 50) and : #TO DO -> port phase estimation algorithm till the end
 
         timer -= 1
         #f_data.write('time, palm_pos, vel, avg_vel, avg_vel_schm, avg_acc, avg_acc_schm')

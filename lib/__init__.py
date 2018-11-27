@@ -2,6 +2,7 @@ import mido
 import time
 import multiprocessing
 import numpy as np
+from scipy.optimize import least_squares
 import copy
 import OSC
 import os
@@ -38,7 +39,7 @@ def schmit(val, thresh):
         new_sig = val
     return new_sig
 
-def get_samples(palm_pos, hand_vel,hand_span,stop_all, save_path):
+def get_samples(palm_pos, hand_vel, hand_span, stop_all, save_path):
     f = open(save_path + '/get_samples.csv', 'w+')
     f.write('time,palm_pos,palm_vel,span\n')
     controller = Leap.Controller()
