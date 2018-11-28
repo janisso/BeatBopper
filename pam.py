@@ -8,6 +8,7 @@
 
 import lib
 import naive
+import phase_est
 
 # Function for advnacing the playhead
 def phase_advance_naive(save_path,beats,tempo,stop_all,play_flag):
@@ -43,17 +44,7 @@ def phase_advance_comp(save_path,beats,tempo,stop_all,play_flag):
     tempo_change = 120
     beat_counter = 0
 
-    t = 0
-    dt = 0
-    dt1 = 0
-
-    vu = 0
-    vu1 = 0
-
     rem = 0
-    rem1 = 0
-
-    advanced = 0
 
     prev_tempo = tempo.value
 
@@ -69,11 +60,8 @@ def phase_advance_comp(save_path,beats,tempo,stop_all,play_flag):
 
         # ONLY CHANGE TEMPO WHEN TEMPO CHANGE HAS BEEN DETECTED
         if new_val == True:# and play_flag.value:
-            #tempo_change = tempo.value
             rem = beat_counter + 1 - playhead * 2
             tempo_change = prev_tempo * rem
-            #if (playhead * 2) < beat_counter:
-            #    tempo_change = tempo.value
             if play_flag.value:
                 beat_counter += 1
             new_val = False
@@ -85,6 +73,18 @@ def phase_advance_comp(save_path,beats,tempo,stop_all,play_flag):
                 "%f, %f\n" % (lib.time.time(), beats.value))
             lib.time.sleep(0.005)
             #print playhead
+        if stop_all.value == True:
+            break
+
+def phase_advance_bb(increment,beats,up_thresh,stop_all):
+    playhead = 0
+    while True:
+        if playhead <= up_thresh.value:
+            playhead += increment.value
+            beats.value = playhead/2
+        else:
+            beats.value = beats.value
+        lib.time.sleep(0.009)
         if stop_all.value == True:
             break
 
@@ -181,27 +181,52 @@ def play(midi_path,save_path,midi_device, tempo_method):
     if tempo_method == 0:
         print tempo_method
         p_phase_advance = lib.multiprocessing.Process(target=phase_advance_naive,args=(save_path,beats,tempo,stop_all,play_flag))                   # process to count phase informatioin
+        p_tempo = lib.multiprocessing.Process(target=naive.naive_tempo, args=(palm_pos, hand_vel, hand_span, midi_vel, stop_all, arm_flag, play_flag, tempo, save_path))
     if tempo_method == 1:
         print tempo_method
         p_phase_advance = lib.multiprocessing.Process(target=phase_advance_comp,args=(save_path,beats,tempo,stop_all,play_flag))                   # process to count phase informatioin
+        p_tempo = lib.multiprocessing.Process(target=naive.naive_tempo, args=(palm_pos, hand_vel, hand_span, midi_vel, stop_all, arm_flag, play_flag, tempo, save_path))
+    if tempo_method == 2:
+        r = phase_est.REG(400, 1)
+        q = lib.multiprocessing.Queue()
+        q1 = lib.multiprocessing.Queue()
+        u_phase = lib.multiprocessing.Value('d', 0.0)
+        up_thresh = lib.multiprocessing.Value('d', 0.0)#                                                          q, palm_pos, hand_vel, hand_span, stop_all, arm_flag, u_phase, up_thresh, save_path
+        amp = lib.multiprocessing.Value('d', 0.0)
+        increment = lib.multiprocessing.Value('d', 0.0)
+        p_reg = lib.multiprocessing.Process(target=r.doReg, args=(q, u_phase, q1, amp, stop_all, save_path))
+        p_phase_comp = lib.multiprocessing.Process(target=phase_est.phase_comp, args=(q1, play_flag, increment, stop_all, save_path))
+        p_phase_advance = lib.multiprocessing.Process(target=phase_advance_bb,args=(increment, beats, up_thresh, stop_all))                   # process to count phase informatioin
+        p_tempo = lib.multiprocessing.Process(target=phase_est.phase_tempo, args=(q, palm_pos, hand_vel, hand_span, stop_all, arm_flag, play_flag, u_phase, up_thresh, save_path))
+
 
     p_osc_cursor = lib.multiprocessing.Process(target=osc_cursor,args=(beats,stop_all))
-
     p_get_samples = lib.multiprocessing.Process(target=lib.get_samples, args=(palm_pos, hand_vel, hand_span, stop_all, save_path))
-    p_naive = lib.multiprocessing.Process(target= naive.naive_tempo, args=(palm_pos, hand_vel, hand_span, midi_vel, stop_all, arm_flag, play_flag, tempo, save_path))
+
     #p_user_input.start()
 
     p_get_samples.start()
-    p_naive.start()
+    p_tempo.start()
     p_play_midi.start()
+
+    if tempo_method == 2:
+        p_reg.start()
+        p_phase_comp.start()
+        print 'started reg'
+
     lib.time.sleep(0.5)
     p_phase_advance.start()
     p_osc_cursor.start()
 
     #p_user_input.join()
 
+    if tempo_method == 2:
+        p_reg.join()
+        p_phase_comp.join()
+        print 'joined reg'
+
     p_get_samples.join()
-    p_naive.join()
+    p_tempo.join()
 
     p_play_midi.join()
     lib.time.sleep(0.5)

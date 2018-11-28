@@ -12,9 +12,9 @@ from collections import deque
 import Leap
 
 #SET UP WINDOW LENGTH AND HOP SIZE FOR REGRESSION
-window_length = 20
+window_length = 100
 #SET UP FILTER
-f = 0.01
+f = 0.001
 coeffs = signal.firwin(window_length, f)
 
 #CIRCULAR BUFFER CLASS FOR STORING VALUES FOR FILTERING
@@ -27,14 +27,10 @@ class CircularBuffer(deque):
 
 # SCHMIT TRIGGER TO DISCOUNT DEVIATIONS AROUND ZERO FOR VELOCITY AND ACCELERATION
 def schmit(val, thresh):
-    ''' if abs(val) >= thresh:
-        new_sig = val
-    else:
-        new_sig = 0 '''
-    if thresh * (-1) <= val <= 0:
-        new_sig = thresh * (-1)
-    elif 0 < val <= thresh:
+    if 0 < val <= thresh:
         new_sig = thresh
+    if thresh*(-1) <= val <= 0:
+        new_sig = thresh*(-1)
     else:
         new_sig = val
     return new_sig

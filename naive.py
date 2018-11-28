@@ -41,8 +41,7 @@ def naive_tempo(palm_pos,hand_vel,hand_span,midi_vel,stop_all,arm_flag, play_fla
 
         still_point = lib.is_still(avg_vel,1)                     # function for checking if the hand is still,
                                                                     # if the number is set low -> hand tremor will trigger beats
-                                                                    # if the number is set to high -> some of the smaller movements will not trigger beats, this needs to be explained to the user
-
+                                                                    # if the number is set to high -> some of the smaller movements will not trigger beats, this needs to be explained to the use
         still_buff.append(still_point)
         still_buff_avg = sum(still_buff)/float(len(still_buff))
         if still_buff_avg > 0.8:
