@@ -72,7 +72,7 @@ def phase_advance_comp(save_path,beats,tempo,stop_all,play_flag):
             f.write(  # store values for later analysis
                 "%f, %f\n" % (lib.time.time(), beats.value))
             lib.time.sleep(0.005)
-            #print playhead
+            #print playhea
         if stop_all.value == True:
             break
 
