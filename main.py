@@ -5,6 +5,7 @@ import os
 import pam
 import OSC
 import time
+import lib
 
 #FUNCTION TO SEND OSC MESSAGES TO INSCORE
 def osc_send_i(address,var):
@@ -13,6 +14,51 @@ def osc_send_i(address,var):
     for i in range(len(var)):
         osc_msg.append(var[i])
     osc_client.send(osc_msg)
+
+
+#FUNCTION TO COLLECT LEAP MOTION DATA FOR NAVIGATION
+def demoMenu():
+    controller = Leap.Controller()
+    flag = 0
+    x_pos = 0
+    y_pos = 0
+    hand_span = 65
+    while True:
+        frame = controller.frame()
+        for hand in frame.hands:
+            #GETTING PALM VELOCITY
+            x = hand.palm_position.x
+            y = hand.palm_position.y
+            for finger in hand.fingers:
+                if finger.type == 0:
+                    thumb_pos = finger.tip_position
+                if finger.type == 2:
+                    pinky_pos = finger.tip_position
+            hand_span = np.sqrt((thumb_pos.x-pinky_pos.x)**2+(thumb_pos.y-pinky_pos.y)**2+(thumb_pos.z-pinky_pos.z)**2)
+            x_pos = x/150
+            y_pos = (y-200)/200*(-1)
+        print hand_span
+        oscSendI('/ITL/scene/menuBall',['x',x_pos])
+        oscSendI('/ITL/scene/menuBall',['y',y_pos])
+        oscSendI('/ITL/scene/menuBall',['scale',(hand_span-40)/100])
+        #THIS IF STATEMENT INSIDE THE BUTTON
+        if (-0.5 < x_pos < 0.5) and (-0.5 < y_pos < 0.5) and (flag == 0):
+            oscSendI('/ITL/scene/button',['effect','none'],)
+            oscSendI('/ITL/scene/menuBall',['alpha',127])
+            oscSendI('/ITL/scene/demoText',['alpha',255])
+            #print 'in'
+            flag = 1
+        #THIS IF STATEMENT OUTSIDE THE BUTTON
+        if ((x_pos < (-0.5)) or (x_pos > (0.5))) or ((y_pos < (-0.5)) or (y_pos > (0.5))) and (flag == 1):
+            oscSendI('/ITL/scene/button',['effect','blur',32])
+            oscSendI('/ITL/scene/menuBall',['alpha',255])
+            oscSendI('/ITL/scene/demoText',['alpha',0])
+            flag = 0
+        #THIS IF STATEMENT FOR CHOOSING A BUTTON
+        if (flag == 1) and (hand_span< 60):
+            break
+        sleep(0.05)
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()                                              # declaration of arguments
@@ -47,9 +93,13 @@ if __name__ == '__main__':
     osc_client = OSC.OSCClient()                                                    # Create an OSC client
     osc_client.connect(('localhost', 7000))                                         # Connect to InScore
 
+    #OPENING INSCORE
     os.system('open '+ curr_path+'/inscore_stuff/demo/demo.inscore')                # Load the score
     time.sleep(2)
     os.system('open -a Terminal')                                                   # Give some time to laod
+
+    #SELECTING SOCRES AND MENUS
+
 
     pam.play(midi_path, save_path, midi_device, tempo_method)                                     # Initialize MIDI playback
     osc_client.close()                                                              # Close OSC client once the playback has finished
