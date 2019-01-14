@@ -3,15 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="2e055b4a-3002-428c-843e-fcf4854b63ed" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inscore_stuff/demo/demo.inscore" beforeDir="false" afterPath="$PROJECT_DIR$/inscore_stuff/demo/demo.inscore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inscore_stuff/demo/waltz.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/midi_files/test.mid" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/midi_files/waltz.mid" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/naive.py" beforeDir="false" afterPath="$PROJECT_DIR$/naive.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pam.py" beforeDir="false" afterPath="$PROJECT_DIR$/pam.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase_est.py" beforeDir="false" afterPath="$PROJECT_DIR$/phase_est.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/hand_beat_analysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/hand_beat_analysis.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,10 +15,11 @@
     <session id="492851201">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="15" />
+          <entry key="project.closed" value="16" />
           <entry key="project.open.time.0" value="2" />
           <entry key="project.open.time.1" value="2" />
           <entry key="project.open.time.10" value="2" />
+          <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.13" value="2" />
           <entry key="project.open.time.16" value="1" />
           <entry key="project.open.time.2" value="1" />
@@ -38,20 +31,20 @@
           <entry key="project.open.time.7" value="1" />
           <entry key="project.open.time.8" value="3" />
           <entry key="project.open.time.9" value="4" />
-          <entry key="project.opened" value="24" />
+          <entry key="project.opened" value="25" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="3" />
-          <entry key="py" value="17573" />
-          <entry key="txt" value="1406" />
+          <entry key="py" value="17696" />
+          <entry key="txt" value="1459" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="1409" />
-          <entry key="Python" value="17573" />
+          <entry key="PLAIN_TEXT" value="1462" />
+          <entry key="Python" value="17696" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -76,7 +69,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="377">
+            <state relative-caret-position="1140">
               <caret line="81" column="31" selection-start-line="81" selection-start-column="31" selection-end-line="81" selection-end-column="31" />
               <folding>
                 <element signature="e#110#125#0" expanded="true" />
@@ -94,13 +87,15 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pam.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="827">
-              <caret line="150" column="47" selection-start-line="150" selection-start-column="39" selection-end-line="150" selection-end-column="47" />
+            <state relative-caret-position="522">
+              <caret line="91" column="80" selection-start-line="91" selection-start-column="80" selection-end-line="91" selection-end-column="80" />
               <folding>
                 <element signature="e#436#446#0" expanded="true" />
+                <marker date="1547432148000" expanded="true" signature="3121:3126" ph="..." />
+                <marker date="1547432148000" expanded="true" signature="3121:3204" ph="..." />
               </folding>
             </state>
           </provider>
@@ -109,7 +104,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="283">
+            <state relative-caret-position="120">
               <caret line="19" column="36" selection-start-line="19" selection-start-column="36" selection-end-line="19" selection-end-column="36" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
@@ -127,11 +122,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/naive.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="351">
-              <caret line="69" column="33" lean-forward="true" selection-start-line="69" selection-start-column="33" selection-end-line="69" selection-end-column="33" />
+            <state relative-caret-position="270">
+              <caret line="72" column="48" lean-forward="true" selection-start-line="72" selection-start-column="48" selection-end-line="72" selection-end-column="48" />
             </state>
           </provider>
         </entry>
@@ -195,8 +190,8 @@
         <option value="$PROJECT_DIR$/lib/__init__.py" />
         <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/phase_est.py" />
-        <option value="$PROJECT_DIR$/pam.py" />
         <option value="$PROJECT_DIR$/naive.py" />
+        <option value="$PROJECT_DIR$/pam.py" />
       </list>
     </option>
   </component>
@@ -567,7 +562,14 @@
       <option name="project" value="LOCAL" />
       <updated>1543417110400</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="added envelope follower to get MIDI velocity">
+      <created>1547429879540</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1547429879540</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TodoView">
@@ -581,6 +583,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="240" y="22" width="1141" height="1024" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4992" visible="true" weight="0.14375" />
       <window_info id="Structure" order="1" sideWeight="0.5008" side_tool="true" weight="0.14375" />
@@ -646,7 +649,8 @@
     <MESSAGE value="added tempo_compensation" />
     <MESSAGE value="added method selection, started phase estimation" />
     <MESSAGE value="in previous commit/push added phase estimation, still needs tweaking" />
-    <option name="LAST_COMMIT_MESSAGE" value="in previous commit/push added phase estimation, still needs tweaking" />
+    <MESSAGE value="added envelope follower to get MIDI velocity" />
+    <option name="LAST_COMMIT_MESSAGE" value="added envelope follower to get MIDI velocity" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/users/0/play_midi.csv">
@@ -674,16 +678,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/phase_est.py">
+    <entry file="file://$PROJECT_DIR$/borch_comp.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2955">
-          <caret line="197" column="24" selection-start-line="197" selection-start-column="24" selection-end-line="197" selection-end-column="24" />
+        <state relative-caret-position="-428">
+          <caret line="11" column="15" selection-start-line="11" selection-start-column="15" selection-end-line="11" selection-end-column="15" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
+        <state relative-caret-position="1140">
           <caret line="81" column="31" selection-start-line="81" selection-start-column="31" selection-end-line="81" selection-end-column="31" />
           <folding>
             <element signature="e#110#125#0" expanded="true" />
@@ -698,16 +702,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/borch_comp.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-428">
-          <caret line="11" column="15" selection-start-line="11" selection-start-column="15" selection-end-line="11" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
+        <state relative-caret-position="120">
           <caret line="19" column="36" selection-start-line="19" selection-start-column="36" selection-end-line="19" selection-end-column="36" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
@@ -715,20 +712,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pam.py">
+    <entry file="file://$PROJECT_DIR$/phase_est.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="827">
-          <caret line="150" column="47" selection-start-line="150" selection-start-column="39" selection-end-line="150" selection-end-column="47" />
-          <folding>
-            <element signature="e#436#446#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="2955">
+          <caret line="197" column="24" selection-start-line="197" selection-start-column="24" selection-end-line="197" selection-end-column="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/naive.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="69" column="33" lean-forward="true" selection-start-line="69" selection-start-column="33" selection-end-line="69" selection-end-column="33" />
+        <state relative-caret-position="270">
+          <caret line="72" column="48" lean-forward="true" selection-start-line="72" selection-start-column="48" selection-end-line="72" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pam.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="522">
+          <caret line="91" column="80" selection-start-line="91" selection-start-column="80" selection-end-line="91" selection-end-column="80" />
+          <folding>
+            <element signature="e#436#446#0" expanded="true" />
+            <marker date="1547432148000" expanded="true" signature="3121:3126" ph="..." />
+            <marker date="1547432148000" expanded="true" signature="3121:3204" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>

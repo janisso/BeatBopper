@@ -88,6 +88,9 @@ def phase_advance_bb(increment,beats,up_thresh,stop_all):
         if stop_all.value == True:
             break
 
+def phase_advance_demo():
+    #TODO - will be a function here to advance the playhead for people to follow
+
 # Function to change tempo and velocity using keyboard
 def user_input(newstdin, tempo,vel):
     while True:
