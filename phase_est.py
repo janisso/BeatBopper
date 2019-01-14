@@ -1,5 +1,13 @@
 import lib
 
+def get_midi_vel(rect_val):
+    ting = int((rect_val / 1000.) * 127.)
+    if ting > 127:
+        midiVel = 127
+    else:
+        midiVel = ting
+    return midiVel
+
 #REGRESSION CLASS
 class REG():
     def __init__(self,window_length,guess_amp):
@@ -12,7 +20,7 @@ class REG():
         self.wl = window_length
         self.t = lib.np.linspace(0,window_length,num=window_length,endpoint=False)
 
-    def doReg(self,q,u_phase,q1,midi_vel,stop_all,savePath):
+    def doReg(self,q,u_phase,q1,stop_all,savePath):
         f = open(savePath+'/do_reg.csv','w+')
         f.write('time,est_amp,est_freq,est_phase\n')
         while True:
@@ -35,7 +43,7 @@ class REG():
                         self.est_phase = u_phase.value
                     if (self.est_std > 1200):
                         self.est_std = self.prev_std
-                    midi_vel.value = int(abs(self.est_std)/1200*127)
+                    #midi_vel.value = int(abs(self.est_std)/1200*127)
                     self.prev_std = self.est_std
                     self.prev_phase = self.est_phase
                     self.prev_frac = self.est_frac
@@ -47,7 +55,7 @@ class REG():
                 f.close
                 break
 
-def phase_tempo(q,palm_pos,hand_vel,hand_span,stop_all,arm_flag, play_flag,u_phase, up_thresh, save_path):
+def phase_tempo(q,palm_pos,hand_vel,hand_span,stop_all,arm_flag, play_flag,u_phase, up_thresh, save_path, midi_vel):
     f_data = open(save_path+'/phase_tempo_data.csv', 'w+')
     f_phase = open(save_path+'/phase_phase.csv', 'w+')
 
@@ -83,8 +91,10 @@ def phase_tempo(q,palm_pos,hand_vel,hand_span,stop_all,arm_flag, play_flag,u_pha
 
     #SETUP CIRCULAR BUFFER FOR LPF
     circ_buff = lib.CircularBuffer(size=lib.window_length)
+    rect_buff = lib.CircularBuffer(size=lib.window_length)
     for i in range(lib.window_length):
         circ_buff.append(0)
+        rect_buff.append(0)
 
     circ_buff_reg = lib.CircularBuffer(size = 400)
     for i in range(400):
@@ -99,9 +109,11 @@ def phase_tempo(q,palm_pos,hand_vel,hand_span,stop_all,arm_flag, play_flag,u_pha
         #print 'Phase Est'
         circ_buff.append(hand_vel.value)                            # getting hand_vel.value and putting itno circular buffer
         circ_buff_reg.append(hand_vel.value)
+        rect_buff.append(abs(hand_vel.value))
 
         # getting filtered values for average
         avg_vel = sum(circ_buff*lib.coeffs)                         # filtered avg_vel
+        rect_val = sum(rect_buff*lib.coeffs)
         avg_vel_schm = lib.schmit(avg_vel, 100)                      # filtered avg_vel with schmitt trigger
 
         still_point = lib.is_still(avg_vel,1)                     # function for checking if the hand is still,
@@ -137,6 +149,7 @@ def phase_tempo(q,palm_pos,hand_vel,hand_span,stop_all,arm_flag, play_flag,u_pha
                     if play_flag.value:
                         up_thresh.value += 0.25
                     f_phase.write('%f, %i\n' % (lib.time.time(), beat_phase))
+                    #midi_vel.value = get_midi_vel(rect_val)
                     #if (arm_flag.value == True) and (play_flag.value == False):
                     play_flag.value = True
                     #print 'play now', play_flag.value
@@ -149,6 +162,7 @@ def phase_tempo(q,palm_pos,hand_vel,hand_span,stop_all,arm_flag, play_flag,u_pha
                     if play_flag.value:
                         up_thresh.value += 0.25
                     f_phase.write('%f, %i\n' % (lib.time.time(), beat_phase))
+                    midi_vel.value = get_midi_vel(rect_val)
 
                 if ((avg_vel_schm * prev_avg_vel_schm < 0) and (beat_phase == 1) and (timer < 0)):
                     print 'Beat 2', u_phase.value / (2 * lib.np.pi)
@@ -158,6 +172,7 @@ def phase_tempo(q,palm_pos,hand_vel,hand_span,stop_all,arm_flag, play_flag,u_pha
                     if play_flag.value:
                         up_thresh.value += 0.25
                     f_phase.write('%f, %i\n' % (lib.time.time(), beat_phase))
+                    #midi_vel.value = get_midi_vel(rect_val)
 
                 if ((avg_acc_schm * prev_avg_acc_schm < 0) and (beat_phase == 2) and (timer < 0) and (avg_vel_schm < 0)):
                     print 'Beat 3', u_phase.value / (2 * lib.np.pi)
@@ -167,6 +182,7 @@ def phase_tempo(q,palm_pos,hand_vel,hand_span,stop_all,arm_flag, play_flag,u_pha
                     if play_flag.value:
                         up_thresh.value += 0.25
                     f_phase.write('%f, %i\n' % (lib.time.time(), beat_phase))
+                    midi_vel.value = get_midi_vel(rect_val)
                 #if (window_time >= 50) and : #TO DO -> port phase estimation algorithm till the end
             timer -= 1
 

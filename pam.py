@@ -88,8 +88,8 @@ def phase_advance_bb(increment,beats,up_thresh,stop_all):
         if stop_all.value == True:
             break
 
-def phase_advance_demo():
-    #TODO - will be a function here to advance the playhead for people to follow
+#def phase_advance_demo():
+#    #TODO - will be a function here to advance the playhead for people to follow
 
 # Function to change tempo and velocity using keyboard
 def user_input(newstdin, tempo,vel):
@@ -198,12 +198,12 @@ def play(midi_path,save_path,midi_device, tempo_method):
         q1 = lib.multiprocessing.Queue()
         u_phase = lib.multiprocessing.Value('d', 0.0)
         up_thresh = lib.multiprocessing.Value('d', 0.0)#                                                          q, palm_pos, hand_vel, hand_span, stop_all, arm_flag, u_phase, up_thresh, save_path
-        amp = lib.multiprocessing.Value('d', 0.0)
+        #amp = lib.multiprocessing.Value('d', 0.0)
         increment = lib.multiprocessing.Value('d', 0.0)
-        p_reg = lib.multiprocessing.Process(target=r.doReg, args=(q, u_phase, q1, midi_vel, stop_all, save_path))
+        p_reg = lib.multiprocessing.Process(target=r.doReg, args=(q, u_phase, q1, stop_all, save_path))
         p_phase_comp = lib.multiprocessing.Process(target=phase_est.phase_comp, args=(q1, play_flag, increment, stop_all, save_path))
         p_phase_advance = lib.multiprocessing.Process(target=phase_advance_bb,args=(increment, beats, up_thresh, stop_all))                   # process to count phase informatioin
-        p_tempo = lib.multiprocessing.Process(target=phase_est.phase_tempo, args=(q, palm_pos, hand_vel, hand_span, stop_all, arm_flag, play_flag, u_phase, up_thresh, save_path))
+        p_tempo = lib.multiprocessing.Process(target=phase_est.phase_tempo, args=(q, palm_pos, hand_vel, hand_span, stop_all, arm_flag, play_flag, u_phase, up_thresh, save_path, midi_vel))
 
 
     p_osc_cursor = lib.multiprocessing.Process(target=osc_cursor,args=(beats,stop_all))
