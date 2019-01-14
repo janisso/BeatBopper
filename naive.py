@@ -25,8 +25,10 @@ def naive_tempo(palm_pos,hand_vel,hand_span,midi_vel,stop_all,arm_flag, play_fla
 
     #SETUP CIRCULAR BUFFER FOR LPF
     circ_buff = lib.CircularBuffer(size=lib.window_length)
+    rect_buff = lib.CircularBuffer(size=lib.window_length)
     for i in range(lib.window_length):
         circ_buff.append(0)
+        rect_buff.append(0)
 
     still_buff = lib.CircularBuffer(size=10)
     for i in range(len(still_buff)):
@@ -34,9 +36,11 @@ def naive_tempo(palm_pos,hand_vel,hand_span,midi_vel,stop_all,arm_flag, play_fla
 
     while True:
         circ_buff.append(hand_vel.value)                            # getting hand_vel.value and putting itno circular buffer
+        rect_buff.append(abs(hand_vel.value))
 
         # getting filtered values for average
         avg_vel = sum(circ_buff*lib.coeffs)                         # filtered avg_vel
+        rect_val = sum(rect_buff*lib.coeffs)
         avg_vel_schm = lib.schmit(avg_vel, 20)                      # filtered avg_vel with schmitt trigger
 
         still_point = lib.is_still(avg_vel,1)                     # function for checking if the hand is still,
@@ -72,16 +76,22 @@ def naive_tempo(palm_pos,hand_vel,hand_span,midi_vel,stop_all,arm_flag, play_fla
                 prev_beat_time = curr_beat_time
                 #timer = timer_up
                 f_phase.write('%f, %i\n' % (lib.time.time(), beat_phase))
-                print 'Beat ', tempo.value, ' dt ', beat_dt
+                print 'Beat ', tempo.value, ' dt ', beat_dt, avg_vel
 
                 if (arm_flag.value == True) and (play_flag.value == False):
                     play_flag.value = True
                     print 'play now', play_flag.value
 
             if ((prev_avg_acc * avg_acc) <= 0):
-                midi_vel.value = abs(int((avg_vel/1500.)*127.))
-                if (midi_vel.value > 127):
+                #midi_vel.value = abs(int((avg_vel/1500.)*127.))
+                #ting = abs(int((hand_vel.value/1500.)*127.))
+                ting = abs(int((rect_val / 1000.) * 127.))
+                #ting = abs(hand_vel.value)
+                print hand_vel.value, avg_vel, ting
+                if (ting > 127):
                     midi_vel.value = 127
+                else:
+                    midi_vel.value = ting
                 #print 'Amp ',midi_vel.value
 
         timer -= 1

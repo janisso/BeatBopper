@@ -94,7 +94,8 @@ if __name__ == '__main__':
     osc_client.connect(('localhost', 7000))                                         # Connect to InScore
 
     #OPENING INSCORE
-    os.system('open '+ curr_path+'/inscore_stuff/demo/demo.inscore')                # Load the score
+    #os.system('open '+ curr_path+'/inscore_stuff/demo/demo.inscore')                # Load the score
+    os.system('open ' + curr_path + '/inscore_stuff/' + midi_file + '/' + midi_file + '.inscore')  # Load the score
     time.sleep(2)
     os.system('open -a Terminal')                                                   # Give some time to laod
 

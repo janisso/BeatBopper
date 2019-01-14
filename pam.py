@@ -56,7 +56,7 @@ def phase_advance_comp(save_path,beats,tempo,stop_all,play_flag):
         if (prev_tempo != tempo.value):
             prev_tempo = tempo.value
             new_val = True
-            print 'Change detected', beat_counter, playhead * 2
+            #print 'Change detected', beat_counter, playhead * 2
 
         # ONLY CHANGE TEMPO WHEN TEMPO CHANGE HAS BEEN DETECTED
         if new_val == True:# and play_flag.value:
@@ -145,7 +145,10 @@ def play_midi(midi_path, save_path, beats, midi_vel, stop_all,midi_device_nr):
         if len(yo) != 0:                                        # keep running the loop until there are no more notes to play
             if yo[0, 1] < beats.value:                          # if the playhead is larger than the first note in the array play the first note and then delete
                 msgMIDI = all_messages[int(yo[0, 0])]           # add note information and it's timing to the midi message to be sent
-                msgMIDI.velocity = midi_vel.value                    # add velocity to the MIDI message to be sent
+                if midi_vel.value > 127:
+                    msgMIDI.velocity = 127
+                else:
+                    msgMIDI.velocity = midi_vel.value                    # add velocity to the MIDI message to be sent
                 f.write(                                        # store values for later analysis
                     "%f, %f, %f, %f\n" % (lib.time.time(), beats.value, all_messages[int(yo[0, 0])].note, midi_vel.value))
                 port.send(msgMIDI)                              # send the message using predefined port (midi device)
@@ -161,7 +164,7 @@ def play(midi_path,save_path,midi_device, tempo_method):
 
     tempo = lib.multiprocessing.Value('d', 120.0)
     midi_vel = lib.multiprocessing.Value('i', 127)                   # variable to store amplitude value received from Leap Motion to convert into MIDI velocity
-    beats = lib.multiprocessing.Value('d', 0.0)                 # variable holding the advanceing beat information of the MIDI file
+    beats = lib.multiprocessing.Value('d', -0.0000001)                 # variable holding the advanceing beat information of the MIDI file
     stop_all = lib.multiprocessing.Value('i', False)            # boolean variable that tell rest of the system that the MIDI file has finished playing
 
     palm_pos = lib.multiprocessing.Value('d',0.0)
@@ -194,7 +197,7 @@ def play(midi_path,save_path,midi_device, tempo_method):
         up_thresh = lib.multiprocessing.Value('d', 0.0)#                                                          q, palm_pos, hand_vel, hand_span, stop_all, arm_flag, u_phase, up_thresh, save_path
         amp = lib.multiprocessing.Value('d', 0.0)
         increment = lib.multiprocessing.Value('d', 0.0)
-        p_reg = lib.multiprocessing.Process(target=r.doReg, args=(q, u_phase, q1, amp, stop_all, save_path))
+        p_reg = lib.multiprocessing.Process(target=r.doReg, args=(q, u_phase, q1, midi_vel, stop_all, save_path))
         p_phase_comp = lib.multiprocessing.Process(target=phase_est.phase_comp, args=(q1, play_flag, increment, stop_all, save_path))
         p_phase_advance = lib.multiprocessing.Process(target=phase_advance_bb,args=(increment, beats, up_thresh, stop_all))                   # process to count phase informatioin
         p_tempo = lib.multiprocessing.Process(target=phase_est.phase_tempo, args=(q, palm_pos, hand_vel, hand_span, stop_all, arm_flag, play_flag, u_phase, up_thresh, save_path))

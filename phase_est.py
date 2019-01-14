@@ -12,7 +12,7 @@ class REG():
         self.wl = window_length
         self.t = lib.np.linspace(0,window_length,num=window_length,endpoint=False)
 
-    def doReg(self,q,u_phase,q1,amp,stop_all,savePath):
+    def doReg(self,q,u_phase,q1,midi_vel,stop_all,savePath):
         f = open(savePath+'/do_reg.csv','w+')
         f.write('time,est_amp,est_freq,est_phase\n')
         while True:
@@ -35,7 +35,7 @@ class REG():
                         self.est_phase = u_phase.value
                     if (self.est_std > 1200):
                         self.est_std = self.prev_std
-                    amp.value = self.est_std
+                    midi_vel.value = int(abs(self.est_std)/1200*127)
                     self.prev_std = self.est_std
                     self.prev_phase = self.est_phase
                     self.prev_frac = self.est_frac
