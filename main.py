@@ -76,7 +76,7 @@ if __name__ == '__main__':
 
     curr_path = os.path.dirname(os.path.abspath(__file__))                          # paht where this file is running from
     save_path = curr_path + '/users/' + str(user_id)                                # path to store data in csv file
-    midi_path = curr_path + '/midi_files/' + midi_file + '.mid'                     # paht of the midi file to play
+    midi_path = curr_path + '/midi_files/' + midi_file + '/' + midi_file + '.mid'                     # paht of the midi file to play
 
     if not os.path.exists(save_path):                                               # if the path does not exist create it
          os.makedirs(save_path)
@@ -95,7 +95,7 @@ if __name__ == '__main__':
 
     #OPENING INSCORE
     #os.system('open '+ curr_path+'/inscore_stuff/demo/demo.inscore')                # Load the score
-    os.system('open ' + curr_path + '/inscore_stuff/' + midi_file + '/' + midi_file + '.inscore')  # Load the score
+    os.system('open ' + curr_path + '/midi_files/' + midi_file + '/' + midi_file + '.inscore')  # Load the score
     time.sleep(2)
     os.system('open -a Terminal')                                                   # Give some time to laod
 

@@ -88,7 +88,10 @@ def phase_advance_bb(increment,beats,up_thresh,stop_all):
         if stop_all.value == True:
             break
 
-#def phase_advance_demo():
+def phase_advance_demo(midi_path):
+
+
+    lib.time.sleep(0.005)
 #    #TODO - will be a function here to advance the playhead for people to follow
 
 # Function to change tempo and velocity using keyboard
@@ -167,7 +170,7 @@ def play(midi_path,save_path,midi_device, tempo_method):
 
     tempo = lib.multiprocessing.Value('d', 120.0)
     midi_vel = lib.multiprocessing.Value('i', 127)                   # variable to store amplitude value received from Leap Motion to convert into MIDI velocity
-    beats = lib.multiprocessing.Value('d', -0.0000001)                 # variable holding the advanceing beat information of the MIDI file
+    beats = lib.multiprocessing.Value('d', 0.0)#-0.0000001)                 # variable holding the advanceing beat information of the MIDI file
     stop_all = lib.multiprocessing.Value('i', False)            # boolean variable that tell rest of the system that the MIDI file has finished playing
 
     palm_pos = lib.multiprocessing.Value('d',0.0)
@@ -204,6 +207,9 @@ def play(midi_path,save_path,midi_device, tempo_method):
         p_phase_comp = lib.multiprocessing.Process(target=phase_est.phase_comp, args=(q1, play_flag, increment, stop_all, save_path))
         p_phase_advance = lib.multiprocessing.Process(target=phase_advance_bb,args=(increment, beats, up_thresh, stop_all))                   # process to count phase informatioin
         p_tempo = lib.multiprocessing.Process(target=phase_est.phase_tempo, args=(q, palm_pos, hand_vel, hand_span, stop_all, arm_flag, play_flag, u_phase, up_thresh, save_path, midi_vel))
+
+    #if tempo_method == 3:
+
 
 
     p_osc_cursor = lib.multiprocessing.Process(target=osc_cursor,args=(beats,stop_all))
