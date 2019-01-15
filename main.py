@@ -17,7 +17,7 @@ def osc_send_i(address,var):
 
 
 #FUNCTION TO COLLECT LEAP MOTION DATA FOR NAVIGATION
-def demoMenu():
+'''def demoMenu():
     controller = Leap.Controller()
     flag = 0
     x_pos = 0
@@ -57,7 +57,7 @@ def demoMenu():
         #THIS IF STATEMENT FOR CHOOSING A BUTTON
         if (flag == 1) and (hand_span< 60):
             break
-        sleep(0.05)
+        sleep(0.05)'''
 
 
 if __name__ == '__main__':
@@ -65,7 +65,7 @@ if __name__ == '__main__':
     parser.add_argument('-u', '--user_id', help='Enter user ID')                    # user_id
     parser.add_argument('-f', '--midi_file', help='Enter MIDI file to be played back')      # MIDI file to open
     parser.add_argument('-d', '--midi_device', help='Enter MIDI device Nr.')  # MIDI file to open
-    parser.add_argument('-m', '--method', help='Enter Rubato induction method: 0-Naive; 1-Compensation; 2-Phase estimation')
+    parser.add_argument('-m', '--method', help='Enter Rubato induction method: 0-Naive; 1-Compensation; 2-Phase estimation; 3-Demo')
     #parser.add_argument('-s', '--save_path', help='Enter path to save log files')   # path to save log files
     args = parser.parse_args()                                                      # variable to store list of user input variables
     user_id = int(args.user_id)                                                     # variable to store User ID
@@ -76,7 +76,7 @@ if __name__ == '__main__':
 
     curr_path = os.path.dirname(os.path.abspath(__file__))                          # paht where this file is running from
     save_path = curr_path + '/users/' + str(user_id)                                # path to store data in csv file
-    midi_path = curr_path + '/midi_files/' + midi_file + '/' + midi_file + '.mid'                     # paht of the midi file to play
+    midi_path = curr_path + '/midi_files/' + midi_file + '/' + midi_file# + '.mid'                     # paht of the midi file to play
 
     if not os.path.exists(save_path):                                               # if the path does not exist create it
          os.makedirs(save_path)
@@ -95,7 +95,8 @@ if __name__ == '__main__':
 
     #OPENING INSCORE
     #os.system('open '+ curr_path+'/inscore_stuff/demo/demo.inscore')                # Load the score
-    os.system('open ' + curr_path + '/midi_files/' + midi_file + '/' + midi_file + '.inscore')  # Load the score
+    os.system('open ' + midi_path + '.inscore')  # Load the score
+    #os.system('open ' + curr_path + '/midi_files/' + midi_file + '/' + midi_file + '.inscore')  # Load the score
     time.sleep(2)
     os.system('open -a Terminal')                                                   # Give some time to laod
 

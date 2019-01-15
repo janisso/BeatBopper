@@ -88,10 +88,17 @@ def phase_advance_bb(increment,beats,up_thresh,stop_all):
         if stop_all.value == True:
             break
 
-def phase_advance_demo(midi_path):
-
-
-    lib.time.sleep(0.005)
+def phase_advance_demo(midi_path,midi_vel,beats,stop_all):
+    data = lib.np.genfromtxt(midi_path+'.csv',delimiter=',')
+    i = 0
+    while True:
+        beats.value = data[i,0]/2
+        midi_vel.value = int(data[i,1])
+        i += 1
+        #print beats.value
+        lib.time.sleep(0.005)
+        if stop_all.value:
+            break
 #    #TODO - will be a function here to advance the playhead for people to follow
 
 # Function to change tempo and velocity using keyboard
@@ -116,7 +123,9 @@ def osc_cursor(beats,stop_all):
     osc_msg_cursor.append('cursor')
     osc_msg_cursor.append('score')
     osc_port.send(osc_msg_cursor)
+    print 'CURSOR HERE'
     while True:
+        #print 'here'
         osc_msg_i = lib.OSC.OSCMessage()
         osc_msg_i.setAddress('/ITL/scene/cursor')
         osc_msg_i.append('date')
@@ -132,7 +141,7 @@ def osc_cursor(beats,stop_all):
 def play_midi(midi_path, save_path, beats, midi_vel, stop_all,midi_device_nr):
     f = open(save_path + '/play_midi.csv', 'w+')                # open file to save log values
     f.write('time,beats,midi_note,midi_vel\n')                  # write first line with corresponding titles
-    mid = lib.mido.MidiFile(midi_path)                          # save parsed MIDI file using mido library
+    mid = lib.mido.MidiFile(midi_path+'.mid')                          # save parsed MIDI file using mido library
     s_times = []  # np.zeros((times[0],2))                      # create an empty array to storenote events in the MIDI file
     port = lib.mido.open_output(lib.mido.get_output_names()[midi_device_nr.value]) # open port to send MIDI messages
     all_time = 0                                                # aggregate time for all the messages
@@ -149,6 +158,7 @@ def play_midi(midi_path, save_path, beats, midi_vel, stop_all,midi_device_nr):
     yo = lib.copy.deepcopy(s_times)                             # deepcopy the array so the original doesn't get manipulated
     while True:
         if len(yo) != 0:                                        # keep running the loop until there are no more notes to play
+            #print 'here'
             if yo[0, 1] < beats.value:                          # if the playhead is larger than the first note in the array play the first note and then delete
                 msgMIDI = all_messages[int(yo[0, 0])]           # add note information and it's timing to the midi message to be sent
                 if midi_vel.value > 127:
@@ -186,15 +196,24 @@ def play(midi_path,save_path,midi_device, tempo_method):
 
     #p_user_input = lib.multiprocessing.Process(target=user_input, args=(newstdin,tempo,midi_vel))
 
+
+    ######DECLARE PROCESSES
     p_play_midi = lib.multiprocessing.Process(target=play_midi,args=(midi_path,save_path,beats,midi_vel,stop_all,midi_device_nr))  # process to play MIDI
+
     if tempo_method == 0:
         print tempo_method
         p_phase_advance = lib.multiprocessing.Process(target=phase_advance_naive,args=(save_path,beats,tempo,stop_all,play_flag))                   # process to count phase informatioin
         p_tempo = lib.multiprocessing.Process(target=naive.naive_tempo, args=(palm_pos, hand_vel, hand_span, midi_vel, stop_all, arm_flag, play_flag, tempo, save_path))
+        #p_osc_cursor = lib.multiprocessing.Process(target=osc_cursor, args=(beats, stop_all))
+        p_get_samples = lib.multiprocessing.Process(target=lib.get_samples,
+                                                    args=(palm_pos, hand_vel, hand_span, stop_all, save_path))
     if tempo_method == 1:
         print tempo_method
         p_phase_advance = lib.multiprocessing.Process(target=phase_advance_comp,args=(save_path,beats,tempo,stop_all,play_flag))                   # process to count phase informatioin
         p_tempo = lib.multiprocessing.Process(target=naive.naive_tempo, args=(palm_pos, hand_vel, hand_span, midi_vel, stop_all, arm_flag, play_flag, tempo, save_path))
+        #p_osc_cursor = lib.multiprocessing.Process(target=osc_cursor, args=(beats, stop_all))
+        p_get_samples = lib.multiprocessing.Process(target=lib.get_samples,
+                                                    args=(palm_pos, hand_vel, hand_span, stop_all, save_path))
     if tempo_method == 2:
         r = phase_est.REG(400, 1)
         q = lib.multiprocessing.Queue()
@@ -207,21 +226,26 @@ def play(midi_path,save_path,midi_device, tempo_method):
         p_phase_comp = lib.multiprocessing.Process(target=phase_est.phase_comp, args=(q1, play_flag, increment, stop_all, save_path))
         p_phase_advance = lib.multiprocessing.Process(target=phase_advance_bb,args=(increment, beats, up_thresh, stop_all))                   # process to count phase informatioin
         p_tempo = lib.multiprocessing.Process(target=phase_est.phase_tempo, args=(q, palm_pos, hand_vel, hand_span, stop_all, arm_flag, play_flag, u_phase, up_thresh, save_path, midi_vel))
+        p_get_samples = lib.multiprocessing.Process(target=lib.get_samples,
+                                                    args=(palm_pos, hand_vel, hand_span, stop_all, save_path))
 
-    #if tempo_method == 3:
+    if tempo_method == 3:
+        p_phase_advance = lib.multiprocessing.Process(target = phase_advance_demo,args=(midi_path,midi_vel,beats,stop_all))
+
+    p_osc_cursor = lib.multiprocessing.Process(target=osc_cursor, args=(beats, stop_all))
 
 
 
-    p_osc_cursor = lib.multiprocessing.Process(target=osc_cursor,args=(beats,stop_all))
-    p_get_samples = lib.multiprocessing.Process(target=lib.get_samples, args=(palm_pos, hand_vel, hand_span, stop_all, save_path))
-
+    #########START PROCESSES
     #p_user_input.start()
+    if (tempo_method == 0) or (tempo_method == 1) or (tempo_method == 2):
+        p_get_samples.start()
+        p_tempo.start()
 
-    p_get_samples.start()
-    p_tempo.start()
     p_play_midi.start()
 
     if tempo_method == 2:
+        #p_get_samples.start()
         p_reg.start()
         p_phase_comp.start()
         print 'started reg'
@@ -230,17 +254,21 @@ def play(midi_path,save_path,midi_device, tempo_method):
     p_phase_advance.start()
     p_osc_cursor.start()
 
-    #p_user_input.join()
+    p_play_midi.join()
+    p_osc_cursor.join()
 
+
+
+    #p_user_input.join()
+    #########JOIN PROCESSES
     if tempo_method == 2:
         p_reg.join()
         p_phase_comp.join()
         print 'joined reg'
+    if (tempo_method == 0) or (tempo_method == 1) or (tempo_method == 2):
+        p_get_samples.join()
+        p_tempo.join()
 
-    p_get_samples.join()
-    p_tempo.join()
 
-    p_play_midi.join()
     lib.time.sleep(0.5)
     p_phase_advance.join()
-    p_osc_cursor.join()
