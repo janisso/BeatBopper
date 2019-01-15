@@ -25,6 +25,7 @@ def phase_advance_naive(save_path,beats,tempo,stop_all,play_flag):
             print 'Change detected', beat_counter, playhead * 2
             if play_flag.value:
                 beat_counter += 1
+            #lib.play_sound(lib.beat_do,lib.fs)
 
 
         if play_flag.value:
@@ -91,7 +92,12 @@ def phase_advance_bb(increment,beats,up_thresh,stop_all):
 def phase_advance_demo(midi_path,midi_vel,beats,stop_all):
     data = lib.np.genfromtxt(midi_path+'.csv',delimiter=',')
     i = 0
+    playhead = 0
+    midi_val = data[0,1]
+    b_increment = data[1,0]-data[0,0]
+    l_increment = data[1,0]-data[1,1]
     while True:
+        #playhead +=
         beats.value = data[i,0]/2
         midi_vel.value = int(data[i,1])
         i += 1
@@ -99,7 +105,9 @@ def phase_advance_demo(midi_path,midi_vel,beats,stop_all):
         lib.time.sleep(0.005)
         if stop_all.value:
             break
-#    #TODO - will be a function here to advance the playhead for people to follow
+
+#def count_off(ioi,play_flag):
+
 
 # Function to change tempo and velocity using keyboard
 def user_input(newstdin, tempo,vel):
@@ -112,6 +120,11 @@ def user_input(newstdin, tempo,vel):
         tempo.value = float(t)
         vel.value = int(v) #this is where this process doesn't fail anymore
         print 'Tempo: ', t, 'Velocity: ', v
+
+#def play_count(time_q):
+#    while True:
+#        if not q.empty():
+
 
 # Function to send OSC messages to InScore
 def osc_cursor(beats,stop_all):
@@ -167,6 +180,7 @@ def play_midi(midi_path, save_path, beats, midi_vel, stop_all,midi_device_nr):
                     msgMIDI.velocity = midi_vel.value                    # add velocity to the MIDI message to be sent
                 f.write(                                        # store values for later analysis
                     "%f, %f, %f, %f\n" % (lib.time.time(), beats.value, all_messages[int(yo[0, 0])].note, midi_vel.value))
+                msgMIDI.channel = 0
                 port.send(msgMIDI)                              # send the message using predefined port (midi device)
                 yo = lib.np.delete(yo, 0, 0)                    # once the note has been played delete the first message
         else:                                                   # if there are no more notes to play

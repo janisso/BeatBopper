@@ -10,12 +10,20 @@ import sys
 from scipy import signal
 from collections import deque
 import Leap
+'''from scipy.io import wavfile
+import sounddevice as sd
+
+fs, beat_up = wavfile.read(os.path.dirname(os.path.abspath(__file__))+'/up.wav')
+fs, beat_do = wavfile.read(os.path.dirname(os.path.abspath(__file__))+'/do.wav')'''
 
 #SET UP WINDOW LENGTH AND HOP SIZE FOR REGRESSION
 window_length = 100
 #SET UP FILTER
 f = 0.001
 coeffs = signal.firwin(window_length, f)
+
+'''def play_sound(fs,array):
+    sd.play(array,fs)'''
 
 #CIRCULAR BUFFER CLASS FOR STORING VALUES FOR FILTERING
 class CircularBuffer(deque):
