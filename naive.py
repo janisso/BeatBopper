@@ -33,7 +33,7 @@ def naive_tempo(palm_pos,hand_vel,hand_span,midi_vel,stop_all,arm_flag, play_fla
     still_buff = lib.CircularBuffer(size=10)
     for i in range(len(still_buff)):
         still_buff.append(0)
-
+    print 'NAIVE TEMPO HERE'
     while True:
         circ_buff.append(hand_vel.value)                            # getting hand_vel.value and putting itno circular buffer
         rect_buff.append(abs(hand_vel.value))
@@ -78,9 +78,9 @@ def naive_tempo(palm_pos,hand_vel,hand_span,midi_vel,stop_all,arm_flag, play_fla
                 f_phase.write('%f, %i\n' % (lib.time.time(), beat_phase))
                 print 'Beat ', tempo.value, ' dt ', beat_dt, avg_vel
 
-                if (arm_flag.value == True) and (play_flag.value == False):
-                    play_flag.value = True
-                    print 'play now', play_flag.value
+                #if (arm_flag.value == True) and (play_flag.value == False):
+                #    play_flag.value = True
+                #    print 'play now', play_flag.value
 
             if ((prev_avg_acc * avg_acc) <= 0):
                 #midi_vel.value = abs(int((avg_vel/1500.)*127.))

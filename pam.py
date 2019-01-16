@@ -102,12 +102,13 @@ def phase_advance_demo(midi_path,midi_vel,beats,stop_all,play_flag):
             if stop_all.value:
                 break
 
-def count_off(midi_path,play_flag,midi_device_nr):
+def count_off(midi_path,play_flag,midi_device_nr,tempo):
     data = lib.np.genfromtxt(midi_path + 'countoff.csv', delimiter=',')
     port = lib.mido.open_output(lib.mido.get_output_names()[midi_device_nr.value])  # open port to send MIDI messages
     beats = lib.np.arange(7)
     i = 0
     countin = 0
+    tempo.value = 60/((len(data)*0.0064)/6)
     while True:
         if len(beats) != 0:
             countin = data[i]
@@ -127,10 +128,6 @@ def count_off(midi_path,play_flag,midi_device_nr):
             break
         i += 1
         lib.time.sleep(0.005)
-
-
-
-
 
 
 # Function to change tempo and velocity using keyboard
@@ -245,6 +242,8 @@ def play(midi_path,save_path,midi_device, tempo_method):
         #p_osc_cursor = lib.multiprocessing.Process(target=osc_cursor, args=(beats, stop_all))
         p_get_samples = lib.multiprocessing.Process(target=lib.get_samples,
                                                     args=(palm_pos, hand_vel, hand_span, stop_all, save_path))
+        #p_count_off = lib.multiprocessing.Process(target=count_off, args=(midi_path, play_flag, midi_device_nr,tempo))
+
     if tempo_method == 1:
         print tempo_method
         p_phase_advance = lib.multiprocessing.Process(target=phase_advance_comp,args=(save_path,beats,tempo,stop_all,play_flag))                   # process to count phase informatioin
@@ -252,6 +251,7 @@ def play(midi_path,save_path,midi_device, tempo_method):
         #p_osc_cursor = lib.multiprocessing.Process(target=osc_cursor, args=(beats, stop_all))
         p_get_samples = lib.multiprocessing.Process(target=lib.get_samples,
                                                     args=(palm_pos, hand_vel, hand_span, stop_all, save_path))
+        #p_count_off = lib.multiprocessing.Process(target=count_off, args=(midi_path, play_flag, midi_device_nr, tempo))
     if tempo_method == 2:
         r = phase_est.REG(400, 1)
         q = lib.multiprocessing.Queue()
@@ -266,13 +266,13 @@ def play(midi_path,save_path,midi_device, tempo_method):
         p_tempo = lib.multiprocessing.Process(target=phase_est.phase_tempo, args=(q, palm_pos, hand_vel, hand_span, stop_all, arm_flag, play_flag, u_phase, up_thresh, save_path, midi_vel))
         p_get_samples = lib.multiprocessing.Process(target=lib.get_samples,
                                                     args=(palm_pos, hand_vel, hand_span, stop_all, save_path))
+        #p_count_off = lib.multiprocessing.Process(target=count_off, args=(midi_path, play_flag, midi_device_nr, tempo))
 
     if tempo_method == 3:
         p_phase_advance = lib.multiprocessing.Process(target = phase_advance_demo,args=(midi_path,midi_vel,beats,stop_all,play_flag))
-        p_count_off = lib.multiprocessing.Process(target = count_off, args=(midi_path, play_flag, midi_device_nr))
 
+    p_count_off = lib.multiprocessing.Process(target=count_off, args=(midi_path, play_flag, midi_device_nr, tempo))
     p_osc_cursor = lib.multiprocessing.Process(target=osc_cursor, args=(beats, stop_all))
-
 
 
     #########START PROCESSES
@@ -280,6 +280,7 @@ def play(midi_path,save_path,midi_device, tempo_method):
     if (tempo_method == 0) or (tempo_method == 1) or (tempo_method == 2):
         p_get_samples.start()
         p_tempo.start()
+        #p_count_off.start()
 
     p_play_midi.start()
 
@@ -291,13 +292,12 @@ def play(midi_path,save_path,midi_device, tempo_method):
 
     lib.time.sleep(0.5)
     p_phase_advance.start()
-    if tempo_method == 3:
-        p_count_off.start()
+    #if tempo_method == 3:
+    p_count_off.start()
     p_osc_cursor.start()
 
     p_play_midi.join()
     p_osc_cursor.join()
-
 
 
     #p_user_input.join()
@@ -309,8 +309,9 @@ def play(midi_path,save_path,midi_device, tempo_method):
     if (tempo_method == 0) or (tempo_method == 1) or (tempo_method == 2):
         p_get_samples.join()
         p_tempo.join()
-    if tempo_method == 3:
         p_count_off.join()
+
+    p_count_off.join()
 
 
     lib.time.sleep(0.5)
