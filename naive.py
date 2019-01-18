@@ -87,7 +87,7 @@ def naive_tempo(palm_pos,hand_vel,hand_span,midi_vel,stop_all,arm_flag, play_fla
                 #ting = abs(int((hand_vel.value/1500.)*127.))
                 ting = abs(int((rect_val / 1000.) * 127.))
                 #ting = abs(hand_vel.value)
-                print hand_vel.value, avg_vel, ting
+                #print hand_vel.value, avg_vel, ting
                 if (ting > 127):
                     midi_vel.value = 127
                 else:

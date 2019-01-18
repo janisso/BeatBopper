@@ -1,15 +1,12 @@
 ### This is the main file that controls rest of the files. It initiates sets up some of the global variables
 
 import argparse
-import os
 import pam
-import OSC
-import time
 import lib
 
 #FUNCTION TO SEND OSC MESSAGES TO INSCORE
 def osc_send_i(address,var):
-    osc_msg = OSC.OSCMessage()
+    osc_msg = lib.OSC.OSCMessage()
     osc_msg.setAddress(address)
     for i in range(len(var)):
         osc_msg.append(var[i])
@@ -17,8 +14,8 @@ def osc_send_i(address,var):
 
 
 #FUNCTION TO COLLECT LEAP MOTION DATA FOR NAVIGATION
-'''def demoMenu():
-    controller = Leap.Controller()
+def demoMenu():
+    controller = lib.Leap.Controller()
     flag = 0
     x_pos = 0
     y_pos = 0
@@ -34,31 +31,30 @@ def osc_send_i(address,var):
                     thumb_pos = finger.tip_position
                 if finger.type == 2:
                     pinky_pos = finger.tip_position
-            hand_span = np.sqrt((thumb_pos.x-pinky_pos.x)**2+(thumb_pos.y-pinky_pos.y)**2+(thumb_pos.z-pinky_pos.z)**2)
+            hand_span = lib.np.sqrt((thumb_pos.x-pinky_pos.x)**2+(thumb_pos.y-pinky_pos.y)**2+(thumb_pos.z-pinky_pos.z)**2)
             x_pos = x/150
             y_pos = (y-200)/200*(-1)
         print hand_span
-        oscSendI('/ITL/scene/menuBall',['x',x_pos])
-        oscSendI('/ITL/scene/menuBall',['y',y_pos])
-        oscSendI('/ITL/scene/menuBall',['scale',(hand_span-40)/100])
+        osc_send_i('/ITL/scene/menuBall',['x',x_pos])
+        osc_send_i('/ITL/scene/menuBall',['y',y_pos])
+        osc_send_i('/ITL/scene/menuBall',['scale',(hand_span-40)/100])
         #THIS IF STATEMENT INSIDE THE BUTTON
         if (-0.5 < x_pos < 0.5) and (-0.5 < y_pos < 0.5) and (flag == 0):
-            oscSendI('/ITL/scene/button',['effect','none'],)
-            oscSendI('/ITL/scene/menuBall',['alpha',127])
-            oscSendI('/ITL/scene/demoText',['alpha',255])
+            osc_send_i('/ITL/scene/button',['effect','none'],)
+            osc_send_i('/ITL/scene/menuBall',['alpha',127])
+            osc_send_i('/ITL/scene/demoText',['alpha',255])
             #print 'in'
             flag = 1
         #THIS IF STATEMENT OUTSIDE THE BUTTON
         if ((x_pos < (-0.5)) or (x_pos > (0.5))) or ((y_pos < (-0.5)) or (y_pos > (0.5))) and (flag == 1):
-            oscSendI('/ITL/scene/button',['effect','blur',32])
-            oscSendI('/ITL/scene/menuBall',['alpha',255])
-            oscSendI('/ITL/scene/demoText',['alpha',0])
+            osc_send_i('/ITL/scene/button',['effect','blur',32])
+            osc_send_i('/ITL/scene/menuBall',['alpha',255])
+            osc_send_i('/ITL/scene/demoText',['alpha',0])
             flag = 0
         #THIS IF STATEMENT FOR CHOOSING A BUTTON
         if (flag == 1) and (hand_span< 60):
             break
-        sleep(0.05)'''
-
+        lib.time.sleep(0.05)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()                                              # declaration of arguments
@@ -74,31 +70,40 @@ if __name__ == '__main__':
     tempo_method = int(args.method)
     #save_path = args.save_path                                                     # variable to save log files
 
-    curr_path = os.path.dirname(os.path.abspath(__file__))                          # paht where this file is running from
+    curr_path = lib.os.path.dirname(lib.os.path.abspath(__file__))                          # paht where this file is running from
     save_path = curr_path + '/users/' + str(user_id)                                # path to store data in csv file
     midi_path = curr_path + '/midi_files/' + midi_file + '/' + midi_file# + '.mid'                     # paht of the midi file to play
 
-    if not os.path.exists(save_path):                                               # if the path does not exist create it
-         os.makedirs(save_path)
+    if not lib.os.path.exists(save_path):                                               # if the path does not exist create it
+         lib.os.makedirs(save_path)
 
     print 'User ID: ', user_id                                                      # Printing stuff for debugging
     print 'MIDI File: ', midi_path
     print 'Save Path: ', save_path
 
     # Open InScore appR
-    os.system('open /Applications/INScoreViewer-1.21.app')                          # Open up InScore
-    time.sleep(5)                                                                   # Give some time to load
+    lib.os.system('open /Applications/INScoreViewer-1.21.app')                          # Open up InScore
+    lib.time.sleep(5)                                                                   # Give some time to load
 
     # Set up global OSC client
-    osc_client = OSC.OSCClient()                                                    # Create an OSC client
+    osc_client = lib.OSC.OSCClient()                                                    # Create an OSC client
     osc_client.connect(('localhost', 7000))                                         # Connect to InScore
+
+    #SETTING UP OSC CLIENT FOR INSCOR
+    lib.time.sleep(3)
+    osc_send_i('/ITL/scene',['load','/Users/mb/Desktop/Janis.so/06_qmul/BeatBopper/menu/main_menu.inscore'])
+    lib.time.sleep(1)
+    lib.os.system('open -a Terminal')
+    demo_p = lib.multiprocessing.Process(target=demoMenu,args=())
+    demo_p.start()
+    demo_p.join()
 
     #OPENING INSCORE
     #os.system('open '+ curr_path+'/inscore_stuff/demo/demo.inscore')                # Load the score
-    os.system('open ' + midi_path + '.inscore')  # Load the score
+    lib.os.system('open ' + midi_path + '.inscore')  # Load the score
     #os.system('open ' + curr_path + '/midi_files/' + midi_file + '/' + midi_file + '.inscore')  # Load the score
-    time.sleep(2)
-    os.system('open -a Terminal')                                                   # Give some time to laod
+    lib.time.sleep(2)
+    lib.os.system('open -a Terminal')                                                   # Give some time to laod
 
     #SELECTING SOCRES AND MENUS
 

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2e055b4a-3002-428c-843e-fcf4854b63ed" name="Default Changelist" comment="">
+    <list default="true" id="2e055b4a-3002-428c-843e-fcf4854b63ed" name="Default Changelist" comment="Added count_off for method 0 and 1, still to add to 2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/naive.py" beforeDir="false" afterPath="$PROJECT_DIR$/naive.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pam.py" beforeDir="false" afterPath="$PROJECT_DIR$/pam.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,7 +16,7 @@
     <session id="492851201">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="17" />
+          <entry key="project.closed" value="18" />
           <entry key="project.open.time.0" value="2" />
           <entry key="project.open.time.1" value="2" />
           <entry key="project.open.time.10" value="2" />
@@ -32,34 +32,34 @@
           <entry key="project.open.time.41" value="1" />
           <entry key="project.open.time.6" value="1" />
           <entry key="project.open.time.7" value="1" />
-          <entry key="project.open.time.8" value="4" />
+          <entry key="project.open.time.8" value="5" />
           <entry key="project.open.time.9" value="4" />
-          <entry key="project.opened" value="28" />
+          <entry key="project.opened" value="29" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="3" />
-          <entry key="py" value="20055" />
-          <entry key="txt" value="1994" />
+          <entry key="py" value="20176" />
+          <entry key="txt" value="2051" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="1997" />
-          <entry key="Python" value="20055" />
+          <entry key="PLAIN_TEXT" value="2054" />
+          <entry key="Python" value="20176" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="csv" value="1" />
-          <entry key="py" value="35" />
+          <entry key="py" value="36" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="PLAIN_TEXT" value="1" />
-          <entry key="Python" value="35" />
+          <entry key="Python" value="36" />
         </counts>
       </usages-collector>
     </session>
@@ -72,17 +72,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/naive.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="35" column="27" selection-start-line="35" selection-start-column="27" selection-end-line="35" selection-end-column="27" />
+            <state relative-caret-position="737">
+              <caret line="105" column="22" selection-start-line="105" selection-start-column="17" selection-end-line="105" selection-end-column="22" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/phase_est.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="131">
-              <caret line="224" column="15" lean-forward="true" selection-start-line="224" selection-start-column="15" selection-end-line="224" selection-end-column="15" />
+            <state relative-caret-position="3600">
+              <caret line="240" column="55" selection-start-line="240" selection-start-column="55" selection-end-line="240" selection-end-column="55" />
             </state>
           </provider>
         </entry>
@@ -90,8 +90,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pam.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3547">
-              <caret line="302" column="24" lean-forward="true" selection-start-line="302" selection-start-column="24" selection-end-line="302" selection-end-column="24" />
+            <state relative-caret-position="870">
+              <caret line="58" column="26" lean-forward="true" selection-start-line="58" selection-start-column="26" selection-end-line="58" selection-end-column="26" />
               <folding>
                 <element signature="e#436#446#0" expanded="true" />
                 <marker date="1547596679000" expanded="true" signature="4529:4530" ph="..." />
@@ -104,21 +104,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="18" selection-start-line="18" selection-end-line="18" />
+            <state relative-caret-position="105">
+              <caret line="7" column="9" lean-forward="true" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
               <folding>
-                <element signature="e#0#11#0" expanded="true" />
                 <marker date="1547596560000" expanded="true" signature="355:357" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="92" column="15" selection-start-line="92" selection-start-column="15" selection-end-line="92" selection-end-column="15" />
+            <state relative-caret-position="512">
+              <caret line="97" column="18" lean-forward="true" selection-start-line="97" selection-start-column="18" selection-end-line="97" selection-end-column="18" />
               <folding>
                 <element signature="e#110#125#0" expanded="true" />
               </folding>
@@ -146,16 +145,9 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>window_</find>
-      <find>sleep</find>
-      <find>reg here</find>
-      <find>tempo_method</find>
-      <find>p_play_midi</find>
-      <find>print</find>
       <find>amp</find>
       <find>armed</find>
       <find>arm_flag</find>
-      <find>midi_vel</find>
       <find>CircularBuffer</find>
       <find>ect_val</find>
       <find>rect_val =</find>
@@ -176,6 +168,13 @@
       <find>beats</find>
       <find>increment</find>
       <find>tempo</find>
+      <find>midi_vel</find>
+      <find>print</find>
+      <find>oscSendI</find>
+      <find>leep</find>
+      <find>sleep</find>
+      <find>os</find>
+      <find>client</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -192,15 +191,15 @@
         <option value="$PROJECT_DIR$/midi_select.py" />
         <option value="$PROJECT_DIR$/borch_comp.py" />
         <option value="$PROJECT_DIR$/phase_est.py" />
-        <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/lib/__init__.py" />
         <option value="$PROJECT_DIR$/pam.py" />
         <option value="$PROJECT_DIR$/naive.py" />
+        <option value="$PROJECT_DIR$/main.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="113" />
+    <option name="x" value="492" />
     <option name="y" value="22" />
     <option name="width" value="1141" />
     <option name="height" value="1024" />
@@ -213,7 +212,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -230,6 +228,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -611,7 +610,14 @@
       <option name="project" value="LOCAL" />
       <updated>1547595186219</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Added count_off for method 0 and 1, still to add to 2">
+      <created>1547596972160</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1547596972161</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TodoView">
@@ -624,14 +630,14 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="113" y="22" width="1141" height="1024" extended-state="0" />
+    <frame x="492" y="22" width="1141" height="1024" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4992" visible="true" weight="0.14375" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4992" weight="0.14375" />
       <window_info id="Structure" order="1" sideWeight="0.5008" side_tool="true" weight="0.14375" />
       <window_info id="Favorites" order="2" sideWeight="0.5008" side_tool="true" weight="0.14375" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.32939914" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32939914" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4978903" weight="0.32939914" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39806867" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -646,11 +652,11 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
     <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16717325" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4992" visible="true" weight="0.14375" />
+      <window_info id="Structure" order="1" sideWeight="0.5008" side_tool="true" weight="0.14375" />
+      <window_info id="Favorites" order="2" sideWeight="0.5008" side_tool="true" weight="0.14375" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32939914" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4978903" weight="0.32939914" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39806867" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -669,7 +675,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Changed midi_play.py to pam.py (Phase Advancement Mechanism)" />
     <MESSAGE value="Added InScore page turning and repeat" />
     <MESSAGE value="Added InScore initialisation and opening score" />
     <MESSAGE value="Added keyboard interrupt to change MIDI velocity" />
@@ -694,7 +699,8 @@
     <MESSAGE value="Added epxressive MIDI playback synthesis from MazurkaBL" />
     <MESSAGE value="Expressive MIDI exported prior to playback" />
     <MESSAGE value="Added count_off for demo_playback" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added count_off for demo_playback" />
+    <MESSAGE value="Added count_off for method 0 and 1, still to add to 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added count_off for method 0 and 1, still to add to 2" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/users/0/play_midi.csv">
@@ -715,10 +721,17 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/leap_input.py" />
+    <entry file="file://$PROJECT_DIR$/borch_comp.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="14" column="15" lean-forward="true" selection-start-line="14" selection-start-column="15" selection-end-line="14" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/lib/Leap.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="348" column="25" lean-forward="true" selection-start-line="348" selection-start-column="25" selection-end-line="348" selection-end-column="25" />
+        <state relative-caret-position="313">
+          <caret line="357" lean-forward="true" selection-start-line="357" selection-end-line="357" />
         </state>
       </provider>
     </entry>
@@ -729,29 +742,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/borch_comp.py">
+    <entry file="file://$PROJECT_DIR$/phase_est.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="14" column="15" lean-forward="true" selection-start-line="14" selection-start-column="15" selection-end-line="14" selection-end-column="15" />
+        <state relative-caret-position="3600">
+          <caret line="240" column="55" selection-start-line="240" selection-start-column="55" selection-end-line="240" selection-end-column="55" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
+    <entry file="file://$PROJECT_DIR$/naive.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="92" column="15" selection-start-line="92" selection-start-column="15" selection-end-line="92" selection-end-column="15" />
-          <folding>
-            <element signature="e#110#125#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="737">
+          <caret line="105" column="22" selection-start-line="105" selection-start-column="17" selection-end-line="105" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
+        <state relative-caret-position="105">
+          <caret line="7" column="9" lean-forward="true" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
           <folding>
-            <element signature="e#0#11#0" expanded="true" />
             <marker date="1547596560000" expanded="true" signature="355:357" ph="..." />
           </folding>
         </state>
@@ -759,8 +768,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pam.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3547">
-          <caret line="302" column="24" lean-forward="true" selection-start-line="302" selection-start-column="24" selection-end-line="302" selection-end-column="24" />
+        <state relative-caret-position="870">
+          <caret line="58" column="26" lean-forward="true" selection-start-line="58" selection-start-column="26" selection-end-line="58" selection-end-column="26" />
           <folding>
             <element signature="e#436#446#0" expanded="true" />
             <marker date="1547596679000" expanded="true" signature="4529:4530" ph="..." />
@@ -769,17 +778,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/naive.py">
+    <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="35" column="27" selection-start-line="35" selection-start-column="27" selection-end-line="35" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/phase_est.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="131">
-          <caret line="224" column="15" lean-forward="true" selection-start-line="224" selection-start-column="15" selection-end-line="224" selection-end-column="15" />
+        <state relative-caret-position="512">
+          <caret line="97" column="18" lean-forward="true" selection-start-line="97" selection-start-column="18" selection-end-line="97" selection-end-column="18" />
+          <folding>
+            <element signature="e#110#125#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
