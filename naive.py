@@ -1,6 +1,6 @@
 import lib
 
-def naive_tempo(palm_pos,hand_vel,hand_span,midi_vel,stop_all,arm_flag, play_flag, tempo, save_path):
+def naive_tempo(palm_pos,hand_vel,hand_span,midi_vel,stop_all,arm_flag, play_flag, tempo, save_path, countoff):
     f_data = open(save_path+'/naive_tempo_data.csv', 'w+')
     f_phase = open(save_path+'/naive_phase.csv', 'w+')
 
@@ -63,7 +63,8 @@ def naive_tempo(palm_pos,hand_vel,hand_span,midi_vel,stop_all,arm_flag, play_fla
 
         if (hand_span.value > 80) and (arm_flag.value == False):
             arm_flag.value = 1
-            #play_flag.value = 1
+            if countoff == 0:
+                play_flag.value = 1
             print 'ARMED'
 
         if is_still == False:

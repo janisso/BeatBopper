@@ -10,6 +10,7 @@ import sys
 from scipy import signal
 from collections import deque
 import Leap
+import subprocess
 
 #SET UP WINDOW LENGTH AND HOP SIZE FOR REGRESSION
 window_length = 100

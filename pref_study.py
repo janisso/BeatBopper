@@ -145,11 +145,11 @@ if __name__ == '__main__':
     user_id = int(args.user_id)                                                     # variable to store User ID
     midi_file = args.midi_file                                                           # variable to store the name of the MIDI file, all the MIDI files should be stored in midi_files folder of the project
     midi_device = int(args.midi_device)
-    tempo_method = int(args.method)
+    #tempo_method = int(args.method)
     #save_path = args.save_path                                                     # variable to save log files
 
     curr_path = lib.os.path.dirname(lib.os.path.abspath(__file__))                          # paht where this file is running from
-    save_path = curr_path + '/00_free_form/' + str(user_id)                                # path to store data in csv file
+    save_path = curr_path + '/03_pref_studies/' + str(user_id)                                # path to store data in csv file
     midi_path = curr_path + '/midi_files/' + midi_file + '/' + midi_file# + '.mid'                     # paht of the midi file to play
 
     if not lib.os.path.exists(save_path):                                               # if the path does not exist create it
@@ -158,6 +158,11 @@ if __name__ == '__main__':
     print 'User ID: ', user_id                                                      # Printing stuff for debugging
     print 'MIDI File: ', midi_path
     print 'Save Path: ', save_path
+
+    #STORE METHODS ARRAY
+    ms = []
+    for i in range(len(args.method)):
+        ms.append(int(args.method[i]))
 
     # Open InScore appR
     lib.os.system('open /Applications/INScoreViewer-1.21.app')                          # Open up InScore
@@ -179,33 +184,34 @@ if __name__ == '__main__':
     demo_p.join()                                               # Give some time to laod
     osc_client.close()
 
-    #SELECTING SOCRES AND MENUS
-    count = 0
-
-    while True:
-        # OPENING INSCORE
-        lib.os.system('open ' + midi_path + '.inscore')  # Load the score
-        # os.system('open ' + curr_path + '/midi_files/' + midi_file + '/' + midi_file + '.inscore')  # Load the score
-        lib.time.sleep(2)
-        lib.os.system('open -a Terminal')
-        pam.play(midi_path, save_path, midi_device, tempo_method, 0)                                     # Initialize MIDI playback
-        #pam.play(midi_path, save_path, midi_device, 0)
-        p0 = lib.multiprocessing.Process(target=retryMenu, args=(retry,))
-        osc_client = lib.OSC.OSCClient()
-        osc_client.connect(('localhost', 7000))  # INSCORE
-        osc_send_i('/ITL/scene',
-                 ['load', '/Users/mb/Desktop/Janis.so/06_qmul/BeatBopper/menu/retry_quit.inscore'])
-        lib.os.system('open -a Terminal')
-        p0 = lib.multiprocessing.Process(target=retryMenu, args=(retry,))
-        p0.start()
-        p0.join()
-        osc_send_i('/ITL/scene/*', 'del')
-        if retry.value == 0:
-            count += 1
-            osc_client.close()
-        if retry.value == 1:
-            osc_client.close()
-            break                                                        # Close OSC client once the playback has finished
+    #SELECTING SOCRES AND MENU
+    for i in range(len(ms)):
+        count = 0
+        while True:
+            # OPENING INSCORE
+            # os.system('open '+ curr_path+'/inscore_stuff/demo/demo.inscore')                # Load the score
+            lib.os.system('open ' + midi_path + '.inscore')  # Load the score
+            # os.system('open ' + curr_path + '/midi_files/' + midi_file + '/' + midi_file + '.inscore')  # Load the score
+            lib.time.sleep(2)
+            lib.os.system('open -a Terminal')
+            #pam.play(midi_path, save_path, midi_device, 3, 1)                                # Initialize MIDI playback
+            pam.play(midi_path, save_path+'/'+str(i)+'_'+str(ms[i])+'/'+str(count), midi_device, ms[i], 0)
+            p0 = lib.multiprocessing.Process(target=retryMenu, args=(retry,))
+            osc_client = lib.OSC.OSCClient()
+            osc_client.connect(('localhost', 7000))  # INSCORE
+            osc_send_i('/ITL/scene',
+                     ['load', '/Users/mb/Desktop/Janis.so/06_qmul/BeatBopper/menu/retry_quit.inscore'])
+            lib.os.system('open -a Terminal')
+            p0 = lib.multiprocessing.Process(target=retryMenu, args=(retry,))
+            p0.start()
+            p0.join()
+            osc_send_i('/ITL/scene/*', 'del')
+            if retry.value == 0:
+                count += 1
+                osc_client.close()
+            if retry.value == 1:
+                osc_client.close()
+                break                                                        # Close OSC client once the playback has finished
     lib.subprocess.call(['osascript', '-e', 'quit app "/Applications/INScoreViewer-1.21.app"'])
     lib.sys.exit(-1)
     print 'Program Terminated'

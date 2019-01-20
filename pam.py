@@ -210,8 +210,12 @@ def play_midi(midi_path, save_path, beats, midi_vel, stop_all,midi_device_nr):
             print 'MIDI Playback Finished'                      # print for use rto acknowledge
             break
 
-def play(midi_path,save_path,midi_device, tempo_method):
+def play(midi_path,save_path,midi_device, tempo_method, countoff):
+    #print 'STUDY IS SET TO: ', countoff
     newstdin = lib.os.fdopen(lib.os.dup(lib.sys.stdin.fileno()))
+
+    if not lib.os.path.exists(save_path):  # if the path does not exist create it
+        lib.os.makedirs(save_path)
 
     tempo = lib.multiprocessing.Value('d', 120.0)
     midi_vel = lib.multiprocessing.Value('i', 127)                   # variable to store amplitude value received from Leap Motion to convert into MIDI velocity
@@ -238,7 +242,7 @@ def play(midi_path,save_path,midi_device, tempo_method):
     if tempo_method == 0:
         print tempo_method
         p_phase_advance = lib.multiprocessing.Process(target=phase_advance_naive,args=(save_path,beats,tempo,stop_all,play_flag))                   # process to count phase informatioin
-        p_tempo = lib.multiprocessing.Process(target=naive.naive_tempo, args=(palm_pos, hand_vel, hand_span, midi_vel, stop_all, arm_flag, play_flag, tempo, save_path))
+        p_tempo = lib.multiprocessing.Process(target=naive.naive_tempo, args=(palm_pos, hand_vel, hand_span, midi_vel, stop_all, arm_flag, play_flag, tempo, save_path, countoff))
         #p_osc_cursor = lib.multiprocessing.Process(target=osc_cursor, args=(beats, stop_all))
         p_get_samples = lib.multiprocessing.Process(target=lib.get_samples,
                                                     args=(palm_pos, hand_vel, hand_span, stop_all, save_path))
@@ -247,7 +251,7 @@ def play(midi_path,save_path,midi_device, tempo_method):
     if tempo_method == 1:
         print tempo_method
         p_phase_advance = lib.multiprocessing.Process(target=phase_advance_comp,args=(save_path,beats,tempo,stop_all,play_flag))                   # process to count phase informatioin
-        p_tempo = lib.multiprocessing.Process(target=naive.naive_tempo, args=(palm_pos, hand_vel, hand_span, midi_vel, stop_all, arm_flag, play_flag, tempo, save_path))
+        p_tempo = lib.multiprocessing.Process(target=naive.naive_tempo, args=(palm_pos, hand_vel, hand_span, midi_vel, stop_all, arm_flag, play_flag, tempo, save_path, countoff))
         #p_osc_cursor = lib.multiprocessing.Process(target=osc_cursor, args=(beats, stop_all))
         p_get_samples = lib.multiprocessing.Process(target=lib.get_samples,
                                                     args=(palm_pos, hand_vel, hand_span, stop_all, save_path))
@@ -271,9 +275,10 @@ def play(midi_path,save_path,midi_device, tempo_method):
     if tempo_method == 3:
         p_phase_advance = lib.multiprocessing.Process(target = phase_advance_demo,args=(midi_path,midi_vel,beats,stop_all,play_flag))
 
-    p_count_off = lib.multiprocessing.Process(target=count_off, args=(midi_path, play_flag, midi_device_nr, tempo))
-    p_osc_cursor = lib.multiprocessing.Process(target=osc_cursor, args=(beats, stop_all))
+    if countoff == 1:
+        p_count_off = lib.multiprocessing.Process(target=count_off, args=(midi_path, play_flag, midi_device_nr, tempo))
 
+    p_osc_cursor = lib.multiprocessing.Process(target=osc_cursor, args=(beats, stop_all))
 
     #########START PROCESSES
     #p_user_input.start()
@@ -293,7 +298,8 @@ def play(midi_path,save_path,midi_device, tempo_method):
     lib.time.sleep(0.5)
     p_phase_advance.start()
     #if tempo_method == 3:
-    p_count_off.start()
+    if countoff == 1:
+        p_count_off.start()
     p_osc_cursor.start()
 
     p_play_midi.join()
@@ -309,9 +315,10 @@ def play(midi_path,save_path,midi_device, tempo_method):
     if (tempo_method == 0) or (tempo_method == 1) or (tempo_method == 2):
         p_get_samples.join()
         p_tempo.join()
-        p_count_off.join()
+        #p_count_off.join()
 
-    p_count_off.join()
+    if countoff == 1:
+        p_count_off.join()
 
 
     lib.time.sleep(0.5)
