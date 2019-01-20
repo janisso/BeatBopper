@@ -92,7 +92,7 @@ def phase_advance_bb(increment,beats,up_thresh,stop_all):
 def phase_advance_demo(midi_path,midi_vel,beats,stop_all,play_flag):
     data = lib.np.genfromtxt(midi_path+'.csv',delimiter=',')
     i = 0
-    while True:
+    while i<=len(data):
         if play_flag.value:
             beats.value = data[i,0]/2
             midi_vel.value = int(data[i,1])
@@ -267,7 +267,7 @@ def play(midi_path,save_path,midi_device, tempo_method, countoff):
         p_reg = lib.multiprocessing.Process(target=r.doReg, args=(q, u_phase, q1, stop_all, save_path))
         p_phase_comp = lib.multiprocessing.Process(target=phase_est.phase_comp, args=(q1, play_flag, increment, stop_all, save_path))
         p_phase_advance = lib.multiprocessing.Process(target=phase_advance_bb,args=(increment, beats, up_thresh, stop_all))                   # process to count phase informatioin
-        p_tempo = lib.multiprocessing.Process(target=phase_est.phase_tempo, args=(q, palm_pos, hand_vel, hand_span, stop_all, arm_flag, play_flag, u_phase, up_thresh, save_path, midi_vel))
+        p_tempo = lib.multiprocessing.Process(target=phase_est.phase_tempo, args=(q, palm_pos, hand_vel, hand_span, stop_all, arm_flag, play_flag, u_phase, up_thresh, save_path, midi_vel,countoff))
         p_get_samples = lib.multiprocessing.Process(target=lib.get_samples,
                                                     args=(palm_pos, hand_vel, hand_span, stop_all, save_path))
         #p_count_off = lib.multiprocessing.Process(target=count_off, args=(midi_path, play_flag, midi_device_nr, tempo))

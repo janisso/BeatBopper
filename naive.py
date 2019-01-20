@@ -63,8 +63,6 @@ def naive_tempo(palm_pos,hand_vel,hand_span,midi_vel,stop_all,arm_flag, play_fla
 
         if (hand_span.value > 80) and (arm_flag.value == False):
             arm_flag.value = 1
-            if countoff == 0:
-                play_flag.value = 1
             print 'ARMED'
 
         if is_still == False:
@@ -79,9 +77,11 @@ def naive_tempo(palm_pos,hand_vel,hand_span,midi_vel,stop_all,arm_flag, play_fla
                 f_phase.write('%f, %i\n' % (lib.time.time(), beat_phase))
                 print 'Beat ', tempo.value, ' dt ', beat_dt, avg_vel
 
-                #if (arm_flag.value == True) and (play_flag.value == False):
-                #    play_flag.value = True
-                #    print 'play now', play_flag.value
+                if countoff == 0:
+                    #play_flag.value = 1
+                    if (arm_flag.value == True) and (play_flag.value == False):
+                        play_flag.value = True
+                        print 'play now', play_flag.value
 
             if ((prev_avg_acc * avg_acc) <= 0):
                 #midi_vel.value = abs(int((avg_vel/1500.)*127.))

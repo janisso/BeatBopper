@@ -55,7 +55,7 @@ class REG():
                 f.close
                 break
 
-def phase_tempo(q,palm_pos,hand_vel,hand_span,stop_all,arm_flag, play_flag,u_phase, up_thresh, save_path, midi_vel):
+def phase_tempo(q,palm_pos,hand_vel,hand_span,stop_all,arm_flag, play_flag,u_phase, up_thresh, save_path, midi_vel,countoff):
     f_data = open(save_path+'/phase_tempo_data.csv', 'w+')
     f_phase = open(save_path+'/phase_phase.csv', 'w+')
 
@@ -151,7 +151,8 @@ def phase_tempo(q,palm_pos,hand_vel,hand_span,stop_all,arm_flag, play_flag,u_pha
                     f_phase.write('%f, %i\n' % (lib.time.time(), beat_phase))
                     #midi_vel.value = get_midi_vel(rect_val)
                     #if (arm_flag.value == True) and (play_flag.value == False):
-                    play_flag.value = True
+                    if countoff == 0:
+                        play_flag.value = True
                     #print 'play now', play_flag.value
 
                 if ((avg_acc_schm * prev_avg_acc_schm < 0) and (beat_phase == 0) and (timer < 0) and (avg_vel_schm > 0)):

@@ -150,6 +150,7 @@ if __name__ == '__main__':
 
     curr_path = lib.os.path.dirname(lib.os.path.abspath(__file__))                          # paht where this file is running from
     save_path = curr_path + '/users/' + str(user_id)                                # path to store data in csv file
+    save_path = curr_path + '/users/' + str(user_id) + '/02_intention_studies/'
     midi_path = curr_path + '/midi_files/' + midi_file + '/' + midi_file# + '.mid'                     # paht of the midi file to play
 
     if not lib.os.path.exists(save_path):                                               # if the path does not exist create it
@@ -190,7 +191,7 @@ if __name__ == '__main__':
         lib.time.sleep(2)
         lib.os.system('open -a Terminal')
         pam.play(midi_path, save_path, midi_device, 3, 1)                                     # Initialize MIDI playback
-        pam.play(midi_path, save_path, midi_device, 0, 1)
+        pam.play(midi_path, save_path, midi_device, tempo_method, 1)
         p0 = lib.multiprocessing.Process(target=retryMenu, args=(retry,))
         osc_client = lib.OSC.OSCClient()
         osc_client.connect(('localhost', 7000))  # INSCORE
