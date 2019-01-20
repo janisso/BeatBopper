@@ -1,0 +1,21 @@
+/ITL/scene/* del;
+
+/ITL get musicxml-version;
+/ITL/scene/score set musicxmlf "maz_op7_no1.xml";
+/ITL/scene/score columns 1;
+/ITL/scene/score scale 0.25;
+/ITL/scene/cursor set rect 0.02 0.8;
+/ITL/scene/cursor color 0 0 255;
+/ITL/scene/sync cursor score;
+
+/ITL/scene/cursor watch timeEnter 0 11 (
+/ITL/scene/score page 1
+);
+
+/ITL/scene/cursor watch timeEnter 11 25.5 (
+/ITL/scene/score page 2
+);
+
+/ITL/scene/cursor watch timeEnter 26 32  (
+/ITL/scene/score page 3
+);
