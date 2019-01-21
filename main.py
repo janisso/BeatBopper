@@ -149,7 +149,8 @@ if __name__ == '__main__':
     #save_path = args.save_path                                                     # variable to save log files
 
     curr_path = lib.os.path.dirname(lib.os.path.abspath(__file__))                          # paht where this file is running from
-    save_path = curr_path + '/00_free_form/' + str(user_id)                                # path to store data in csv file
+    #save_path = curr_path + '/00_free_form/' + str(user_id)
+    save_path = curr_path + '/users/' + str(user_id) + '/00_free_form/'# path to store data in csv file
     midi_path = curr_path + '/midi_files/' + midi_file + '/' + midi_file# + '.mid'                     # paht of the midi file to play
 
     if not lib.os.path.exists(save_path):                                               # if the path does not exist create it
@@ -185,10 +186,13 @@ if __name__ == '__main__':
     while True:
         # OPENING INSCORE
         lib.os.system('open ' + midi_path + '.inscore')  # Load the score
-        # os.system('open ' + curr_path + '/midi_files/' + midi_file + '/' + midi_file + '.inscore')  # Load the score
+        #os.system('open ' + curr_path + '/midi_files/' + midi_file + '/' + midi_file + '.inscore')  # Load the score
         lib.time.sleep(2)
         lib.os.system('open -a Terminal')
-        pam.play(midi_path, save_path, midi_device, tempo_method, 0)                                     # Initialize MIDI playback
+        if tempo_method == 3:
+            pam.play(midi_path, save_path, midi_device, tempo_method, 1)                                     # Initialize MIDI playback
+        else:
+            pam.play(midi_path, save_path, midi_device, tempo_method, 0)
         #pam.play(midi_path, save_path, midi_device, 0)
         p0 = lib.multiprocessing.Process(target=retryMenu, args=(retry,))
         osc_client = lib.OSC.OSCClient()

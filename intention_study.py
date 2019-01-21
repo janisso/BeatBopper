@@ -149,7 +149,7 @@ if __name__ == '__main__':
     #save_path = args.save_path                                                     # variable to save log files
 
     curr_path = lib.os.path.dirname(lib.os.path.abspath(__file__))                          # paht where this file is running from
-    save_path = curr_path + '/users/' + str(user_id)                                # path to store data in csv file
+    #save_path = curr_path + '/users/' + str(user_id)                                # path to store data in csv file
     save_path = curr_path + '/users/' + str(user_id) + '/02_intention_studies/'
     midi_path = curr_path + '/midi_files/' + midi_file + '/' + midi_file# + '.mid'                     # paht of the midi file to play
 
