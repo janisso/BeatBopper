@@ -8,14 +8,22 @@
 /ITL/scene/cursor color 0 0 255;
 /ITL/scene/sync cursor score;
 
-/ITL/scene/cursor watch timeEnter 0 11 (
+/ITL/scene/cursor watch timeEnter 0 11.75 (
 /ITL/scene/score page 1
 );
 
-/ITL/scene/cursor watch timeEnter 11 25.5 (
+/ITL/scene/cursor watch timeEnter 12 22 (
 /ITL/scene/score page 2
 );
 
-/ITL/scene/cursor watch timeEnter 26 32  (
+/ITL/scene/cursor watch timeEnter 23 34 (
 /ITL/scene/score page 3
+);
+
+/ITL/scene/cursor watch timeEnter 35 44 (
+/ITL/scene/score page 4
+);
+
+/ITL/scene/cursor watch timeEnter 47 64 (
+/ITL/scene/score page 5
 );

@@ -204,6 +204,7 @@ def play_midi(midi_path, save_path, beats, midi_vel, stop_all,midi_device_nr):
                 msgMIDI.channel = 0
                 port.send(msgMIDI)                              # send the message using predefined port (midi device)
                 yo = lib.np.delete(yo, 0, 0)                    # once the note has been played delete the first message
+                print beats.value/2
         else:                                                   # if there are no more notes to play
             f.close                                             # stop storing the values in csv
             stop_all.value = True                                 # flag to indicate to the rest of the system that the file has finished.

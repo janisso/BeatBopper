@@ -140,12 +140,14 @@ if __name__ == '__main__':
     parser.add_argument('-f', '--midi_file', help='Enter MIDI file to be played back')      # MIDI file to open
     parser.add_argument('-d', '--midi_device', help='Enter MIDI device Nr.')  # MIDI file to open
     parser.add_argument('-m', '--method', help='Enter Rubato induction method: 0-Naive; 1-Compensation; 2-Phase estimation; 3-Demo')
+    parser.add_argument('-l', '--leap', help='With or without selection menu. 0-without; 1-with')
     #parser.add_argument('-s', '--save_path', help='Enter path to save log files')   # path to save log files
     args = parser.parse_args()                                                      # variable to store list of user input variables
     user_id = int(args.user_id)                                                     # variable to store User ID
     midi_file = args.midi_file                                                           # variable to store the name of the MIDI file, all the MIDI files should be stored in midi_files folder of the project
     midi_device = int(args.midi_device)
     tempo_method = int(args.method)
+    leap = int(args.leap)
     #save_path = args.save_path                                                     # variable to save log files
 
     curr_path = lib.os.path.dirname(lib.os.path.abspath(__file__))                          # paht where this file is running from
@@ -170,14 +172,16 @@ if __name__ == '__main__':
 
     #SETTING UP OSC CLIENT FOR INSCOR
     lib.time.sleep(3)
-    osc_send_i('/ITL/scene',['load','/Users/mb/Desktop/Janis.so/06_qmul/BeatBopper/menu/main_menu.inscore'])
+    if leap:
+        osc_send_i('/ITL/scene',['load','/Users/mb/Desktop/Janis.so/06_qmul/BeatBopper/menu/main_menu.inscore'])
     lib.time.sleep(1)
     lib.os.system('open -a Terminal')
 
-    retry = lib.multiprocessing.Value('i', 3)
-    demo_p = lib.multiprocessing.Process(target=demoMenu,args=())
-    demo_p.start()
-    demo_p.join()                                               # Give some time to laod
+    retry = lib.multiprocessing.Value('i', 1)
+    if leap:
+        demo_p = lib.multiprocessing.Process(target=demoMenu,args=())
+        demo_p.start()
+        demo_p.join()                                               # Give some time to laod
     osc_client.close()
 
     #SELECTING SOCRES AND MENUS
@@ -194,16 +198,17 @@ if __name__ == '__main__':
         else:
             pam.play(midi_path, save_path, midi_device, tempo_method, 0)
         #pam.play(midi_path, save_path, midi_device, 0)
-        p0 = lib.multiprocessing.Process(target=retryMenu, args=(retry,))
-        osc_client = lib.OSC.OSCClient()
-        osc_client.connect(('localhost', 7000))  # INSCORE
-        osc_send_i('/ITL/scene',
-                 ['load', '/Users/mb/Desktop/Janis.so/06_qmul/BeatBopper/menu/retry_quit.inscore'])
-        lib.os.system('open -a Terminal')
-        p0 = lib.multiprocessing.Process(target=retryMenu, args=(retry,))
-        p0.start()
-        p0.join()
-        osc_send_i('/ITL/scene/*', 'del')
+        if leap:
+            p0 = lib.multiprocessing.Process(target=retryMenu, args=(retry,))
+            osc_client = lib.OSC.OSCClient()
+            osc_client.connect(('localhost', 7000))  # INSCORE
+            osc_send_i('/ITL/scene',
+                     ['load', '/Users/mb/Desktop/Janis.so/06_qmul/BeatBopper/menu/retry_quit.inscore'])
+            lib.os.system('open -a Terminal')
+            p0 = lib.multiprocessing.Process(target=retryMenu, args=(retry,))
+            p0.start()
+            p0.join()
+            osc_send_i('/ITL/scene/*', 'del')
         if retry.value == 0:
             count += 1
             osc_client.close()
