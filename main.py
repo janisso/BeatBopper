@@ -1,5 +1,4 @@
 ### This is the main file that controls rest of the files. It initiates sets up some of the global variables
-
 import argparse
 import pam
 import lib

@@ -16,70 +16,73 @@ from scipy.stats import skewnorm
 #Chopin Mazurka Op.7 No.1 By Arthur Rubinstein
 #9059-05
 
-only_these = ['M63-3']#['M17-4','M24-4']
+only_these = ['M59-3']#['M17-4','M24-4']
 
 path = "/Users/mb/Desktop/Janis.so/06_qmul/BeatBopper_study/MazurkaBL/"
-for name in only_these:
-    tempo_data = np.genfromtxt(path+'beat_time/'+name+'beat_time.csv',delimiter=',',skip_header=1,names=None)[:,2:][181:194]
-    loud_data = np.genfromtxt(path+'beat_dyn/'+name+'beat_dynNORM.csv',delimiter=',',skip_header=1,names=None)[:,2:][181:194]
-    
-    iois = np.zeros(np.shape(tempo_data))
-    for i in range(np.shape(tempo_data)[1]):
-        iois[1:,i]=np.diff(tempo_data[:,i])
-    
-    avg_iois = iois.mean(axis=1)
-    avg_loud = loud_data.mean(axis=1)
-    avg_loud = avg_loud/avg_loud.max()
-    
-    f, axarr = plt.subplots(2,sharex=True)
-    f.suptitle(name+'Average IOIs and Loudness')
-    axarr[0].plot(iois,color='k',alpha=0.05)
-    axarr[0].plot(avg_iois,color='r',lw=2)
-    axarr[0].set_ylabel('IOIs')
-    
-    axarr[1].plot(loud_data,color='k',alpha=0.05)
-    axarr[1].plot(avg_loud,color='r',lw=2)
-    axarr[1].set_ylabel('Normalised Loudness')
-    axarr[1].set_xlabel('Beats')
-    #axarr[0].title('Average IOIs and Loudness')
-    
-    f, axarr = plt.subplots(2,sharex=True)
-    f.suptitle(name)
-    axarr[0].plot(60./avg_iois)
-    axarr[1].plot(np.array(avg_loud*127).astype(int))
-    
-    #interpolation for MIDI playback
-    syn_times = np.cumsum(avg_iois)
-    syn_len = int(syn_times[-1]/0.0064)
-    #count_off = 
-    
-    t = syn_times
-    b = np.arange(len(syn_times))
-    l = np.array(avg_loud*127).astype(int)
-    tvals = np.linspace(0,syn_times[-1],syn_len)
-    binterp = np.interp(tvals,t,b)
-    linterp = np.interp(tvals,t,l).astype(int)
-    
-    '''plt.figure()
-    plt.plot(t,b)
-    plt.plot(tvals,binterp)'''
-    namen = name+'_e1'
-    
-    #expr_perf = np.hstack((b,np.array(avg_loud*127).astype(int)))
-    expr_perf = np.vstack((binterp.T,linterp.T)).T
-    #expr_perf = np.vstack((b,t,l)).T
-    save_path = "/Users/mb/Desktop/Janis.so/06_qmul/BeatBopper/midi_files/"+namen+'/'
-    if not os.path.exists(save_path):                                               # if the path does not exist create it
-        os.makedirs(save_path)
-    np.savetxt(save_path+namen+".csv", expr_perf, delimiter=",")
-    
-    t_c = np.zeros(7)
-    t_c[1:] = np.cumsum(np.full(6,syn_times[1]))
-    b_c = np.arange(7)
-    t_c_syn_len = int(t_c[-1]/0.0064)
-    t_cvals = np.linspace(0,t_c[-1],t_c_syn_len)
-    t_bvals = np.interp(t_cvals,t_c,b_c)
-    np.savetxt(save_path+namen+"countoff.csv", t_bvals, delimiter=",")
+not_these = ['M07-1','M63-3','M59-3','M24-2']
+for file in glob.glob(path+"beat_time/*.csv"):
+    name = os.path.basename(file)[:5]
+    if name not in not_these:
+        tempo_data = np.genfromtxt(path+'beat_time/'+name+'beat_time.csv',delimiter=',',skip_header=1,names=None)[:,2:]#[181:194]
+        loud_data = np.genfromtxt(path+'beat_dyn/'+name+'beat_dynNORM.csv',delimiter=',',skip_header=1,names=None)[:,2:]#[181:194]
+        
+        iois = np.zeros(np.shape(tempo_data))
+        for i in range(np.shape(tempo_data)[1]):
+            iois[1:,i]=np.diff(tempo_data[:,i])
+        
+        avg_iois = iois.mean(axis=1)
+        avg_loud = loud_data.mean(axis=1)
+        avg_loud = avg_loud/avg_loud.max()
+        
+        f, axarr = plt.subplots(2,sharex=True)
+        f.suptitle(name+'Average IOIs and Loudness')
+        axarr[0].plot(iois,color='k',alpha=0.05)
+        axarr[0].plot(avg_iois,color='r',lw=2)
+        axarr[0].set_ylabel('IOIs')
+        
+        axarr[1].plot(loud_data,color='k',alpha=0.05)
+        axarr[1].plot(avg_loud,color='r',lw=2)
+        axarr[1].set_ylabel('Normalised Loudness')
+        axarr[1].set_xlabel('Beats')
+        #axarr[0].title('Average IOIs and Loudness')
+        
+        f, axarr = plt.subplots(2,sharex=True)
+        f.suptitle(name)
+        axarr[0].plot(60./avg_iois)
+        axarr[1].plot(np.array(avg_loud*127).astype(int))
+        
+        #interpolation for MIDI playback
+        syn_times = np.cumsum(avg_iois)
+        syn_len = int(syn_times[-1]/0.0064)
+        #count_off = 
+        
+        t = syn_times
+        b = np.arange(len(syn_times))
+        l = np.array(avg_loud*127).astype(int)
+        tvals = np.linspace(0,syn_times[-1],syn_len)
+        binterp = np.interp(tvals,t,b)
+        linterp = np.interp(tvals,t,l).astype(int)
+        
+        '''plt.figure()
+        plt.plot(t,b)
+        plt.plot(tvals,binterp)'''
+        namen = name#+'_e1'
+        
+        #expr_perf = np.hstack((b,np.array(avg_loud*127).astype(int)))
+        expr_perf = np.vstack((binterp.T,linterp.T)).T
+        #expr_perf = np.vstack((b,t,l)).T
+        save_path = "/Users/mb/Desktop/Janis.so/06_qmul/BeatBopper/midi_files/"+namen+'/'
+        if not os.path.exists(save_path):                                               # if the path does not exist create it
+            os.makedirs(save_path)
+        np.savetxt(save_path+namen+".csv", expr_perf, delimiter=",")
+        
+        t_c = np.zeros(7)
+        t_c[1:] = np.cumsum(np.full(6,syn_times[1]))
+        b_c = np.arange(7)
+        t_c_syn_len = int(t_c[-1]/0.0064)
+        t_cvals = np.linspace(0,t_c[-1],t_c_syn_len)
+        t_bvals = np.interp(t_cvals,t_c,b_c)
+        np.savetxt(save_path+namen+"countoff.csv", t_bvals, delimiter=",")
 
 '''plt.plot(t_c,b_c)
 plt.plot(t_cvals,t_bvals)

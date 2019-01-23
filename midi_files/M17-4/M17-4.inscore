@@ -1,0 +1,8 @@
+/ITL/scene/* del;
+/ITL get musicxml-version;
+/ITL/scene/score set musicxmlf "M17-4.xml";
+/ITL/scene/score columns 1;
+/ITL/scene/score scale 0.25;
+/ITL/scene/cursor set rect 0.02 0.8;
+/ITL/scene/cursor color 0 0 255;
+/ITL/scene/sync cursor score;

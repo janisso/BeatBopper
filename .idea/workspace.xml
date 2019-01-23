@@ -5,34 +5,30 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/analysis/expr_perf_tempo.py" beforeDir="false" afterPath="$PROJECT_DIR$/analysis/expr_perf_tempo.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/analysis/mazurkabl_rubato.py" beforeDir="false" afterPath="$PROJECT_DIR$/analysis/mazurkabl_rubato.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/intention_study.py" beforeDir="false" afterPath="$PROJECT_DIR$/intention_study.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/midi_files/M07-1/M07-1.inscore" beforeDir="false" afterPath="$PROJECT_DIR$/midi_files/M07-1/M07-1.inscore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/midi_files/M07-3/M07-3.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/midi_files/M07-3/M07-3.inscore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/midi_files/M07-3/M07-3.mid" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/midi_files/M07-3/M07-3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/midi_files/M07-3/M07-3countoff.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/midi_files/M17-1/M17-1.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/midi_files/M17-1/M17-1countoff.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/midi_files/M24-1/M24-1.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/midi_files/M24-1/M24-1countoff.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/midi_files/M24-4/M24-4.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/midi_files/M24-4/M24-4countoff.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/midi_files/M30-1/M30-1.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/midi_files/M30-1/M30-1countoff.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/midi_files/M30-3/M30-3.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/midi_files/M30-3/M30-3countoff.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/midi_files/M41-1/M41-1.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/midi_files/M41-1/M41-1countoff.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/midi_files/M41-4/M41-4.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/midi_files/M41-4/M41-4countoff.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/midi_files/M63-3/M63-3.csv" beforeDir="false" afterPath="$PROJECT_DIR$/midi_files/M63-3/M63-3.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/midi_files/M63-3/M63-3.inscore" beforeDir="false" afterPath="$PROJECT_DIR$/midi_files/M63-3/M63-3.inscore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/midi_files/M63-3/M63-3countoff.csv" beforeDir="false" afterPath="$PROJECT_DIR$/midi_files/M63-3/M63-3countoff.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pam.py" beforeDir="false" afterPath="$PROJECT_DIR$/pam.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/midi_files/M07-1/M07-1.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/users/888/00_free_form/play_midi.csv" beforeDir="false" afterPath="$PROJECT_DIR$/users/888/00_free_form/play_midi.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/888/02_intention_studies/play_midi.csv" beforeDir="false" afterPath="$PROJECT_DIR$/users/888/02_intention_studies/play_midi.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/888/02_intention_studies/0_2/0_c/do_reg.csv" beforeDir="false" afterPath="$PROJECT_DIR$/users/888/02_intention_studies/0_2/0_c/do_reg.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/888/02_intention_studies/0_2/0_c/get_samples.csv" beforeDir="false" afterPath="$PROJECT_DIR$/users/888/02_intention_studies/0_2/0_c/get_samples.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/888/02_intention_studies/0_2/0_c/phase_phase.csv" beforeDir="false" afterPath="$PROJECT_DIR$/users/888/02_intention_studies/0_2/0_c/phase_phase.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/888/02_intention_studies/0_2/0_c/phase_tempo_data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/users/888/02_intention_studies/0_2/0_c/phase_tempo_data.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/888/02_intention_studies/0_2/0_c/play_midi.csv" beforeDir="false" afterPath="$PROJECT_DIR$/users/888/02_intention_studies/0_2/0_c/play_midi.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/888/02_intention_studies/0_2/0_c/print_phase.csv" beforeDir="false" afterPath="$PROJECT_DIR$/users/888/02_intention_studies/0_2/0_c/print_phase.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/888/02_intention_studies/0_2/0_p/play_midi.csv" beforeDir="false" afterPath="$PROJECT_DIR$/users/888/02_intention_studies/0_2/0_p/play_midi.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/888/02_intention_studies/1_0/0_p/play_midi.csv" beforeDir="false" afterPath="$PROJECT_DIR$/users/888/02_intention_studies/1_0/0_p/play_midi.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/xml_files/M17-4/M17-4.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/xml_files/M17-4/M17-4.inscore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/xml_files/M17-4/M17-4.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/xml_files/M17-4/M17-4.mxl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/xml_files/M17-4/M17-4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/xml_files/M17-4/M17-4countoff.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/xml_files/M24-4/M24-4.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/xml_files/M24-4/M24-4.inscore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/xml_files/M24-4/M24-4.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/xml_files/M24-4/M24-4.mxl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/xml_files/M24-4/M24-4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/xml_files/M24-4/M24-4countoff.csv" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -44,7 +40,7 @@
     <session id="492851201">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="22" />
+          <entry key="project.closed" value="24" />
           <entry key="project.open.time.0" value="2" />
           <entry key="project.open.time.1" value="2" />
           <entry key="project.open.time.10" value="2" />
@@ -52,6 +48,7 @@
           <entry key="project.open.time.12" value="1" />
           <entry key="project.open.time.13" value="3" />
           <entry key="project.open.time.16" value="1" />
+          <entry key="project.open.time.17" value="2" />
           <entry key="project.open.time.2" value="2" />
           <entry key="project.open.time.20" value="1" />
           <entry key="project.open.time.24" value="1" />
@@ -62,19 +59,19 @@
           <entry key="project.open.time.7" value="1" />
           <entry key="project.open.time.8" value="5" />
           <entry key="project.open.time.9" value="5" />
-          <entry key="project.opened" value="34" />
+          <entry key="project.opened" value="36" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="3" />
           <entry key="py" value="21300" />
-          <entry key="txt" value="2363" />
+          <entry key="txt" value="2432" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="2366" />
+          <entry key="PLAIN_TEXT" value="2435" />
           <entry key="Python" value="21300" />
         </counts>
       </usages-collector>
@@ -99,14 +96,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="632">
-              <caret line="210" column="45" selection-start-line="210" selection-start-column="45" selection-end-line="210" selection-end-column="45" />
-              <folding>
-                <element signature="e#110#125#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="345">
+              <caret line="25" column="32" selection-start-line="25" selection-start-column="32" selection-end-line="25" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -114,7 +108,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pref_study.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="691">
+            <state relative-caret-position="2925">
               <caret line="197" column="82" selection-start-line="197" selection-start-column="32" selection-end-line="197" selection-end-column="82" />
               <folding>
                 <element signature="e#110#125#0" expanded="true" />
@@ -123,11 +117,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/intention_study.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="402">
-              <caret line="180" column="37" lean-forward="true" selection-start-line="180" selection-start-column="37" selection-end-line="180" selection-end-column="37" />
+            <state relative-caret-position="3195">
+              <caret line="215" column="52" selection-start-line="215" selection-start-column="52" selection-end-line="215" selection-end-column="52" />
               <folding>
                 <element signature="e#110#125#0" expanded="true" />
               </folding>
@@ -138,7 +132,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pam.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="73">
+            <state relative-caret-position="3525">
               <caret line="237" selection-start-line="237" selection-end-line="237" />
               <folding>
                 <element signature="e#436#446#0" expanded="true" />
@@ -152,7 +146,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/phase_est.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="855">
+            <state relative-caret-position="2025">
               <caret line="135" selection-start-line="135" selection-end-line="135" />
             </state>
           </provider>
@@ -229,8 +223,8 @@
         <option value="$PROJECT_DIR$/naive.py" />
         <option value="$PROJECT_DIR$/phase_est.py" />
         <option value="$PROJECT_DIR$/pam.py" />
-        <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/intention_study.py" />
+        <option value="$PROJECT_DIR$/main.py" />
       </list>
     </option>
   </component>
@@ -248,7 +242,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -260,6 +253,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -693,7 +687,14 @@
       <option name="project" value="LOCAL" />
       <updated>1548109283446</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="Added some more excerpts and synthesised expressive perfs">
+      <created>1548184390679</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1548184390679</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TodoView">
@@ -707,7 +708,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="316" y="22" width="1362" height="1024" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4992" visible="true" weight="0.120059654" />
       <window_info id="Structure" order="1" sideWeight="0.5008" side_tool="true" weight="0.14375" />
@@ -751,7 +751,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added armed before playback starts" />
     <MESSAGE value="Added still module and naive tempo estimation. ToDo: a) implement MIDI playback with naive tempo estimation; b) copy paste some of the code for verification module" />
     <MESSAGE value="Added still hand function. There is a trade-off between setting low and high values for the threshold of stillness" />
     <MESSAGE value="Naive works" />
@@ -776,7 +775,8 @@
     <MESSAGE value="added_some extra files" />
     <MESSAGE value="Added system preference studies and intention studies" />
     <MESSAGE value="Added some more score. Still need to disect into smaller chunks" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added some more score. Still need to disect into smaller chunks" />
+    <MESSAGE value="Added some more excerpts and synthesised expressive perfs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added some more excerpts and synthesised expressive perfs" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/users/0/play_midi.csv" />
@@ -827,17 +827,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/naive.py">
+    <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1185">
-          <caret line="79" column="16" selection-start-line="79" selection-start-column="16" selection-end-line="79" selection-end-column="33" />
+        <state relative-caret-position="345">
+          <caret line="25" column="32" selection-start-line="25" selection-start-column="32" selection-end-line="25" selection-end-column="32" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
+    <entry file="file://$PROJECT_DIR$/pref_study.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="632">
-          <caret line="210" column="45" selection-start-line="210" selection-start-column="45" selection-end-line="210" selection-end-column="45" />
+        <state relative-caret-position="2925">
+          <caret line="197" column="82" selection-start-line="197" selection-start-column="32" selection-end-line="197" selection-end-column="82" />
+          <folding>
+            <element signature="e#110#125#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/intention_study.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3195">
+          <caret line="215" column="52" selection-start-line="215" selection-start-column="52" selection-end-line="215" selection-end-column="52" />
           <folding>
             <element signature="e#110#125#0" expanded="true" />
           </folding>
@@ -846,7 +856,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pam.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="73">
+        <state relative-caret-position="3525">
           <caret line="237" selection-start-line="237" selection-end-line="237" />
           <folding>
             <element signature="e#436#446#0" expanded="true" />
@@ -858,28 +868,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/phase_est.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="855">
+        <state relative-caret-position="2025">
           <caret line="135" selection-start-line="135" selection-end-line="135" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pref_study.py">
+    <entry file="file://$PROJECT_DIR$/naive.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="691">
-          <caret line="197" column="82" selection-start-line="197" selection-start-column="32" selection-end-line="197" selection-end-column="82" />
-          <folding>
-            <element signature="e#110#125#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/intention_study.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="402">
-          <caret line="180" column="37" lean-forward="true" selection-start-line="180" selection-start-column="37" selection-end-line="180" selection-end-column="37" />
-          <folding>
-            <element signature="e#110#125#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="1185">
+          <caret line="79" column="16" selection-start-line="79" selection-start-column="16" selection-end-line="79" selection-end-column="33" />
         </state>
       </provider>
     </entry>
