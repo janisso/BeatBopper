@@ -4,7 +4,7 @@
   <identification>
     <encoding>
       <software>MuseScore 2.3.2</software>
-      <encoding-date>2019-01-25</encoding-date>
+      <encoding-date>2019-01-29</encoding-date>
       <supports element="accidental" type="yes"/>
       <supports element="beam" type="yes"/>
       <supports element="print" attribute="new-page" type="yes" value="yes"/>
@@ -3146,6 +3146,9 @@
         </barline>
       </measure>
     <measure number="51" width="129.32">
+      <barline location="left">
+        <ending number="2" type="start" default-y="30.00"/>
+        </barline>
       <note default-x="12.00" default-y="-40.00">
         <pitch>
           <step>E</step>
@@ -8526,6 +8529,9 @@
         </barline>
       </measure>
     <measure number="51" width="129.32">
+      <barline location="left">
+        <ending number="2" type="start" default-y="30.00"/>
+        </barline>
       <note default-x="12.00" default-y="-155.00">
         <pitch>
           <step>A</step>

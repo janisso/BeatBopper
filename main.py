@@ -215,5 +215,5 @@ if __name__ == '__main__':
             osc_client.close()
             break                                                        # Close OSC client once the playback has finished
     lib.subprocess.call(['osascript', '-e', 'quit app "/Applications/INScoreViewer-1.21.app"'])
-    lib.sys.exit(-1)
+    #lib.sys.exit(-1)
     print 'Program Terminated'

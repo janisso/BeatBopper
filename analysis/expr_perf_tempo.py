@@ -19,22 +19,25 @@ from scipy.stats import skewnorm
 only_these = ['M59-3']#['M17-4','M24-4']
 
 path = "/Users/mb/Desktop/Janis.so/06_qmul/BeatBopper_study/MazurkaBL/"
-not_these = ['M07-1','M63-3','M59-3','M24-2']
+not_these = ['M07-1','M63-3','M59-3','M24-2','M07-2','M24-3','M41-2']
 for file in glob.glob(path+"beat_time/*.csv"):
     name = os.path.basename(file)[:5]
-    if name not in not_these:
-        tempo_data = np.genfromtxt(path+'beat_time/'+name+'beat_time.csv',delimiter=',',skip_header=1,names=None)[:,2:]#[181:194]
-        loud_data = np.genfromtxt(path+'beat_dyn/'+name+'beat_dynNORM.csv',delimiter=',',skip_header=1,names=None)[:,2:]#[181:194]
+    #if name not in not_these:
+    if name == 'M33-1':
+        tempo_data = np.genfromtxt(path+'beat_time/'+name+'beat_time.csv',delimiter=',',skip_header=1,names=None)[:,2:][98:116]
+        orig_loud_data = np.genfromtxt(path+'beat_dyn/'+name+'beat_dynNORM.csv',delimiter=',',skip_header=1,names=None)[:,2:]
+        loud_data = np.genfromtxt(path+'beat_dyn/'+name+'beat_dynNORM.csv',delimiter=',',skip_header=1,names=None)[:,2:][98:116]
         
         iois = np.zeros(np.shape(tempo_data))
         for i in range(np.shape(tempo_data)[1]):
             iois[1:,i]=np.diff(tempo_data[:,i])
         
         avg_iois = iois.mean(axis=1)
+        loud_max = orig_loud_data.mean(axis=1).max()
         avg_loud = loud_data.mean(axis=1)
-        avg_loud = avg_loud/avg_loud.max()
+        avg_loud = avg_loud/loud_max
         
-        f, axarr = plt.subplots(2,sharex=True)
+        '''f, axarr = plt.subplots(2,sharex=True)
         f.suptitle(name+'Average IOIs and Loudness')
         axarr[0].plot(iois,color='k',alpha=0.05)
         axarr[0].plot(avg_iois,color='r',lw=2)
@@ -44,7 +47,7 @@ for file in glob.glob(path+"beat_time/*.csv"):
         axarr[1].plot(avg_loud,color='r',lw=2)
         axarr[1].set_ylabel('Normalised Loudness')
         axarr[1].set_xlabel('Beats')
-        #axarr[0].title('Average IOIs and Loudness')
+        #axarr[0].title('Average IOIs and Loudness')'''
         
         f, axarr = plt.subplots(2,sharex=True)
         f.suptitle(name)
@@ -53,6 +56,7 @@ for file in glob.glob(path+"beat_time/*.csv"):
         
         #interpolation for MIDI playback
         syn_times = np.cumsum(avg_iois)
+        
         syn_len = int(syn_times[-1]/0.0064)
         #count_off = 
         
@@ -66,7 +70,7 @@ for file in glob.glob(path+"beat_time/*.csv"):
         '''plt.figure()
         plt.plot(t,b)
         plt.plot(tvals,binterp)'''
-        namen = name#+'_e1'
+        namen = name+'_e1'
         
         #expr_perf = np.hstack((b,np.array(avg_loud*127).astype(int)))
         expr_perf = np.vstack((binterp.T,linterp.T)).T
@@ -75,6 +79,7 @@ for file in glob.glob(path+"beat_time/*.csv"):
         if not os.path.exists(save_path):                                               # if the path does not exist create it
             os.makedirs(save_path)
         np.savetxt(save_path+namen+".csv", expr_perf, delimiter=",")
+        np.savetxt(save_path+namen+'orig_beats.csv', syn_times, delimiter=",")
         
         t_c = np.zeros(7)
         t_c[1:] = np.cumsum(np.full(6,syn_times[1]))

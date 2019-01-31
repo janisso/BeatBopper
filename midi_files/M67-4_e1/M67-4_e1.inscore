@@ -1,6 +1,6 @@
 /ITL/scene/* del;
 /ITL get musicxml-version;
-/ITL/scene/score set musicxmlf "M67-4.musicxml";
+/ITL/scene/score set musicxmlf "M67-4_e1.musicxml";
 /ITL/scene/score columns 1;
 /ITL/scene/score scale 0.25;
 /ITL/scene/cursor set rect 0.02 0.8;

@@ -14,7 +14,11 @@ not_these = ['M07-1','M63-3','M59-3','M24-2']
 for file in glob.glob(path+"beat_time/*.csv"):
     name = os.path.basename(file)[:5]
     if name not in not_these:
-        f=open(save_path+name+'/'+name+'.inscore','w+')
+        filename = save_path+name+'/'+name+'.mid'
+        #print filename
+        os.system("cd /libs/MIDIFILE_RB/EXAMPLES")
+        os.system("./SMFformat0 "+filename+" "+filename)
+        '''f=open(save_path+name+'/'+name+'.inscore','w+')
         f.write('/ITL/scene/* del;\n')
         f.write('/ITL get musicxml-version;\n')
         f.write('/ITL/scene/score set musicxmlf "'+name+'.xml";\n')
@@ -23,4 +27,4 @@ for file in glob.glob(path+"beat_time/*.csv"):
         f.write('/ITL/scene/cursor set rect 0.02 0.8;\n')
         f.write('/ITL/scene/cursor color 0 0 255;\n')
         f.write('/ITL/scene/sync cursor score;\n')
-        f.close()
+        f.close()'''
