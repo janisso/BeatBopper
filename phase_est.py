@@ -51,7 +51,7 @@ class REG():
                     f.write("%f, %f, %f, %f\n"%(lib.time.time(),self.est_std,self.est_frac,self.est_phase))
                     self.counts+=1
                     #print 'reg_phase',self.est_phase/(2*lib.np.pi)
-            if stop_all.value == 1:
+            if stop_all.value == True:
                 f.close
                 break
 
@@ -142,7 +142,7 @@ def phase_tempo(q,palm_pos,hand_vel,hand_span,stop_all,arm_flag, play_flag,u_pha
             if arm_flag.value:
                 # verification module
                 if ((avg_vel_schm * prev_avg_vel_schm < 0) and (prev_avg_vel_schm < avg_vel_schm) and (beat_phase == 3)):# and (timer < 0)):
-                    print 'Beat 0', u_phase.value / (2*lib.np.pi)
+                    #print 'Beat 0', u_phase.value / (2*lib.np.pi)
                     beat_phase = 0
                     timer = timer_up
                     u_phase.value += lib.np.pi/2
@@ -156,7 +156,7 @@ def phase_tempo(q,palm_pos,hand_vel,hand_span,stop_all,arm_flag, play_flag,u_pha
                     #print 'play now', play_flag.value
 
                 if ((avg_acc_schm * prev_avg_acc_schm < 0) and (beat_phase == 0) and (timer < 0) and (avg_vel_schm > 0)):
-                    print 'Beat 1', u_phase.value / (2*lib.np.pi)
+                    #print 'Beat 1', u_phase.value / (2*lib.np.pi)
                     beat_phase = 1
                     timer = timer_up
                     u_phase.value += lib.np.pi/2
@@ -166,7 +166,7 @@ def phase_tempo(q,palm_pos,hand_vel,hand_span,stop_all,arm_flag, play_flag,u_pha
                     midi_vel.value = get_midi_vel(rect_val)
 
                 if ((avg_vel_schm * prev_avg_vel_schm < 0) and (beat_phase == 1) and (timer < 0)):
-                    print 'Beat 2', u_phase.value / (2 * lib.np.pi)
+                    #print 'Beat 2', u_phase.value / (2 * lib.np.pi)
                     beat_phase = 2
                     timer = timer_up
                     u_phase.value += lib.np.pi / 2
@@ -176,7 +176,7 @@ def phase_tempo(q,palm_pos,hand_vel,hand_span,stop_all,arm_flag, play_flag,u_pha
                     #midi_vel.value = get_midi_vel(rect_val)
 
                 if ((avg_acc_schm * prev_avg_acc_schm < 0) and (beat_phase == 2) and (timer < 0) and (avg_vel_schm < 0)):
-                    print 'Beat 3', u_phase.value / (2 * lib.np.pi)
+                    #print 'Beat 3', u_phase.value / (2 * lib.np.pi)
                     beat_phase = 3
                     timer = timer_up
                     u_phase.value += lib.np.pi / 2
@@ -236,7 +236,7 @@ def phase_comp(q1, play_flag, increment, stop_all, save_path):
                 phase4plbck = fP - phase_at_start
             curr_time = lib.time.time()
             curr_date = phase4plbck
-            print increment.value, curr_date
+            #print increment.value, curr_date
             if curr_date < prev_date:
                 curr_date = prev_date
             time_diff = (curr_time - prev_time) / 0.011
@@ -244,5 +244,5 @@ def phase_comp(q1, play_flag, increment, stop_all, save_path):
             prev_time = curr_time
             prev_date = curr_date
             f.write("%f, %f, %f, %f\n" % (lib.time.time(), fP, phase4plbck, curr_date))
-        if stop_all.value == 1:
+        if stop_all.value == True:
             break

@@ -6,7 +6,7 @@
 /ITL/scene/button color 0 255 0;
 /ITL/scene/button effect blur 32;
 
-/ITL/scene/demoText set txt "Demo";
+/ITL/scene/demoText set txt "Start 0";
 /ITL/scene/demoText fontSize 64;
 /ITL/scene/demoText alpha 0;
 

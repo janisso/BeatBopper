@@ -27,7 +27,6 @@ def phase_advance_naive(save_path,beats,tempo,stop_all,play_flag):
                 beat_counter += 1
             #lib.play_sound(lib.beat_do,lib.fs)
 
-
         if play_flag.value:
             playhead += (prev_tempo/2/60.0)*0.0064
             beats.value = playhead
@@ -313,7 +312,9 @@ def play(midi_path,save_path,midi_device, tempo_method, countoff):
         p_reg.join()
         p_phase_comp.join()
         print 'joined reg'
-    if (tempo_method == 0) or (tempo_method == 1) or (tempo_method == 2):
+        p_get_samples.join()
+        p_tempo.join()
+    if (tempo_method == 0) or (tempo_method == 1):# or (tempo_method == 2):
         p_get_samples.join()
         p_tempo.join()
         #p_count_off.join()

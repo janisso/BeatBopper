@@ -196,7 +196,7 @@ if __name__ == '__main__':
             # os.system('open ' + curr_path + '/midi_files/' + midi_file + '/' + midi_file + '.inscore')  # Load the score
             lib.time.sleep(2)
             lib.os.system('open -a Terminal')
-            pam.play(midi_path, save_path+'/'+str(i)+'_'+str(ms[i])+'/'+str(count)+'_p', midi_device, 3, 1)                                     # Initialize MIDI playback
+            pam.play(midi_path, save_path+'/'+str(i)+'_'+str(ms[i])+'/'+str(count)+'_p', midi_device, 3, 1)              # Initialize MIDI playback
             pam.play(midi_path, save_path+'/'+str(i)+'_'+str(ms[i])+'/'+str(count)+'_c', midi_device, ms[i], 1)
             p0 = lib.multiprocessing.Process(target=retryMenu, args=(retry,))
             osc_client = lib.OSC.OSCClient()
