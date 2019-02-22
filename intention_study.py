@@ -55,7 +55,7 @@ def demoMenu():
             break
         lib.time.sleep(0.05)
 
-def retryMenu(retry):
+def retryMenu1(retry):
     controller = lib.Leap.Controller()
     flag = 0
     x_pos = 0
@@ -172,24 +172,106 @@ def retryMenu(retry):
             break
         lib.time.sleep(0.05)
 
+def retryMenu(retry):
+    controller = lib.Leap.Controller()
+    flag = 0
+    x_pos = 0
+    y_pos = 0
+    hand_span = 65
+    osc_send_i('/ITL/scene/textL',['set', 'txt', 'Record'])
+    osc_send_i('/ITL/scene/textL',['fontSize',64])
+    osc_send_i('/ITL/scene/textL',['x',0.5])
+    osc_send_i('/ITL/scene/textL',['y',0])
+    osc_send_i('/ITL/scene/textL',['alpha',0])
+
+    osc_send_i('/ITL/scene/textR',['set','txt','Listen'])
+    osc_send_i('/ITL/scene/textR',['fontSize',64])
+    osc_send_i('/ITL/scene/textR',['x',-0.5])
+    osc_send_i('/ITL/scene/textR',['y',0])
+    osc_send_i('/ITL/scene/textR',['alpha',0])
+
+    osc_send_i('/ITL/scene/menuBall1',['set','ellipse',0.5,0.5])
+    osc_send_i('/ITL/scene/menuBall1',['color',255,255,0])
+
+    while True:
+        frame = controller.frame()
+        for hand in frame.hands:
+            #GETTING PALM VELOCITY
+            x = hand.palm_position.x
+            y = hand.palm_position.y
+            for finger in hand.fingers:
+                if finger.type == 0:
+                    thumb_pos = finger.tip_position
+                if finger.type == 2:
+                    pinky_pos = finger.tip_position
+            hand_span = lib.np.sqrt((thumb_pos.x-pinky_pos.x)**2+(thumb_pos.y-pinky_pos.y)**2+(thumb_pos.z-pinky_pos.z)**2)
+            x_pos = x/150
+            y_pos = (y-200)/200*(-1)
+        print x_pos, y_pos#hand_span
+        osc_send_i('/ITL/scene/menuBall1',['x',x_pos])
+        osc_send_i('/ITL/scene/menuBall1',['y',y_pos])
+        osc_send_i('/ITL/scene/menuBall1',['scale',(hand_span-40)/100])
+
+        #THIS IF STATEMENT INSIDE THE RETRY BUTTON
+        if (((-1) < x_pos < 0) and (-0.5 < y_pos < 0.5)) and (flag != 1):#(-0.5 < y_pos < 0.5)) and (flag == 0):
+            print 'in R'
+            osc_send_i('/ITL/scene/buttonR',['effect','none'],)
+            osc_send_i('/ITL/scene/menuBall1',['alpha',127])
+            osc_send_i('/ITL/scene/buttonL',['effect','blur',32])
+            osc_send_i('/ITL/scene/textR',['alpha',255])
+            osc_send_i('/ITL/scene/textL',['alpha',0])
+            #print 'in'
+            flag = 1
+
+        #THIS IF STATEMENT INSIDE THE QUIT BUTTON
+        if ((1 > x_pos > 0) and (-0.5 < y_pos < 0.5)) and (flag != 2):#(-0.5 < y_pos < 0.5)) and (flag == 0):
+            print 'in Q'
+            osc_send_i('/ITL/scene/buttonQ',['effect','none'],)
+            osc_send_i('/ITL/scene/menuBall1',['alpha',127])
+            osc_send_i('/ITL/scene/buttonL',['effect','blur',32])
+            osc_send_i('/ITL/scene/textR',['alpha',0])
+            osc_send_i('/ITL/scene/textL',['alpha',255])
+            #print 'in'
+            flag = 2
+
+        #THIS STATEMENT FOR OUTSIDE OF BUTTONS
+        if ((y_pos < (-0.5)) or (y_pos > 0.5)) and (flag != 3):
+            osc_send_i('/ITL/scene/buttonR',['effect','blur',32])
+            osc_send_i('/ITL/scene/buttonL',['effect','blur',32])
+            osc_send_i('/ITL/scene/textR',['alpha',0])
+            osc_send_i('/ITL/scene/textL',['alpha',0])
+            flag = 3
+
+        #THIS IF STATEMENT FOR CHOOSING A BUTTON
+        if (flag == 1) and (hand_span< 60):
+            retry.value = 0
+            break
+        if (flag == 2) and (hand_span< 60):
+            retry.value = 1
+            break
+        lib.time.sleep(0.05)
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()                                              # declaration of arguments
     parser.add_argument('-u', '--user_id', help='Enter user ID')                    # user_id
     parser.add_argument('-f', '--midi_file', help='Enter MIDI file to be played back')      # MIDI file to open
     parser.add_argument('-d', '--midi_device', help='Enter MIDI device Nr.')  # MIDI file to open
     parser.add_argument('-m', '--method', help='Enter Rubato induction method: 0-Naive; 1-Compensation; 2-Phase estimation; 3-Demo')
+    parser.add_argument('-e', '--excerpt', help='Enter enter the excerpt number')
+
     #parser.add_argument('-s', '--save_path', help='Enter path to save log files')   # path to save log files
     args = parser.parse_args()                                                      # variable to store list of user input variables
     user_id = int(args.user_id)                                                     # variable to store User ID
     midi_file = args.midi_file                                                           # variable to store the name of the MIDI file, all the MIDI files should be stored in midi_files folder of the project
     midi_device = int(args.midi_device)
     tempo_method = int(args.method)
+    excerpt = args.excerpt
 
     #save_path = args.save_path                                                     # variable to save log files
 
     curr_path = lib.os.path.dirname(lib.os.path.abspath(__file__))                          # paht where this file is running from
     #save_path = curr_path + '/users/' + str(user_id)                                # path to store data in csv file
-    save_path = curr_path + '/users/' + str(user_id) + '/02_intention_studies/'
+    save_path = curr_path + '/users/' + str(user_id) + '/02_intention_studies/'+excerpt+'/'
     midi_path = curr_path + '/midi_files/' + midi_file + '/' + midi_file# + '.mid'                     # paht of the midi file to play
 
     if not lib.os.path.exists(save_path):                                               # if the path does not exist create it
@@ -213,7 +295,7 @@ if __name__ == '__main__':
     osc_client.connect(('localhost', 7000))                                         # Connect to InScore
 
     #SETTING UP OSC CLIENT FOR INSCOR
-    lib.time.sleep(3)
+    '''lib.time.sleep(3)
     osc_send_i('/ITL/scene',['load','/Users/mb/Desktop/Janis.so/06_qmul/BeatBopper/menu/main_menu.inscore'])
     lib.time.sleep(1)
     lib.os.system('open -a Terminal')
@@ -222,14 +304,25 @@ if __name__ == '__main__':
     demo_p = lib.multiprocessing.Process(target=demoMenu,args=())
     demo_p.start()
     demo_p.join()                                               # Give some time to laod
-    #osc_client.close()
+    #osc_client.close()'''
 
-    l = 0
-    r = 0
+
 
     #SELECTING SOCRES AND MENU
     for i in range(len(ms)):
+        l = 0
+        r = 0
         count = 0
+        lib.time.sleep(3)
+        osc_send_i('/ITL/scene', ['load', '/Users/mb/Desktop/Janis.so/06_qmul/BeatBopper/menu/main_menu.inscore'])
+        osc_send_i('/ITL/scene/demoText', ['set', 'txt', "Start Method "+str(i+1)])
+        lib.time.sleep(1)
+        lib.os.system('open -a Terminal')
+
+        retry = lib.multiprocessing.Value('i', 0)
+        demo_p = lib.multiprocessing.Process(target=demoMenu, args=())
+        demo_p.start()
+        demo_p.join()
         while True:
             # OPENING INSCORE
             # os.system('open '+ curr_path+'/inscore_stuff/demo/demo.inscore')                # Load the score
@@ -237,7 +330,7 @@ if __name__ == '__main__':
             # os.system('open ' + curr_path + '/midi_files/' + midi_file + '/' + midi_file + '.inscore')  # Load the score
             lib.time.sleep(2)
             lib.os.system('open -a Terminal')
-            osc_send_i('/ITL/scene/demoText1', ['set', 'txt', str(user_id) + ' I ' + str(i + 1) + ' L: ' + str(l) + ' R: ' + str(r)])
+            osc_send_i('/ITL/scene/demoText1', ['set', 'txt', str(user_id) + ' I: ' + str(i + 1) + ' L: ' + str(l) + ' R: ' + str(r)])
             osc_send_i('/ITL/scene/demoText1', ['fontSize', 15])
             osc_send_i('/ITL/scene/demoText1', ['y', -0.8])
             if retry.value == 0:
@@ -257,23 +350,31 @@ if __name__ == '__main__':
                 pam.play(midi_path, save_path+'/'+str(i)+'_'+str(ms[i])+'/'+str(count)+'_c', midi_device, ms[i], 1)
                 r+=1
 
-            p0 = lib.multiprocessing.Process(target=retryMenu, args=(retry,))
+            #p0 = lib.multiprocessing.Process(target=retryMenu1, args=(retry,))
             osc_client = lib.OSC.OSCClient()
             osc_client.connect(('localhost', 7000))  # INSCORE
-            osc_send_i('/ITL/scene',
-                     ['load', '/Users/mb/Desktop/Janis.so/06_qmul/BeatBopper/menu/listen_record.inscore'])
+            if r == 0:
+                osc_send_i('/ITL/scene', ['load', '/Users/mb/Desktop/Janis.so/06_qmul/BeatBopper/menu/listen.inscore'])
+                p0 = lib.multiprocessing.Process(target=retryMenu, args=(retry,))
+            else:
+                osc_send_i('/ITL/scene', ['load', '/Users/mb/Desktop/Janis.so/06_qmul/BeatBopper/menu/listen_record.inscore'])
+                p0 = lib.multiprocessing.Process(target=retryMenu1, args=(retry,))
             lib.os.system('open -a Terminal')
-            p0 = lib.multiprocessing.Process(target=retryMenu, args=(retry,))
+            lib.time.sleep(2)
             p0.start()
             p0.join()
+            lib.time.sleep(2)
             #osc_send_i('/ITL/scene/*', 'del')
             if retry.value == 0 or retry.value == 1:
                 count += 1
                 #osc_client.close()
             if retry.value == 2:
-                osc_client.close()
+                #osc_client.close()
                 break                                                        # Close OSC client once the playback has finished
+            if r > 2:
+                break
             #count += 1
-    lib.subprocess.call(['osascript', '-e', 'quit app "/Applications/INScoreViewer-1.21.app"'])
+    #lib.os.system('open /Users/mb/Desktop/Janis.so/06_qmul/BB/02_inputs/inscore_stuff/main_menu/good_bye.inscore')
+    #lib.subprocess.call(['osascript', '-e', 'quit app "/Applications/INScoreViewer-1.21.app"'])
     lib.sys.exit(-1)
     print 'Program Terminated'

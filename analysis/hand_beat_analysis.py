@@ -5,8 +5,8 @@ from scipy import stats
 
 curr_path = os.path.dirname(os.path.abspath(__file__))                          # paht where this file is running from
 
-naive_data = np.genfromtxt('/Users/mb/Desktop/Janis.so/06_qmul/BeatBopper/users/888/03_pref_studies/2_1/1'+'/naive_tempo_data.csv',delimiter=',',names=True)
-phase_data = np.genfromtxt('/Users/mb/Desktop/Janis.so/06_qmul/BeatBopper/users/888/03_pref_studies/2_1/1'+'/naive_phase.csv',delimiter=',',names=True)
+naive_data = np.genfromtxt('/Users/mb/Desktop/Janis.so/06_qmul/BeatBopper/users/999/03_pref_studies/0_0/naive_tempo_data.csv',delimiter=',',names=True)
+phase_data = np.genfromtxt('/Users/mb/Desktop/Janis.so/06_qmul/BeatBopper/users/999/03_pref_studies/0_0/naive_phase.csv',delimiter=',',names=True)
 
 def compMeth(seconds,catchUp):
     seconds = seconds - seconds[0]
@@ -62,8 +62,8 @@ axarr[0].axhline(color='b',linestyle='--',lw=0.5)
 #axarr[1].axhline(y=-40, color='r','--')
 axarr[0].legend()
 
-avg_accel_t = naive_data['time'][1:]
-avg_accel = np.diff(naive_data['avg_vel'])
+avg_accel_t = naive_data['time']#[1:]
+avg_accel = naive_data['avg_acc']
 
 axarr[0].plot(phase_data['time'],phase_data['phase'], 'x',label='Raw Vel')
 axarr[1].plot(avg_accel_t, avg_accel)

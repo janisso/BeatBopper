@@ -37,6 +37,8 @@ def phase_advance_naive(save_path,beats,tempo,stop_all,play_flag):
         if stop_all.value == True:
             break
 
+
+
 def phase_advance_comp(save_path,beats,tempo,stop_all,play_flag):
     f = open(save_path + '/phase_advance_comp.csv', 'w+')                # open file to save log values
     f.write('time, beats\n')                                        # write first line with corresponding titles
@@ -203,7 +205,7 @@ def play_midi(midi_path, save_path, beats, midi_vel, stop_all,midi_device_nr):
                 msgMIDI.channel = 0
                 port.send(msgMIDI)                              # send the message using predefined port (midi device)
                 yo = lib.np.delete(yo, 0, 0)                    # once the note has been played delete the first message
-                print beats.value/2
+                #print beats.value/2
         else:                                                   # if there are no more notes to play
             f.close                                             # stop storing the values in csv
             stop_all.value = True                                 # flag to indicate to the rest of the system that the file has finished.

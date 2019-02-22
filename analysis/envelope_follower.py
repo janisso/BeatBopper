@@ -50,9 +50,9 @@ plt.show()'''
 
 curr_path = os.path.dirname(os.path.abspath(__file__))                          # paht where this file is running from
 
-naive_data = np.genfromtxt(curr_path+'/999/naive_tempo_data.csv',delimiter=',',names=True)
-phase_data = np.genfromtxt(curr_path+'/999/naive_phase.csv',delimiter=',',names=True)
-midi_data = np.genfromtxt(curr_path+'/999/play_midi.csv',delimiter=',',names=True)
+naive_data = np.genfromtxt('/Users/mb/Desktop/Janis.so/06_qmul/BeatBopper/users/999/03_pref_studies/0_0/naive_tempo_data.csv',delimiter=',',names=True)
+phase_data = np.genfromtxt('/Users/mb/Desktop/Janis.so/06_qmul/BeatBopper/users/999/03_pref_studies/0_0/naive_phase.csv',delimiter=',',names=True)
+midi_data = np.genfromtxt('/Users/mb/Desktop/Janis.so/06_qmul/BeatBopper/users/999/03_pref_studies/0_0/play_midi.csv',delimiter=',',names=True)
 
 t = naive_data['time']
 midi_time = midi_data['time'] - t[0]

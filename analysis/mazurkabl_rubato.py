@@ -88,7 +88,7 @@ for file in glob.glob(path+"beat_time/*.csv"):
             #n, bins, patches = axarr[1].hist(y,40,density=True,facecolor='g',edgecolor='r', alpha=0.7)
             #f.suptitle(name + ' Skew: '+str(skew)+' STD: '+str(std), fontsize=16)
             fig, axarr = plt.subplots()
-            axarr.plot(avg_iois)
+            axarr.plot(avg_iois,'.')
             axarr.axhline(y=1.5)#q3+iqr*1.5)
             #axarr.plot(peaks,avg_iois[peaks])
             axarr.axhline(y=s.describe()['min'])#-q1*1.5)

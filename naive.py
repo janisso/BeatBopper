@@ -75,7 +75,7 @@ def naive_tempo(palm_pos,hand_vel,hand_span,midi_vel,stop_all,arm_flag, play_fla
                 prev_beat_time = curr_beat_time
                 #timer = timer_up
                 f_phase.write('%f, %i\n' % (lib.time.time(), beat_phase))
-                print 'Beat ', tempo.value, ' dt ', beat_dt, avg_vel
+                #print 'Beat ', tempo.value, ' dt ', beat_dt, avg_vel
 
                 if countoff == 0:
                     #play_flag.value = 1
