@@ -37,6 +37,19 @@ class REG():
                     guess_frac = self.est_frac+0.006
                     optimize_func = lambda x: x[0]*lib.np.sin(self.t*x[1]+x[2]) - data
                     #self.est_std, self.est_frac, self.est_phase = least_squares(optimize_func, [guess_std, guess_frac, guess_phase],bounds=([0,0,self.est_phase],[1500,5,self.est_phase+np.pi/2]),max_nfev=100).x
+                    # NEW ADDITION - DELETE IF NOT WORKING
+                    # BELOW
+                    if guess_std < 0.0000001:
+                        guess_std = 0.0000001
+                    if guess_std > 3000:
+                        guess_std = 3000
+                    if guess_frac < 0.0005:
+                        guess_frac = 0.0005
+                    if guess_frac > 0.15:
+                        guess_frac = 0.15
+                    if guess_phase < self.est_phase:
+                        guess_phase = self.est_phase
+                    # NEW ADDITION ABOVE
                     self.est_std, self.est_frac, self.est_phase = lib.least_squares(optimize_func, [guess_std, guess_frac, guess_phase],bounds=([0.0000001,0.0005,self.est_phase],[3000,0.15,lib.np.inf]),max_nfev=50).x
                     if (self.est_phase < self.prev_phase) or (self.est_phase > self.prev_phase+lib.np.pi):
                         #self.est_phase = self.prev_phase
@@ -90,9 +103,10 @@ def phase_tempo(q,palm_pos,hand_vel,hand_span,stop_all,arm_flag, play_flag,u_pha
     #tempo = 0
 
     #SETUP CIRCULAR BUFFER FOR LPF
-    circ_buff = lib.CircularBuffer(size=lib.window_length)
-    rect_buff = lib.CircularBuffer(size=lib.window_length)
-    for i in range(lib.window_length):
+    circ_buff = lib.CircularBuffer(size=100)
+    rect_buff = lib.CircularBuffer(size=100)
+    coeffs = lib.signal.firwin(100, 0.001)
+    for i in range(100):
         circ_buff.append(0)
         rect_buff.append(0)
 
@@ -112,8 +126,8 @@ def phase_tempo(q,palm_pos,hand_vel,hand_span,stop_all,arm_flag, play_flag,u_pha
         rect_buff.append(abs(hand_vel.value))
 
         # getting filtered values for average
-        avg_vel = sum(circ_buff*lib.coeffs)                         # filtered avg_vel
-        rect_val = sum(rect_buff*lib.coeffs)
+        avg_vel = sum(circ_buff*coeffs)                         # filtered avg_vel
+        rect_val = sum(rect_buff*coeffs)
         avg_vel_schm = lib.schmit(avg_vel, 100)                      # filtered avg_vel with schmitt trigger
 
         still_point = lib.is_still(avg_vel,1)                     # function for checking if the hand is still,

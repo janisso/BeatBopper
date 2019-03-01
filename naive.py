@@ -24,9 +24,10 @@ def naive_tempo(palm_pos,hand_vel,hand_span,midi_vel,stop_all,arm_flag, play_fla
     start_play = False
 
     #SETUP CIRCULAR BUFFER FOR LPF
-    circ_buff = lib.CircularBuffer(size=lib.window_length)
-    rect_buff = lib.CircularBuffer(size=lib.window_length)
-    for i in range(lib.window_length):
+    circ_buff = lib.CircularBuffer(size=50)
+    rect_buff = lib.CircularBuffer(size=50)
+    coeffs = lib.signal.firwin(50, 0.001)
+    for i in range(50):
         circ_buff.append(0)
         rect_buff.append(0)
 
@@ -39,8 +40,8 @@ def naive_tempo(palm_pos,hand_vel,hand_span,midi_vel,stop_all,arm_flag, play_fla
         rect_buff.append(abs(hand_vel.value))
 
         # getting filtered values for average
-        avg_vel = sum(circ_buff*lib.coeffs)                         # filtered avg_vel
-        rect_val = sum(rect_buff*lib.coeffs)
+        avg_vel = sum(circ_buff*coeffs)                         # filtered avg_vel
+        rect_val = sum(rect_buff*coeffs)
         avg_vel_schm = lib.schmit(avg_vel, 20)                      # filtered avg_vel with schmitt trigger
 
         still_point = lib.is_still(avg_vel,1)                     # function for checking if the hand is still,

@@ -78,17 +78,18 @@ def phase_advance_comp(save_path,beats,tempo,stop_all,play_flag):
         if stop_all.value == True:
             break
 
-def phase_advance_bb(increment,beats,up_thresh,stop_all):
+def phase_advance_bb(increment,beats,up_thresh,stop_all, play_flag):
     playhead = 0
     while True:
-        if playhead <= up_thresh.value:
-            playhead += increment.value
-            beats.value = playhead/2
-        else:
-            beats.value = beats.value
-        lib.time.sleep(0.009)
-        if stop_all.value == True:
-            break
+        if play_flag.value:
+            if playhead <= up_thresh.value:
+                playhead += increment.value
+                beats.value = playhead/2
+            else:
+                beats.value = beats.value
+            lib.time.sleep(0.009)
+            if stop_all.value == True:
+                break
 
 def phase_advance_demo(midi_path,midi_vel,beats,stop_all,play_flag):
     data = lib.np.genfromtxt(midi_path+'.csv',delimiter=',')
@@ -268,7 +269,7 @@ def play(midi_path,save_path,midi_device, tempo_method, countoff):
         increment = lib.multiprocessing.Value('d', 0.0)
         p_reg = lib.multiprocessing.Process(target=r.doReg, args=(q, u_phase, q1, stop_all, save_path))
         p_phase_comp = lib.multiprocessing.Process(target=phase_est.phase_comp, args=(q1, play_flag, increment, stop_all, save_path))
-        p_phase_advance = lib.multiprocessing.Process(target=phase_advance_bb,args=(increment, beats, up_thresh, stop_all))                   # process to count phase informatioin
+        p_phase_advance = lib.multiprocessing.Process(target=phase_advance_bb,args=(increment, beats, up_thresh, stop_all,play_flag))                   # process to count phase informatioin
         p_tempo = lib.multiprocessing.Process(target=phase_est.phase_tempo, args=(q, palm_pos, hand_vel, hand_span, stop_all, arm_flag, play_flag, u_phase, up_thresh, save_path, midi_vel,countoff))
         p_get_samples = lib.multiprocessing.Process(target=lib.get_samples,
                                                     args=(palm_pos, hand_vel, hand_span, stop_all, save_path))

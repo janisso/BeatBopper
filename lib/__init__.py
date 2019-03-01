@@ -13,10 +13,10 @@ import Leap
 import subprocess
 
 #SET UP WINDOW LENGTH AND HOP SIZE FOR REGRESSION
-window_length = 100
+#window_length = 100
 #SET UP FILTER
-f = 0.001
-coeffs = signal.firwin(window_length, f)
+#f = 0.001
+#coeffs = signal.firwin(window_length, f)
 
 
 #CIRCULAR BUFFER CLASS FOR STORING VALUES FOR FILTERING

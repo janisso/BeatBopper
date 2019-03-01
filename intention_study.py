@@ -314,6 +314,7 @@ if __name__ == '__main__':
         r = 0
         count = 0
         lib.time.sleep(3)
+        osc_send_i('/ITL/scene/*', 'del')
         osc_send_i('/ITL/scene', ['load', '/Users/mb/Desktop/Janis.so/06_qmul/BeatBopper/menu/main_menu.inscore'])
         osc_send_i('/ITL/scene/demoText', ['set', 'txt', "Start Method "+str(i+1)])
         lib.time.sleep(1)
@@ -329,6 +330,7 @@ if __name__ == '__main__':
             lib.os.system('open ' + midi_path + '.inscore')  # Load the score
             # os.system('open ' + curr_path + '/midi_files/' + midi_file + '/' + midi_file + '.inscore')  # Load the score
             lib.time.sleep(2)
+            osc_send_i('/ITL/scene/*', 'del')
             lib.os.system('open -a Terminal')
             osc_send_i('/ITL/scene/demoText1', ['set', 'txt', str(user_id) + ' I: ' + str(i + 1) + ' L: ' + str(l) + ' R: ' + str(r)])
             osc_send_i('/ITL/scene/demoText1', ['fontSize', 15])
@@ -364,7 +366,7 @@ if __name__ == '__main__':
             p0.start()
             p0.join()
             lib.time.sleep(2)
-            #osc_send_i('/ITL/scene/*', 'del')
+            osc_send_i('/ITL/scene/*', 'del')
             if retry.value == 0 or retry.value == 1:
                 count += 1
                 #osc_client.close()
