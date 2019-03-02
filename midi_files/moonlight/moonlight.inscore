@@ -1,0 +1,36 @@
+/ITL/scene/* del;
+/ITL get musicxml-version;
+/ITL/scene/score set musicxmlf "moonlight.xml";
+/ITL/scene/score columns 1;
+/ITL/scene/score scale 0.25;
+/ITL/scene/cursor set rect 0.02 0.8;
+/ITL/scene/cursor color 0 0 255;
+/ITL/scene/sync cursor score;
+
+/ITL/scene/cursor watch timeEnter 0 9 (
+/ITL/scene/score page 1
+);
+
+/ITL/scene/cursor watch timeEnter 10 19 (
+/ITL/scene/score page 2
+);
+
+/ITL/scene/cursor watch timeEnter 20 27  (
+/ITL/scene/score page 3
+);
+
+/ITL/scene/cursor watch timeEnter 28 37  (
+/ITL/scene/score page 4
+);
+
+/ITL/scene/cursor watch timeEnter 38 47  (
+/ITL/scene/score page 5
+);
+
+/ITL/scene/cursor watch timeEnter 48 57  (
+/ITL/scene/score page 6
+);
+
+/ITL/scene/cursor watch timeEnter 58 67  (
+/ITL/scene/score page 7
+);

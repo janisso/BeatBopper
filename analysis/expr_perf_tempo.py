@@ -12,6 +12,7 @@ from scipy import signal
 import matplotlib.pyplot as plt
 import scipy
 from scipy.stats import skewnorm
+import glob
 
 #Chopin Mazurka Op.7 No.1 By Arthur Rubinstein
 #9059-05
@@ -88,27 +89,6 @@ for file in glob.glob(path+"beat_time/*.csv"):
         t_cvals = np.linspace(0,t_c[-1],t_c_syn_len)
         t_bvals = np.interp(t_cvals,t_c,b_c)
         #np.savetxt(save_path+namen+"countoff.csv", t_bvals, delimiter=",")
-
-tempo = [0.666864959,
- 0.293554554,
- 0.846524441,
- 0.262279637,
- 0,
- 0.531958806,
- 0.757479073,
- 0.822376033,
- 0.763891786,
- 0.817439564,
- 0.928675995,
- 0.885770228,
- 0.990360008,
- 0.668410767,
- 0.708365435,
- 1,
- 0.708537149,
- 0.707392363,
- 0.839258186,
- 0.730695418]
 
 
 

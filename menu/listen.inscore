@@ -1,0 +1,13 @@
+/ITL/scene/* del;
+
+/ITL/scene/buttonL set rect 1 1;
+/ITL/scene/buttonL x -0.5;
+/ITL/scene/buttonL y 0;
+/ITL/scene/buttonL color 0 0 255;
+/ITL/scene/buttonL effect blur 32;
+
+/ITL/scene/buttonR set rect 1 1;
+/ITL/scene/buttonR x 0.5;
+/ITL/scene/buttonR y 0;
+/ITL/scene/buttonR color 0 255 0;
+/ITL/scene/buttonR effect blur 32;
