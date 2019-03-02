@@ -74,7 +74,7 @@ def borch_comp(palm_pos,hand_vel,hand_span,midi_vel,stop_all,arm_flag, play_flag
                 prev_beat_time = curr_beat_time
                 #timer = timer_up
                 f_phase.write('%f, %i\n' % (lib.time.time(), beat_phase))
-                print 'Beat ', tempo.value, ' dt ', beat_dt
+                #print 'Beat ', tempo.value, ' dt ', beat_dt
                 if (arm_flag.value == True) and (play_flag.value == False):
                     play_flag.value = True
                     print 'play now', play_flag.value

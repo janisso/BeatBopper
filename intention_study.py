@@ -97,14 +97,14 @@ def retryMenu1(retry):
             hand_span = lib.np.sqrt((thumb_pos.x-pinky_pos.x)**2+(thumb_pos.y-pinky_pos.y)**2+(thumb_pos.z-pinky_pos.z)**2)
             x_pos = x/150
             y_pos = (y-200)/200*(-1)
-        print x_pos, y_pos#hand_span
+        #print x_pos, y_pos#hand_span
         osc_send_i('/ITL/scene/menuBall1',['x',x_pos])
         osc_send_i('/ITL/scene/menuBall1',['y',y_pos])
         osc_send_i('/ITL/scene/menuBall1',['scale',(hand_span-40)/100])
 
         #THIS IF STATEMENT INSIDE THE LISTEN BUTTON
         if (((-0.9) < x_pos < -0.3) and (-0.3 < y_pos < 0.3)) and (flag != 1):#(-0.5 < y_pos < 0.5)) and (flag == 0):
-            print 'in L'
+            #print 'in L'
             osc_send_i('/ITL/scene/buttonL',['effect','none'],)
             osc_send_i('/ITL/scene/textL', ['alpha', 255])
 
@@ -120,7 +120,7 @@ def retryMenu1(retry):
 
         #THIS IF STATEMENT INSIDE THE RECORD BUTTON
         if ((0.3 > x_pos > -0.3) and (-0.5 < y_pos < 0.5)) and (flag != 2):#(-0.5 < y_pos < 0.5)) and (flag == 0):
-            print 'in R'
+            #print 'in R'
             osc_send_i('/ITL/scene/buttonR',['effect','none'],)
             osc_send_i('/ITL/scene/textR', ['alpha', 255])
 
@@ -136,7 +136,7 @@ def retryMenu1(retry):
 
         #THIS IF STATEMENT INSIDE THE QUIT BUTTON
         if ((0.9 > x_pos > 0.3) and (-0.3 < y_pos < 0.3)) and (flag != 3):#(-0.5 < y_pos < 0.5)) and (flag == 0):
-            print 'in Q'
+            #print 'in Q'
             osc_send_i('/ITL/scene/buttonQ',['effect','none'],)
             osc_send_i('/ITL/scene/textQ', ['alpha', 255])
 
@@ -207,14 +207,14 @@ def retryMenu(retry):
             hand_span = lib.np.sqrt((thumb_pos.x-pinky_pos.x)**2+(thumb_pos.y-pinky_pos.y)**2+(thumb_pos.z-pinky_pos.z)**2)
             x_pos = x/150
             y_pos = (y-200)/200*(-1)
-        print x_pos, y_pos#hand_span
+        #print x_pos, y_pos#hand_span
         osc_send_i('/ITL/scene/menuBall1',['x',x_pos])
         osc_send_i('/ITL/scene/menuBall1',['y',y_pos])
         osc_send_i('/ITL/scene/menuBall1',['scale',(hand_span-40)/100])
 
         #THIS IF STATEMENT INSIDE THE RETRY BUTTON
         if (((-1) < x_pos < 0) and (-0.5 < y_pos < 0.5)) and (flag != 1):#(-0.5 < y_pos < 0.5)) and (flag == 0):
-            print 'in R'
+            #print 'in R'
             osc_send_i('/ITL/scene/buttonR',['effect','none'],)
             osc_send_i('/ITL/scene/menuBall1',['alpha',127])
             osc_send_i('/ITL/scene/buttonL',['effect','blur',32])
@@ -225,7 +225,7 @@ def retryMenu(retry):
 
         #THIS IF STATEMENT INSIDE THE QUIT BUTTON
         if ((1 > x_pos > 0) and (-0.5 < y_pos < 0.5)) and (flag != 2):#(-0.5 < y_pos < 0.5)) and (flag == 0):
-            print 'in Q'
+            #print 'in Q'
             osc_send_i('/ITL/scene/buttonQ',['effect','none'],)
             osc_send_i('/ITL/scene/menuBall1',['alpha',127])
             osc_send_i('/ITL/scene/buttonL',['effect','blur',32])

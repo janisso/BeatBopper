@@ -22,7 +22,7 @@ def phase_advance_naive(save_path,beats,tempo,stop_all,play_flag):
         # COMPARATOR
         if (prev_tempo != tempo.value):
             prev_tempo = tempo.value
-            print 'Change detected', beat_counter, playhead * 2
+            #print 'Change detected', beat_counter, playhead * 2
             if play_flag.value:
                 beat_counter += 1
             #lib.play_sound(lib.beat_do,lib.fs)
@@ -142,7 +142,7 @@ def user_input(newstdin, tempo,vel):
         v = u_input.split()[1]
         tempo.value = float(t)
         vel.value = int(v) #this is where this process doesn't fail anymore
-        print 'Tempo: ', t, 'Velocity: ', v
+        #print 'Tempo: ', t, 'Velocity: ', v
 
 #def play_count(time_q):
 #    while True:
@@ -159,7 +159,7 @@ def osc_cursor(beats,stop_all):
     osc_msg_cursor.append('cursor')
     osc_msg_cursor.append('score')
     osc_port.send(osc_msg_cursor)
-    print 'CURSOR HERE'
+    #print 'CURSOR HERE'
     while True:
         #print 'here'
         osc_msg_i = lib.OSC.OSCMessage()
@@ -234,7 +234,7 @@ def play(midi_path,save_path,midi_device, tempo_method, countoff):
 
     midi_device_nr = lib.multiprocessing.Value('i', midi_device)
 
-    print 'Tempo Method ',tempo_method
+    #print 'Tempo Method ',tempo_method
 
     #p_user_input = lib.multiprocessing.Process(target=user_input, args=(newstdin,tempo,midi_vel))
 
@@ -243,7 +243,7 @@ def play(midi_path,save_path,midi_device, tempo_method, countoff):
     p_play_midi = lib.multiprocessing.Process(target=play_midi,args=(midi_path,save_path,beats,midi_vel,stop_all,midi_device_nr))  # process to play MIDI
 
     if tempo_method == 0:
-        print tempo_method
+        #print tempo_method
         p_phase_advance = lib.multiprocessing.Process(target=phase_advance_naive,args=(save_path,beats,tempo,stop_all,play_flag))                   # process to count phase informatioin
         p_tempo = lib.multiprocessing.Process(target=naive.naive_tempo, args=(palm_pos, hand_vel, hand_span, midi_vel, stop_all, arm_flag, play_flag, tempo, save_path, countoff))
         #p_osc_cursor = lib.multiprocessing.Process(target=osc_cursor, args=(beats, stop_all))
@@ -252,7 +252,7 @@ def play(midi_path,save_path,midi_device, tempo_method, countoff):
         #p_count_off = lib.multiprocessing.Process(target=count_off, args=(midi_path, play_flag, midi_device_nr,tempo))
 
     if tempo_method == 1:
-        print tempo_method
+        #print tempo_method
         p_phase_advance = lib.multiprocessing.Process(target=phase_advance_comp,args=(save_path,beats,tempo,stop_all,play_flag))                   # process to count phase informatioin
         p_tempo = lib.multiprocessing.Process(target=naive.naive_tempo, args=(palm_pos, hand_vel, hand_span, midi_vel, stop_all, arm_flag, play_flag, tempo, save_path, countoff))
         #p_osc_cursor = lib.multiprocessing.Process(target=osc_cursor, args=(beats, stop_all))
@@ -296,7 +296,7 @@ def play(midi_path,save_path,midi_device, tempo_method, countoff):
         #p_get_samples.start()
         p_reg.start()
         p_phase_comp.start()
-        print 'started reg'
+        #print 'started reg'
 
     lib.time.sleep(0.5)
     p_phase_advance.start()
@@ -314,7 +314,7 @@ def play(midi_path,save_path,midi_device, tempo_method, countoff):
     if tempo_method == 2:
         p_reg.join()
         p_phase_comp.join()
-        print 'joined reg'
+        #print 'joined reg'
         p_get_samples.join()
         p_tempo.join()
     if (tempo_method == 0) or (tempo_method == 1):# or (tempo_method == 2):

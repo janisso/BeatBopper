@@ -82,7 +82,7 @@ def naive_tempo(palm_pos,hand_vel,hand_span,midi_vel,stop_all,arm_flag, play_fla
                     #play_flag.value = 1
                     if (arm_flag.value == True) and (play_flag.value == False):
                         play_flag.value = True
-                        print 'play now', play_flag.value
+                        #print 'play now', play_flag.value
 
             if ((prev_avg_acc * avg_acc) <= 0):
                 #midi_vel.value = abs(int((avg_vel/1500.)*127.))
