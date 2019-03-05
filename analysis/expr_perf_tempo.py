@@ -25,9 +25,9 @@ for file in glob.glob(path+"beat_time/*.csv"):
     name = os.path.basename(file)[:5]
     #if name not in not_these:
     if name == 'M07-1':
-        tempo_data = np.genfromtxt(path+'beat_time/'+name+'beat_time.csv',delimiter=',',skip_header=1,names=None)[:,2:][:13,2:]
+        tempo_data = np.genfromtxt(path+'beat_time/'+name+'beat_time.csv',delimiter=',',skip_header=1,names=None)[:,2:][:13]
         orig_loud_data = np.genfromtxt(path+'beat_dyn/'+name+'beat_dynNORM.csv',delimiter=',',skip_header=1,names=None)[:,2:]
-        loud_data = np.genfromtxt(path+'beat_dyn/'+name+'beat_dynNORM.csv',delimiter=',',skip_header=1,names=None)[:,2:][:13,2:]
+        loud_data = np.genfromtxt(path+'beat_dyn/'+name+'beat_dynNORM.csv',delimiter=',',skip_header=1,names=None)[:,2:][:13]
         
         iois = np.zeros(np.shape(tempo_data))
         for i in range(np.shape(tempo_data)[1]):

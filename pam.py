@@ -151,6 +151,7 @@ def user_input(newstdin, tempo,vel):
 
 # Function to send OSC messages to InScore
 def osc_cursor(beats,stop_all):
+    cursor_date = 0
     #SETTING UP OSC CLIENT FOR INSCORE
     osc_port =lib.OSC.OSCClient()
     osc_port.connect(('localhost', 7000))   # INSCORE
@@ -165,7 +166,11 @@ def osc_cursor(beats,stop_all):
         osc_msg_i = lib.OSC.OSCMessage()
         osc_msg_i.setAddress('/ITL/scene/cursor')
         osc_msg_i.append('date')
-        osc_msg_i.append(int(beats.value*8))
+        if beats.value < cursor_date:
+            cursor_date = cursor_date
+        else:
+            cursor_date = beats.value
+        osc_msg_i.append(int(cursor_date*8))
         osc_msg_i.append(16)
         osc_port.send(osc_msg_i)
         lib.time.sleep(0.01)

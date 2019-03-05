@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<seqview xscroll="0.000000" yscroll="0" zoom="200">
+<sequence maintempo="120" measureAmount="4" currentTrack="0" beatResolution="96" internalName="Track 0" fileFormatVersion="4" channelManagement="auto" metronome="false">
+
+<measure  firstMeasure="0" denom="4" num="3"/>
+
+<tempo>
+</tempo>
+<text>
+</text>
+<copyright>
+</copyright>
+<defaultkeysig keytype="2" keysymbolamount="0" />
+
+
+<track name="Track 0" id="0" channel="0" muted="false" soloed="false" volume="100" default_volume="80">
+  <key type="C" />
+  <editors height="128">
+    <score enabled="false" musical_notation="true" linear_notation="true" g_clef="true" f_clef="true" scroll="0.547945"/>
+    <keyboard enabled="true" scroll="0.330893" proportion="1.000000"/>
+    <guitar enabled="false"/>
+    <drum enabled="false" scroll="0.000000"/>
+    <controller enabled="false" controller="7"/>
+  </editors>
+  <magneticgrid divider="8" triplet="false" dotted="false"/>
+  <instrument id="0"/>
+  <drumkit id="0" collapseView="false"/>
+  <guitartuning  string0="67" string1="72" string2="76" string3="81" string4="86" string5="91"/>
+
+  <note pitch="66" start="0" end="23" volume="96"/>
+  <note pitch="90" start="0" end="47" volume="96"/>
+  <note pitch="66" start="72" end="95" volume="96"/>
+  <note pitch="71" start="96" end="191" volume="96"/>
+  <note pitch="68" start="96" end="191" volume="96"/>
+  <note pitch="64" start="96" end="191" volume="96"/>
+  <note pitch="78" start="96" end="191" volume="96"/>
+  <note pitch="71" start="192" end="287" volume="96"/>
+  <note pitch="68" start="192" end="287" volume="96"/>
+  <note pitch="62" start="192" end="287" volume="96"/>
+  <note pitch="78" start="192" end="287" volume="96"/>
+  <note pitch="61" start="288" end="335" volume="96"/>
+  <note pitch="85" start="288" end="335" volume="96"/>
+  <note pitch="59" start="360" end="383" volume="101"/>
+  <note pitch="73" start="384" end="479" volume="104"/>
+  <note pitch="69" start="384" end="479" volume="104"/>
+  <note pitch="57" start="384" end="479" volume="104"/>
+  <note pitch="78" start="384" end="479" volume="104"/>
+  <note pitch="56" start="480" end="527" volume="107"/>
+  <note pitch="85" start="480" end="527" volume="108"/>
+  <note pitch="54" start="528" end="575" volume="109"/>
+  <note pitch="80" start="576" end="671" volume="112"/>
+  <note pitch="52" start="576" end="623" volume="112"/>
+  <note pitch="92" start="576" end="671" volume="112"/>
+  <note pitch="50" start="648" end="671" volume="112"/>
+  <note pitch="49" start="672" end="779" volume="112"/>
+  <note pitch="76" start="672" end="767" volume="112"/>
+  <note pitch="73" start="684" end="767" volume="112"/>
+  <note pitch="68" start="697" end="767" volume="112"/>
+  <note pitch="64" start="710" end="767" volume="112"/>
+  <note pitch="50" start="768" end="815" volume="87"/>
+  <note pitch="52" start="816" end="863" volume="74"/>
+  <note pitch="54" start="864" end="876" volume="62"/>
+  <note pitch="85" start="864" end="911" volume="49"/>
+  <note pitch="49" start="876" end="893" volume="49"/>
+  <note pitch="49" start="936" end="959" volume="58"/>
+  <note pitch="73" start="960" end="1055" volume="49"/>
+  <note pitch="69" start="960" end="1055" volume="49"/>
+  <note pitch="57" start="960" end="1151" volume="49"/>
+  <note pitch="78" start="960" end="1055" volume="49"/>
+  <note pitch="73" start="1056" end="1151" volume="49"/>
+  <note pitch="69" start="1056" end="1151" volume="49"/>
+  <note pitch="78" start="1056" end="1151" volume="49"/>
+  <controlevent type="10" tick="0" value="64.00000000"/>
+  <controlevent type="91" tick="0" value="127.00000000"/>
+  <controlevent type="93" tick="0" value="127.00000000"/>
+  <controlevent type="7" tick="0" value="27.00000000"/>
+</track>
+
+</sequence></seqview>

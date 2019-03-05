@@ -1,5 +1,6 @@
-/ITL/scene/* del;
+size = 4;
 
+/ITL/scene/* del;
 /ITL get musicxml-version;
 /ITL/scene/score set musicxmlf "M07-1_e1.xml";
 /ITL/scene/score columns 1;
@@ -7,3 +8,35 @@
 /ITL/scene/cursor set rect 0.02 0.8;
 /ITL/scene/cursor color 0 0 255;
 /ITL/scene/sync cursor score;
+/ITL/scene/cursor dy 0.175;
+
+# create a set of signals
+/ITL/scene/signal/y  size $size;
+/ITL/scene/signal/t  size $size;
+/ITL/scene/signal/h  size $size;
+/ITL/scene/signal/s  size $size;
+/ITL/scene/signal/b  size $size;
+/ITL/scene/signal/a  size $size;
+
+# set their default values
+/ITL/scene/signal/y  default 0.;
+/ITL/scene/signal/t default 1.2;
+
+/ITL/scene/signal/h -0.66 -0.66 -0.66 -0.66;
+
+/ITL/scene/signal/s  default 1.;
+/ITL/scene/signal/b  default 1.;
+/ITL/scene/signal/a  0.05 0.2 1.0 0.2;
+
+# put the signals in parallel
+/ITL/scene/signal/sig  set y t h s b a;
+
+# and create the corresponding graphic signal
+/ITL/scene/graphsig set graph sig;
+/ITL/scene/graphsig duration 4 4;
+
+/ITL/scene/sync graphsig score h syncOver;
+/ITL/scene/graphsig dy 0.28;
+/ITL/scene/graphsig alpha 0.1;
+/ITL/scene/graphsig scale 1.1;
+/ITL/scene/graphsig date 5 4;
