@@ -1,0 +1,50 @@
+size = 18;
+
+/ITL/scene/* del;
+/ITL get musicxml-version;
+/ITL/scene/score set musicxmlf "M68-2_e1.xml";
+/ITL/scene/score columns 1;
+/ITL/scene/score scale 0.25;
+/ITL/scene/cursor set rect 0.02 0.8;
+/ITL/scene/cursor color 0 0 255;
+
+/ITL/scene/sync cursor score;
+/ITL/scene/cursor dy 0.175;
+
+#/ITL/scene/rect1 set rect 0.30 0.30;
+#/ITL/scene/rect1 color 255 0 0;
+#/ITL/scene/rect1 alpha 0.2;
+#/ITL/scene/rect y 2.0;
+
+#/ITL/scene/sync rect1 score syncTop;
+#/ITL/scene/rect1 date 4 4;
+
+# create a set of signals
+/ITL/scene/signal/y  size $size;
+/ITL/scene/signal/t  size $size;
+/ITL/scene/signal/h  size $size;
+/ITL/scene/signal/s  size $size;
+/ITL/scene/signal/b  size $size;
+/ITL/scene/signal/a  size $size;
+
+# set their default values
+/ITL/scene/signal/y  default 0.;
+/ITL/scene/signal/t default 1.2;
+
+/ITL/scene/signal/h  0.4393069306930694 0.1966913719943423 0.567707301980198 0.17036651665166538 0.0 0.3591349915479351 0.49885492897115874 0.5389144914491448 0.5118153756552131 0.5389144914491436 0.6144366174322362 0.5983577131906752 0.6482295687195843 0.4505639495456391 0.462133663366336 0.666 0.47402928461860394 0.4740292846186018;# 0.55308941355674 0.48626478076379176;
+
+/ITL/scene/signal/s  default 1.;
+/ITL/scene/signal/b  default 1.;
+/ITL/scene/signal/a  default 1.;
+
+# put the signals in parallel
+/ITL/scene/signal/sig  set y t h s b a;
+
+# and create the corresponding graphic signal
+/ITL/scene/graphsig set graph sig;
+/ITL/scene/graphsig duration 18 4;
+
+/ITL/scene/sync graphsig score h syncOver;
+/ITL/scene/graphsig dy 0.175;
+/ITL/scene/graphsig alpha 0.05;
+/ITL/scene/graphsig scale 1.1;

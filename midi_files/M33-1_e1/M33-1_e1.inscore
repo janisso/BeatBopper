@@ -1,5 +1,6 @@
-/ITL/scene/* del;
+size = 18;
 
+/ITL/scene/* del;
 /ITL get musicxml-version;
 /ITL/scene/score set musicxmlf "M33-1_e1.musicxml";
 /ITL/scene/score columns 1;
@@ -7,3 +8,7 @@
 /ITL/scene/cursor set rect 0.02 0.8;
 /ITL/scene/cursor color 0 0 255;
 /ITL/scene/sync cursor score;
+
+/ITL/scene/sync cursor score;
+/ITL/scene/cursor dy 0.175;
+

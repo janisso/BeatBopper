@@ -24,10 +24,10 @@ not_these = ['M07-1','M63-3','M59-3','M24-2','M07-2','M24-3','M41-2']
 for file in glob.glob(path+"beat_time/*.csv"):
     name = os.path.basename(file)[:5]
     #if name not in not_these:
-    if name == 'M33-1':
-        tempo_data = np.genfromtxt(path+'beat_time/'+name+'beat_time.csv',delimiter=',',skip_header=1,names=None)[:,2:][98:116]
+    if name == 'M07-1':
+        tempo_data = np.genfromtxt(path+'beat_time/'+name+'beat_time.csv',delimiter=',',skip_header=1,names=None)[:,2:][:13,2:]
         orig_loud_data = np.genfromtxt(path+'beat_dyn/'+name+'beat_dynNORM.csv',delimiter=',',skip_header=1,names=None)[:,2:]
-        loud_data = np.genfromtxt(path+'beat_dyn/'+name+'beat_dynNORM.csv',delimiter=',',skip_header=1,names=None)[:,2:][98:116]
+        loud_data = np.genfromtxt(path+'beat_dyn/'+name+'beat_dynNORM.csv',delimiter=',',skip_header=1,names=None)[:,2:][:13,2:]
         
         iois = np.zeros(np.shape(tempo_data))
         for i in range(np.shape(tempo_data)[1]):

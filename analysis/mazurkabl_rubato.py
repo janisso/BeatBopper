@@ -78,7 +78,8 @@ for file in glob.glob(path+"beat_time/*.csv"):
         #thresh = (max(avg_iois)-min(avg_iois))
         #thresh = ((q3+iqr*1.5)-min(avg_iois))/(max(avg_iois)-min(avg_iois))
         indexes = peakutils.indexes(avg_iois, thres=thresh)#thresh/max(avg_iois),min_dist=0)
-        if True in (avg_iois[indexes]>1.5) and name not in ['M24-2','M07-2','M24-3','M41-2']:
+        #if True in (avg_iois[indexes]>1.5) and name in ['M07-1','M63-3']:
+        if name in ['M63-3']:
             
             '''f,axarr = plt.subplots(2)
             axarr[0].plot(60/avg_iois)
