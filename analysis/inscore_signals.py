@@ -16,4 +16,4 @@ min_tempo = min(tempo)
 max_tempo = max(tempo)
 norm_tempo = (tempo - min_tempo)/(max(tempo)-min(tempo))
 
-[print i * 0.5 for i  in norm_tempo]
+[i * 0.5 for i  in norm_tempo]

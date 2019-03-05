@@ -61,11 +61,13 @@ if __name__ == '__main__':
     parser.add_argument('-f', '--midi_file', help='Enter MIDI file to be played back')      # MIDI file to open
     parser.add_argument('-d', '--midi_device', help='Enter MIDI device Nr.')  # MIDI file to open
     parser.add_argument('-m', '--method', help='Enter Rubato induction method: 0-Naive; 1-Compensation; 2-Phase estimation; 3-Demo')
+    parser.add_argument('-s', '--seq', help='Enumerate the system')
     #parser.add_argument('-s', '--save_path', help='Enter path to save log files')   # path to save log files
     args = parser.parse_args()                                                      # variable to store list of user input variables
     user_id = int(args.user_id)                                                     # variable to store User ID
     midi_file = args.midi_file                                                           # variable to store the name of the MIDI file, all the MIDI files should be stored in midi_files folder of the project
     midi_device = int(args.midi_device)
+    seq = int(args.seq)
     #tempo_method = int(args.method)
     #save_path = args.save_path                                                     # variable to save log files
 
@@ -99,7 +101,7 @@ if __name__ == '__main__':
     #SELECTING SOCRES AND MENU
     for i in range(len(ms)):
         osc_send_i('/ITL/scene', ['load', '/Users/mb/Desktop/Janis.so/06_qmul/BeatBopper/menu/main_menu.inscore'])
-        osc_send_i('/ITL/scene/demoText', ['set', 'txt', 'Start method '+str(i+1)])
+        osc_send_i('/ITL/scene/demoText', ['set', 'txt', 'Start method '+str(seq)])
         lib.time.sleep(1)
         lib.os.system('open -a Terminal')
 
@@ -117,6 +119,21 @@ if __name__ == '__main__':
         osc_send_i('/ITL/scene/demoText1', ['fontSize', 20])
         osc_send_i('/ITL/scene/demoText1', ['y', -0.8])
         pam.play(midi_path, save_path+'/'+str(i)+'_'+str(ms[i]), midi_device, ms[i], 0)
-    lib.subprocess.call(['osascript', '-e', 'quit app "/Applications/INScoreViewer-1.21.app"'])
-    lib.sys.exit(-1)
+
+
+    osc_send_i('/ITL/scene/*', ['del'])
+    osc_send_i('/ITL/scene', ['load', '/Users/mb/Desktop/Janis.so/06_qmul/BeatBopper/menu/load_next.inscore'])
+
+    osc_send_i('/ITL/scene/sysid', ['set', 'txt', 'SUS '+ str(seq)])
+    osc_send_i('/ITL/scene/sysid', ['fontSize', 18])
+    osc_send_i('/ITL/scene/sysid', ['y', -0.2])
+    osc_send_i('/ITL/scene/sysid', ['alpha', 0.1])
+
+
+    osc_send_i('/ITL/scene/userid', ['set', 'txt', 'Your participant ID is '+ str(user_id)])
+    osc_send_i('/ITL/scene/userid', ['fontSize', 40])
+    osc_send_i('/ITL/scene/userid', ['y', 0.2])
+    #osc_send_i('/ITL/scene/uinscore',['watch', 'mouseDown', '( /ITL browse "' + links[seq-1]+'" )'])
+    #lib.subprocess.call(['osascript', '-e', 'quit app "/Applications/INScoreViewer-1.21.app"'])
+    #lib.sys.exit(-1)
     print 'Program Terminated'

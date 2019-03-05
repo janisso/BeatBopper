@@ -1,0 +1,22 @@
+/ITL/scene/* del;
+
+shadow = shadow 5 5 0 0 0 75 20;
+color = 20 0 150;
+fsize = 40;
+osize = 42;
+
+/ITL/scene/title  set  txt "Thank you for your participation.";
+/ITL/scene/title  y -0.4;
+/ITL/scene/title fontSize 24;
+/ITL/scene/title effect $shadow;
+
+/ITL/scene/title1  set  txt "Please ask the investigator for furhter instructions";
+/ITL/scene/title1  y -0.3;
+/ITL/scene/title1 fontSize 24;
+/ITL/scene/title1 effect $shadow;
+
+/ITL/scene/userid set txt "Your participant ID is ";
+/ITL/scene/userid fontSize $fsize;
+
+/ITL/scene/ui* watch mouseEnter ( /ITL/scene/$self fontSize $osize );
+/ITL/scene/ui* watch mouseLeave ( /ITL/scene/$self fontSize $fsize );

@@ -376,7 +376,19 @@ if __name__ == '__main__':
             if r > 2:
                 break
             #count += 1
+    osc_send_i('/ITL/scene/*', ['del'])
+    osc_send_i('/ITL/scene', ['load', '/Users/mb/Desktop/Janis.so/06_qmul/BeatBopper/menu/load_next.inscore'])
+
+    osc_send_i('/ITL/scene/sysid', ['set', 'txt', 'SPQ '+ str(int(excerpt)+1)])
+    osc_send_i('/ITL/scene/sysid', ['fontSize', 18])
+    osc_send_i('/ITL/scene/sysid', ['y', -0.2])
+    osc_send_i('/ITL/scene/sysid', ['alpha', 0.1])
+
+
+    osc_send_i('/ITL/scene/userid', ['set', 'txt', 'Your participant ID is '+ str(user_id)])
+    osc_send_i('/ITL/scene/userid', ['fontSize', 40])
+    osc_send_i('/ITL/scene/userid', ['y', 0.2])
     #lib.os.system('open /Users/mb/Desktop/Janis.so/06_qmul/BB/02_inputs/inscore_stuff/main_menu/good_bye.inscore')
     #lib.subprocess.call(['osascript', '-e', 'quit app "/Applications/INScoreViewer-1.21.app"'])
-    lib.sys.exit(-1)
+    #lib.sys.exit(-1)
     print 'Program Terminated'

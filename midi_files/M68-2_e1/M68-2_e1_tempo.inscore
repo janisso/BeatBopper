@@ -1,0 +1,16 @@
+/ITL/scene/* del;
+/ITL get musicxml-version;
+/ITL/scene/score set musicxmlf "M68-2_e1.xml";
+/ITL/scene/score columns 1;
+/ITL/scene/score scale 0.25;
+/ITL/scene/cursor set rect 0.02 0.8;
+/ITL/scene/cursor color 0 0 255;
+/ITL/scene/sync cursor score;
+
+/ITL/scene/rect1 set rect 0.30 0.30;
+/ITL/scene/rect1 color 255 0 0;
+/ITL/scene/rect1 alpha 0.2;
+/ITL/scene/rect y 2.0;
+
+/ITL/scene/sync rect1 score syncTop;
+/ITL/scene/rect1 date 4 4;

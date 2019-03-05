@@ -281,6 +281,8 @@ def play(midi_path,save_path,midi_device, tempo_method, countoff):
         #p_count_off = lib.multiprocessing.Process(target=count_off, args=(midi_path, play_flag, midi_device_nr, tempo))
 
     if tempo_method == 3:
+        p_get_samples = lib.multiprocessing.Process(target=lib.get_samples,
+                                                    args=(palm_pos, hand_vel, hand_span, stop_all, save_path))
         p_phase_advance = lib.multiprocessing.Process(target = phase_advance_demo,args=(midi_path,midi_vel,beats,stop_all,play_flag))
 
     if countoff == 1:
@@ -302,6 +304,9 @@ def play(midi_path,save_path,midi_device, tempo_method, countoff):
         p_reg.start()
         p_phase_comp.start()
         #print 'started reg'
+
+    if tempo_method == 3:
+        p_get_samples.start()
 
     lib.time.sleep(0.5)
     p_phase_advance.start()
@@ -326,6 +331,8 @@ def play(midi_path,save_path,midi_device, tempo_method, countoff):
         p_get_samples.join()
         p_tempo.join()
         #p_count_off.join()
+    if tempo_method == 3:
+        p_get_samples.join()
 
     if countoff == 1:
         p_count_off.join()
