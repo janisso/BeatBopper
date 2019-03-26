@@ -1,14 +1,15 @@
 https://goo.gl/forms/73G63oaFLdAQt0f22
 
-Pref Studies
-python pref_study.py -u 016 -f demo -d 0 -m 0 -s 1
-python pref_study.py -u 016 -f demo -d 0 -m 2 -s 2
-python pref_study.py -u 016 -f demo -d 0 -m 1 -s 3
+####### Pref Studies
+python pref_study.py -u 027 -f demo -d 0 -m 2 -s 1
+python pref_study.py -u 027 -f demo -d 0 -m 1 -s 2
+python pref_study.py -u 027 -f demo -d 0 -m 0 -s 3
 
-Intenion Studies
-python intention_study.py -u 016 -f M33-1_e1 -d 0 -m 012 -e 0
-python intention_study.py -u 016 -f M07-1_e1 -d 0 -m 120 -e 1
-python intention_study.py -u 016 -f M63-3_e1 -d 0 -m 201 -e 2
+####### Intenion Studies
+python intention_study.py -u 027 -f M33-1_e1 -d 0 -m 120 -e 0
+python intention_study.py -u 027 -f M07-1_e1 -d 0 -m 201 -e 1
+python intention_study.py -u 027 -f M63-3_e1 -d 0 -m 012 -e 2
 
-python pref_study.py -u 999 -f M07-1_e1 -d 0 -m 1 -s 1
+python pref_study.py -u 999 -f demo -d 0 -m 2 -s 1
 python intention_study.py -u 999 -f M68-2_e1 -d 0 -m 012 -e 0
+

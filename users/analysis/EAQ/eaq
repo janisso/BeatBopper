@@ -1,0 +1,25 @@
+#!/usr/bin/env python2
+# -*- coding: utf-8 -*-
+"""
+Created on Sat Mar 16 14:49:26 2019
+
+@author: mb
+"""
+
+import numpy as np
+import pandas as pd
+import os
+
+curr_path = os.path.dirname(os.path.abspath(__file__)) 
+eaq = pd.read_csv(curr_path+'/eaq.csv')
+
+eaq_df = pd.DataFrame(columns=['rater','question','likert'])
+
+for i in range(1,np.shape(eaq)[1]):
+    df = pd.DataFrame(columns=['rater','question','likert'])
+    df['rater']=eaq['id']
+    df['question']=np.full((np.shape(eaq)[0]),eaq.columns[i])
+    df['likert']=eaq[eaq.columns[i]]
+    eaq_df = eaq_df.append(df)
+
+eaq_df.to_csv(curr_path+'/eaq_df.csv', sep=',',index=False)
