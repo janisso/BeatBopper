@@ -2,50 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2e055b4a-3002-428c-843e-fcf4854b63ed" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml___jb_tmp___" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/analysis/SPQ/01_test_gg.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/analysis/SPQ/ggplot_example" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/analysis/SPQ/ggplot_example.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/analysis/SPQ/test_gg.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pam_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/pam_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/999/01_pref_studies/0_2/do_reg.csv" beforeDir="false" afterPath="$PROJECT_DIR$/users/999/01_pref_studies/0_2/do_reg.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/999/01_pref_studies/0_2/get_samples.csv" beforeDir="false" afterPath="$PROJECT_DIR$/users/999/01_pref_studies/0_2/get_samples.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/999/01_pref_studies/0_2/phase_phase.csv" beforeDir="false" afterPath="$PROJECT_DIR$/users/999/01_pref_studies/0_2/phase_phase.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/999/01_pref_studies/0_2/phase_tempo_data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/users/999/01_pref_studies/0_2/phase_tempo_data.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/999/01_pref_studies/0_2/play_midi.csv" beforeDir="false" afterPath="$PROJECT_DIR$/users/999/01_pref_studies/0_2/play_midi.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/999/01_pref_studies/0_2/print_phase.csv" beforeDir="false" afterPath="$PROJECT_DIR$/users/999/01_pref_studies/0_2/print_phase.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/analysis/DRIFT/0_0/get_samples.csv" beforeDir="false" afterPath="$PROJECT_DIR$/users/analysis/DRIFT/0_0/get_samples.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/analysis/DRIFT/0_0/naive_phase.csv" beforeDir="false" afterPath="$PROJECT_DIR$/users/analysis/DRIFT/0_0/naive_phase.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/analysis/DRIFT/0_0/naive_tempo_data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/users/analysis/DRIFT/0_0/naive_tempo_data.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/analysis/DRIFT/0_0/phase_advance_naive.csv" beforeDir="false" afterPath="$PROJECT_DIR$/users/analysis/DRIFT/0_0/phase_advance_naive.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/analysis/DRIFT/0_0/play_midi.csv" beforeDir="false" afterPath="$PROJECT_DIR$/users/analysis/DRIFT/0_0/play_midi.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/analysis/DRIFT/0_1/get_samples.csv" beforeDir="false" afterPath="$PROJECT_DIR$/users/analysis/DRIFT/0_1/get_samples.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/analysis/DRIFT/0_1/naive_phase.csv" beforeDir="false" afterPath="$PROJECT_DIR$/users/analysis/DRIFT/0_1/naive_phase.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/analysis/DRIFT/0_1/naive_tempo_data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/users/analysis/DRIFT/0_1/naive_tempo_data.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/analysis/DRIFT/0_1/phase_advance_comp.csv" beforeDir="false" afterPath="$PROJECT_DIR$/users/analysis/DRIFT/0_1/phase_advance_comp.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/analysis/DRIFT/0_1/play_midi.csv" beforeDir="false" afterPath="$PROJECT_DIR$/users/analysis/DRIFT/0_1/play_midi.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/analysis/DRIFT/0_2/do_reg.csv" beforeDir="false" afterPath="$PROJECT_DIR$/users/analysis/DRIFT/0_2/do_reg.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/analysis/DRIFT/0_2/get_samples.csv" beforeDir="false" afterPath="$PROJECT_DIR$/users/analysis/DRIFT/0_2/get_samples.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/analysis/DRIFT/0_2/phase_phase.csv" beforeDir="false" afterPath="$PROJECT_DIR$/users/analysis/DRIFT/0_2/phase_phase.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/analysis/DRIFT/0_2/phase_tempo_data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/users/analysis/DRIFT/0_2/phase_tempo_data.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/analysis/DRIFT/0_2/play_midi.csv" beforeDir="false" afterPath="$PROJECT_DIR$/users/analysis/DRIFT/0_2/play_midi.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/analysis/DRIFT/0_2/print_phase.csv" beforeDir="false" afterPath="$PROJECT_DIR$/users/analysis/DRIFT/0_2/print_phase.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/analysis/DRIFT/dirf_analysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/analysis/DRIFT/dirf_analysis.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/analysis/DRIFT/get_samples.csv" beforeDir="false" afterPath="$PROJECT_DIR$/users/analysis/DRIFT/get_samples.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/analysis/SPQ/data_for_spss.csv" beforeDir="false" afterPath="$PROJECT_DIR$/users/analysis/SPQ/data_for_spss.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/analysis/SPQ/data_for_spss.sps" beforeDir="false" afterPath="$PROJECT_DIR$/users/analysis/SPQ/data_for_spss.sps" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/analysis/SPQ/freq_analysis.R" beforeDir="false" afterPath="$PROJECT_DIR$/users/analysis/SPQ/freq_analysis.R" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/analysis/SPQ/intention.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/analysis/SPQ/intention.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/analysis/SPQ/intention_rmse.csv" beforeDir="false" afterPath="$PROJECT_DIR$/users/analysis/SPQ/intention_rmse.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/analysis/SPQ/intention_rmse_2anova.R" beforeDir="false" afterPath="$PROJECT_DIR$/users/analysis/SPQ/intention_rmse_2anova.R" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/analysis/SPQ/intention_rmse_out.R" beforeDir="false" afterPath="$PROJECT_DIR$/users/analysis/SPQ/intention_rmse_out.R" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/users/analysis/SPQ/intention_signal.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/analysis/SPQ/intention_signal.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/analysis/SPQ/plots/00_rmse.eps" beforeDir="false" afterPath="$PROJECT_DIR$/users/analysis/SPQ/plots/00_rmse.eps" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/analysis/SPQ/plots/05_error_bar.eps" beforeDir="false" afterPath="$PROJECT_DIR$/users/analysis/SPQ/plots/05_error_bar.eps" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/analysis/SPQ/rmse_plot/00_ioi_plot.eps" beforeDir="false" afterPath="$PROJECT_DIR$/users/analysis/SPQ/rmse_plot/00_ioi_plot.eps" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/analysis/SPQ/rmse_plot/00_ioi_plot.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/users/analysis/SPQ/rmse_plot/00_ioi_plot.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/analysis/SPQ/rmse_plot/rmse_plot.R" beforeDir="false" afterPath="$PROJECT_DIR$/users/analysis/SPQ/rmse_plot/rmse_plot.R" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/analysis/SUS/kruskal_wallis_test.R" beforeDir="false" afterPath="$PROJECT_DIR$/users/analysis/SUS/kruskal_wallis_test.R" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/analysis/SUS/sus_info.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/analysis/SUS/sus_info.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/analysis/SUS/sus_perfs/get_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/analysis/SUS/sus_perfs/get_data.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/analysis/SUS/sus_score.R" beforeDir="false" afterPath="$PROJECT_DIR$/users/analysis/SUS/sus_score.R" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -60,7 +23,7 @@
           <entry key="project.closed" value="38" />
           <entry key="project.open.time.0" value="3" />
           <entry key="project.open.time.1" value="3" />
-          <entry key="project.open.time.10" value="4" />
+          <entry key="project.open.time.10" value="5" />
           <entry key="project.open.time.11" value="3" />
           <entry key="project.open.time.12" value="1" />
           <entry key="project.open.time.13" value="3" />
@@ -78,7 +41,7 @@
           <entry key="project.open.time.7" value="4" />
           <entry key="project.open.time.8" value="5" />
           <entry key="project.open.time.9" value="11" />
-          <entry key="project.opened" value="53" />
+          <entry key="project.opened" value="54" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -129,7 +92,7 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/pam_test.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="15">
+                <state relative-caret-position="525">
                   <caret line="37" column="42" selection-start-line="37" selection-start-column="42" selection-end-line="37" selection-end-column="42" />
                   <folding>
                     <element signature="e#436#446#0" expanded="true" />
@@ -990,6 +953,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/pam_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="37" column="42" selection-start-line="37" selection-start-column="42" selection-end-line="37" selection-end-column="42" />
+          <folding>
+            <element signature="e#436#446#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/comp_test.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
@@ -1031,6 +1004,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/naive.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="371">
+          <caret line="77" column="71" selection-start-line="77" selection-start-column="61" selection-end-line="77" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/pref_study.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2040">
@@ -1053,8 +1033,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/intention_study.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" selection-start-line="2" selection-end-line="4" selection-end-column="10" />
+        <state relative-caret-position="4095">
+          <caret line="273" column="25" selection-start-line="273" selection-start-column="16" selection-end-line="273" selection-end-column="25" />
           <folding>
             <element signature="e#110#125#0" expanded="true" />
           </folding>
@@ -1068,23 +1048,6 @@
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pam_test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="37" column="42" selection-start-line="37" selection-start-column="42" selection-end-line="37" selection-end-column="42" />
-          <folding>
-            <element signature="e#436#446#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/naive.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="371">
-          <caret line="77" column="71" selection-start-line="77" selection-start-column="61" selection-end-line="77" selection-end-column="71" />
         </state>
       </provider>
     </entry>

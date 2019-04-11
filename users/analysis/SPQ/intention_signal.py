@@ -12,7 +12,10 @@ import mido
 import matplotlib.pyplot as plt
 import os
 import pandas as pd
-from ggplot import *
+#from ggplot import *
+from plotnine import *
+
+theme_set(theme_classic())
 
 
 def get_midi(midifile):
@@ -53,16 +56,29 @@ def get_beat_idx(yo):
 def rmse(predictions, targets):
     return np.sqrt(((predictions - targets) ** 2).mean())
 
+def get_lims(d1,d2,d3,d4):
+    arr = [d1,d2,d3,d4]
+    x_min = 0
+    x_max = 0
+    for i in arr:
+        if i[0]<x_min:
+            x_min=i[0]
+        if i[-1]>x_max:
+            x_max=i[-1]
+    return x_min,x_max
+
 e1_t = np.genfromtxt("/Users/mb/Desktop/Janis.so/06_qmul/BeatBopper/midi_files/M33-1_e1/M33-1_e1orig_beats.csv")
 e1_msg, e1_yo = get_midi("/Users/mb/Desktop/Janis.so/06_qmul/BeatBopper/midi_files/M33-1_e1/M33-1_e1.mid")
 
 e2_t = np.genfromtxt("/Users/mb/Desktop/Janis.so/06_qmul/BeatBopper/midi_files/M07-1_e1/M07-1_e1orig_beats.csv")
 e2_msg, e2_yo = get_midi("/Users/mb/Desktop/Janis.so/06_qmul/BeatBopper/midi_files/M07-1_e1/M07-1_e1.mid")
+e2_mag_2, e2_yo_2 = get_midi("/Users/mb/Desktop/Janis.so/06_qmul/BeatBopper/midi_files/M07-1_e1/M07-1_e1_11.mid")
 
 e3_t = np.genfromtxt("/Users/mb/Desktop/Janis.so/06_qmul/BeatBopper/midi_files/M63-3_e1/M63-3_e1orig_beats.csv")
 e3_msg, e3_yo = get_midi("/Users/mb/Desktop/Janis.so/06_qmul/BeatBopper/midi_files/M63-3_e1/M63-3_e1.mid")
 
 indices = [get_beat_idx(e1_yo),get_beat_idx(e2_yo),get_beat_idx(e3_yo)]
+i_e2 = get_beat_idx(e2_yo_2)
 
 path = '/Users/mb/Desktop/Janis.so/06_qmul/BeatBopper/users/'
 #user = str(1)
@@ -111,16 +127,33 @@ for u in range(24,25):
                                 if len(BBsubdirList):
                                     t = 0
                                     rms_min = 1000000000000000
-                                    f,axarr = plt.subplots(2)
+                                    f,axarr = plt.subplots(4,sharex=True)
                                     #print BBsubdirList
                                     mod_seqDir = BBdirName+'/'+BBsubdirList[0]
                                     fileName = mod_seqDir+'/'+'play_midi.csv'
                                     mod_seq = np.genfromtxt(fileName,delimiter=',',names=True)
                                     mod_seq = mod_seq
+                                    time_s = mod_seq['time'][0]
                                     #axarr[0].plot(np.diff(e2_t[:-1]))
-                                    m_ioi = np.diff(mod_seq['time'][indices[e]])
+                                    if (e==1) and (u<16):
+                                        t_m= mod_seq['time'][i_e2]-time_s
+                                        m_ioi = np.diff(t_m)
+                                    else:
+                                        t_m = mod_seq['time'][indices[e]]-time_s
+                                        m_ioi = np.diff(t_m)
                                     df['m_ioi']=m_ioi
-                                    axarr[0].plot(m_ioi)
+                                    axarr[0].plot(t_m[1:],m_ioi)
+                                    for ii in t_m:
+                                        axarr[0].axvline(x=ii)
+                                    df_m = pd.DataFrame(data=np.column_stack((t_m[1:],m_ioi)),
+                                                        columns = ['time','ioi'])
+#                                    p1 = ggplot(aes(x='time',y='ioi'),data=df_m)+geom_line()+\
+#                                        geom_vline(xintercept=t_m,color="gray")+\
+#                                        labs(x='',y='IOI (s)')
+#                                    ggsave(p1,'test_gg.pdf', scale = 1, width = 8.4, height = 1.43, units = "in", dpi = 75)
+                                    #ggsave(p1,'test_gg.pdf', scale = 1, width = 8.4, height = 2.87, units = "in", dpi = 75)
+                                    #p1.make()
+                                    #geom_vline(data = idx, aes(xintercept = as.numeric(time)),color="gray",size=0.5)
                                     #mod_seq['time']=mod_seq['time']-mod_seq['time'][0]
                                     #plt.plot(mod_seq['time'])
                                 #print BBdirName,BBsubdirList
@@ -130,21 +163,101 @@ for u in range(24,25):
                                         if l == 'play_midi.csv':
                                             fileName = BBdirName+'/'+l
                                             mid_seq = np.genfromtxt(fileName,delimiter=',',names=True)
-                                            mid_seq['time']=mid_seq['time']-mid_seq['time'][0]
-                                            #mid_seq = mid_seq[idx_no]
-                                            #axarr[1].plot(mid_seq['time'])
-                                            p_ioi = np.diff(mid_seq['time'][indices[e]])
+                                            time_s = mid_seq['time'][0]
+                                            #GET HAND MOVEMENT DEETS
+                                            if m==2:
+                                                hd = np.genfromtxt(BBdirName+'/phase_tempo_data.csv',delimiter=',',names=True)
+                                                hd['time'] = hd['time']-time_s
+                                                p_d = np.genfromtxt(BBdirName+'/phase_phase.csv',delimiter=',',names=True)
+                                                p_d = p_d[np.where(p_d['phase']==0)[0]]
+                                            else:
+                                                hd = np.genfromtxt(BBdirName+'/naive_tempo_data.csv',delimiter=',',names=True)
+                                                hd['time'] = hd['time']-time_s
+                                                p_d = np.genfromtxt(BBdirName+'/naive_phase.csv',delimiter=',',names=True)
+                                            df_h = pd.DataFrame(data=np.column_stack((hd['time'],hd['vel'],hd['avg_vel'])),
+                                                                columns=['time','vel','avg_vel'])
+                                            axarr[1].plot(hd['time'],hd['vel'])
+                                            axarr[1].plot(hd['time'],hd['avg_vel'])             
+                                            ###PHASE INFORMATION FROM ZERO CROSSES
+                                            p_d['time']=p_d['time']-time_s
+#                                            ggplot(aes(x='time',y='vel'),data=df_h)+geom_line()+\
+#                                                geom_vline(xintercept=p_d['time'],color="gray",size=0.5)+\
+#                                                geom_line(aes(x='time',y='avg_vel'),data=df_h)
+                                            h_ioi = np.diff(p_d['time'])
+                                            axarr[2].plot(p_d['time'][1:],h_ioi)
+                                            for ii in p_d['time'][p_d['time']>0]:
+                                                axarr[1].axvline(x=ii)
+                                                axarr[2].axvline(x=ii)
+
+                                                
+                                            df_h_ioi = pd.DataFrame(data=np.column_stack((p_d['time'][1:],h_ioi)),
+                                                        columns = ['time','ioi'])
+                                            
+                                            #axarr[2].plot(pd['time'][1:],h_ioi)
+                                            #GET IOI FOR THE MIDI PERF
+                                            if (e==1) and (u<16):
+                                                t_p= mid_seq['time'][i_e2]-time_s
+                                                p_ioi = np.diff(t_p)
+                                            else:
+                                                t_p = mid_seq['time'][indices[e]]-time_s
+                                                p_ioi = np.diff(t_p)
                                             df[labels[m]]=p_ioi
-                                            axarr[1].plot(p_ioi)
-                                            plt.suptitle(str(u)+' '+str(e)+' '+str(m))
+                                            
+                                            df_m_ioi = pd.DataFrame(data=np.column_stack((t_p[1:],p_ioi)),
+                                                        columns = ['time','ioi'])
+                                            
+                                            fig = plt.gcf()
+                                            ax = plt.gca()
+                                            axarr[3].plot(t_p[1:],p_ioi)
+                                            for ii in t_p:
+                                                axarr[3].axvline(x=ii)
+                                            plt.suptitle(str(u) + ' ' + str(e) + ' ' + str(m))
                                             rms_e = rmse(p_ioi,m_ioi)
-                                            if rms_e < rms_min:
-                                                rms_min = rms_e
-                                            index = e*3+1+m
-                                            big_ting[u-1,index]=rms_min
+                                            #if rms_e < rms_min:
+                                            #    rms_min = rms_e
+                                            #index = e*3+1+m
+                                            #big_ting[u-1,index]=rms_min
+                                            #mid_seq
                                             print 'User: ',u,' Excerpt: ', e, ' Method: ', m, ' Try: ',t,' RMS: ', rms_e
                                             t += 1
-                      
+                                            
+                                            x_min, x_max = get_lims(t_m,np.array(df_h['time']),np.array(p_d['time']),t_p)
+                                            
+                                            p1 = ggplot(aes(x='time',y='ioi'),data=df_m)+geom_line()+\
+                                                geom_vline(xintercept=t_m,color="gray")+\
+                                                labs(x='',y='IOI (s)')+\
+                                                theme(axis_ticks_major_x=element_blank(),
+                                                      axis_text_x=element_blank())+\
+                                                      xlim(x_min-0.5, x_max+0.5)
+                                            #p1 = p1 + theme(axis.title.y = element_text(margin = margin(t = 0, r = 10, b = 0, l = 0)))
+                                            #ggsave(p1,'01_test_gg.pdf', scale = 1, width = 8.4, height = 1.43, units = "in", dpi = 75)
+                                            
+                                            
+                                            p2 = ggplot(aes(x='time',y='vel'),data=df_h)+geom_line()+\
+                                                geom_line(aes(x='time',y='avg_vel'),data=df_h,color='blue')+\
+                                                geom_vline(xintercept=p_d['time'],color="gray")+\
+                                                labs(x='',y='Velocity (mm/s)')+\
+                                                theme(axis_ticks_major_x=element_blank(),
+                                                      axis_text_x=element_blank())+\
+                                                      xlim(x_min-0.5, x_max+0.5)
+                                            
+                                            p3 = ggplot(aes(x='time',y='ioi'),data=df_h_ioi)+geom_line()+\
+                                                geom_vline(xintercept=p_d['time'][p_d['time']>0],color="gray")+\
+                                                labs(x='',y='IOI (s)')+\
+                                                theme(axis_ticks_major_x=element_blank(),
+                                                      axis_text_x=element_blank())+\
+                                                      xlim(x_min-0.5, x_max+0.5)
+                                            
+                                            p4 = ggplot(aes(x='time',y='ioi'),data=df_m_ioi)+geom_line()+\
+                                                labs(x='Time (s)',y='IOI (s)')+\
+                                                geom_vline(xintercept=t_p,color="gray")+\
+                                                      xlim(x_min-0.5, x_max+0.5)
+
+
+
+
+
+#ggarrange(p1,p2,p3,p4,labels=c('a','b','c'),ncol=1,nrow=4)
 #fig7, ax7 = plt.subplots()
 #ax7.set_title('Multiple Samples with Different sizes')
 #ax7.boxplot(big_ting[:,1:])
