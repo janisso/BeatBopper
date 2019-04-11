@@ -7,9 +7,9 @@ library(likert)
 
 #####FOR SYSTEM
 dats = read.csv("/Users/mb/Desktop/Janis.so/06_qmul/BeatBopper/users/analysis/SPQ/chisq_system.csv", header = TRUE)
-dats$pref.f[dats$pref == 0] = 'Borch'
+dats$pref.f[dats$pref == 0] = 'Naive'
 dats$pref.f[dats$pref == 1] = 'Each Beat'
-dats$pref.f[dats$pref == 2] = 'Phase'
+dats$pref.f[dats$pref == 2] = 'Beat Bopper'
 dats$pref.f[dats$pref == 3] = 'Not Sure'
 
 #dats = dats[dats$question!='q6',]
@@ -19,7 +19,7 @@ dats$question = factor(dats$question,
 dats$excerpt = factor(dats$excerpt,
                        levels=c('0','1','2'))
 dats$pref.f = factor(dats$pref.f,
-                     levels=c('Each Beat','Borch','Phase','Not Sure'))
+                     levels=c('Naive','Each Beat','Beat Bopper','Not Sure'))
 
 XT_pref_all = xtabs( ~ pref.f + question, data = dats)
 XT_pref_00 = xtabs( ~ pref.f + question, data = dats[dats$excerpt==0,])
@@ -68,13 +68,16 @@ corrplot(chi_sq$stdres, is.cor = FALSE,
 theme_set(theme_bw())
 
 #####BARPLOT FOR FREQS
-system_var = c(rep('Borch',6),rep('Each Beat',6),rep('Phase',6),rep('Not Sure',6))
-question_var = rep(c('q1','q2','q3','q4','q5','q6'),4)
-freq_var = c(24,25,23,22,23,26,12,15,14,18,13,31,38,33,36,31,37,18,7,8,8,10,8,6)
-#dadata = matrix(c(24,12,38,7,25,15,33,8,23,14,36,8,22,18,31,10,23,13,37,8,26,31,18,6),nrow=4)
-dats_freq = data.frame(system_var,question_var,freq_var)
-dats_freq$system_var = factor(dats_freq$system,
-                              levels=c('Each Beat','Borch','Phase','Not Sure'))
+#system_var = c(rep('Naive',6),rep('Each Beat',6),rep('Beat Bopper',6),rep('Not Sure',6))
+#question_var = rep(c('1','2','3','4','5','6'),4)
+#freq_var = c(24,25,23,22,23,26,12,15,14,18,13,31,38,33,36,31,37,18,7,8,8,10,8,6)
+##dadata = matrix(c(24,12,38,7,25,15,33,8,23,14,36,8,22,18,31,10,23,13,37,8,26,31,18,6),nrow=4)
+#dats_freq = data.frame(system_var,question_var,freq_var)
+#dats_freq$system_var = factor(dats_freq$system,
+#                              levels=c('Naive','Each Beat','Beat Bopper','Not Sure'))
+
+
+
 
 myColor = c('#c2185b',
             '#eb9366',
@@ -82,11 +85,15 @@ myColor = c('#c2185b',
             '#97c694',
             '#009688')
 
-
+library(ggplot2)
 ggplot(data=dats_freq, aes(x=question_var, y=freq_var,fill=system_var)) +
   geom_bar(stat="identity", position=position_dodge())+
   scale_fill_manual(values=c("#003f5c", "#7a5195", "#ef5675",'#ffa600'))+
-  theme_minimal()
+  labs(x="Question", y = "Frequency")+
+  labs(fill = "System")+
+  theme_classic()
+
+
 
 table <- matrix(c(24,12,38,7,25,15,33,8,23,14,36,8,22,18,31,10,23,13,37,8,26,31,18,6),nrow=4)#matrix(c(1,21,34,35,26,17), nrow = 2, byrow = T)
 dimnames(table) = list(System=c('Borch','Each Beat','Phase','Not Sure'), Variable=c('q1','q2','q3','q4','q5','q6'))

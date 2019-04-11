@@ -1,3 +1,4 @@
+ 
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 """
@@ -33,7 +34,7 @@ def get_midi(midifile):
             msg_count += 1
     s_times = np.array(s_times)                             # convert array to numpy.array
     yo = copy.deepcopy(s_times)                             # deepcopy the array so the original doesn't get 
-    return all_messages, yo
+    return all_messages, yoaas
 
 def get_beat_idx(yo):
     idx_no = np.where(yo[:,2]=='note_on')[0]

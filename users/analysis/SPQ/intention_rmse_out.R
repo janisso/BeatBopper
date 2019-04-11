@@ -3,11 +3,15 @@ rm(list=ls(all=TRUE))
 
 dats = read.csv("/Users/mb/Desktop/Janis.so/06_qmul/BeatBopper/users/analysis/SPQ/intention_rmse.csv", header = TRUE)
 
-rmse = c(dats$e3_n,dats$e3_c,dats$e3_p)
-systems = c(rep('Borch',27),rep('Each Beat',27),rep('Phase',27))
-my_data = data.frame(rmse,systems)
+my_data <- melt(dats, id="id")
+
+#rmse = c(dats$e3_n,dats$e3_c,dats$e3_p)
+my_data$variable = rep(c(rep('Naive',27),rep('Each Beat',27),rep('BB',27)),3)
+names(my_data)[2] <- "systems"
+names(my_data)[3] <- "rmse"
+#my_data = data.frame(rmse,systems)
 my_data$systems = ordered(my_data$systems,
-                          levels = c('Each Beat','Borch','Phase'))
+                          levels = c('Naive','Each Beat','BB'))
 
 
 # Box plots
@@ -25,14 +29,14 @@ myColor = c('#c2185b',
 # Change  automatically color by groups
 bp <- ggplot(my_data, aes(x=systems, y=rmse, fill=systems)) + 
   geom_boxplot() +
-  labs(title="RMSE for excerpt 3",x="System", y = "RMSE")
+  labs(x="System", y = "RMSE")
 
-bp + scale_fill_manual(values=c("#003f5c", "#7a5195", "#ef5675")) + theme_minimal()
+bp + scale_fill_manual(values=c("#003f5c", "#7a5195", "#ef5675")) + theme_classic()
 
 library("ggpubr")
 ggline(my_data, x = "systems", y = "rmse", 
        add = c("mean_se", "jitter"), 
-       order = c("Naive", "Each Beat", "Phase"),
+       order = c("Borch", "Each Beat", "Phase"),
        ylab = "Rmse", xlab = "Treatment")
 
 
@@ -61,3 +65,4 @@ aov_residuals <- residuals(object = res.aov )
 shapiro.test(x = aov_residuals )
 
 kruskal.test(rmse ~ systems, data = my_data)
+

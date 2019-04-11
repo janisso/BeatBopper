@@ -156,7 +156,7 @@ for u in range(24,25):
 #                  data = p,
 #                  columns = ['beat','m_ioi','p_ioi'])
 
-df.to_csv('/Users/mb/Desktop/Janis.so/06_qmul/BeatBopper/users/analysis/SPQ/rmse_plot/ioi_sig.csv', sep=',',index=False)
+#df.to_csv('/Users/mb/Desktop/Janis.so/06_qmul/BeatBopper/users/analysis/SPQ/rmse_plot/ioi_sig.csv', sep=',',index=False)
 
 #ggplot(aes(x='beat'), data=df) +\
 #    geom_line(aes(y='m_ioi'), color='blue',linetype = "dashed") +\

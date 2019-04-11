@@ -41,12 +41,19 @@ def get_samples(palm_pos, hand_vel, hand_span, stop_all, save_path):
     f = open(save_path + '/get_samples.csv', 'w+')
     f.write('time,palm_pos,palm_vel,span\n')
     controller = Leap.Controller()
+    prev_sample = 0
+    count = 0
     while True:
         frame = controller.frame()
         for hand in frame.hands:
             # GETTING PALM VELOCITY
             palm_pos.value = hand.palm_position.y
             #print palm_pos.value
+            tick = hand.palm_velocity.y * prev_sample
+            if tick<0:
+                print count
+                count += 1
+            prev_sample = hand.palm_velocity.y
             hand_vel.value = hand.palm_velocity.y
             # print hand.fingers[0].position
             for finger in hand.fingers:

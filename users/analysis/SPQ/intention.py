@@ -119,5 +119,5 @@ for i in range(len(frames)):
 #kruskall['answers']=kruskal[:,0]
 #kruskall['sys']=kruskal[:,1]
 
-chisq_system.to_csv('chisq_system.csv', sep=',',index=False)
-chisq_order.to_csv('chisq_order.csv', sep=',',index=False)
+#chisq_system.to_csv('chisq_system.csv', sep=',',index=False)
+#chisq_order.to_csv('chisq_order.csv', sep=',',index=False)

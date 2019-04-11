@@ -37,14 +37,14 @@ get_stats <- function(dat,title) {
   #         data = PT,
   #         threshold = 0.05))
   
-  Borch = dat$likert[dats$system=='Borch']
+  Naive = dat$likert[dats$system=='Naive']
   EachBeat = dat$likert[dat$system=='Each Beat']
-  Phase = dat$likert[dat$system=='Phase']
-  likert_data <- data.frame(Borch, EachBeat, Phase)
+  BeatBopper = dat$likert[dat$system=='Beat Bopper']
+  likert_data <- data.frame(Naive, EachBeat, BeatBopper)
   
-  likert_data$Borch = factor(likert_data$Borch, levels = c('1','2','3','4','5'))
+  likert_data$Naive = factor(likert_data$Naive, levels = c('1','2','3','4','5'))
   likert_data$EachBeat = factor(likert_data$EachBeat, levels = c('1','2','3','4','5'))
-  likert_data$Phase = factor(likert_data$Phase, levels = c('1','2','3','4','5'))
+  likert_data$BeatBopper = factor(likert_data$BeatBopper, levels = c('1','2','3','4','5'))
   
   Result = likert(likert_data)
   
@@ -92,12 +92,12 @@ get_stats <- function(dat,title) {
 options(scipen = 4)
 
 dats = read.csv("/Users/mb/Desktop/Janis.so/06_qmul/BeatBopper/users/analysis/SUS/kruskal.csv", header = TRUE)
-dats$system[dats$system == 0] = 'Borch'
+dats$system[dats$system == 0] = 'Naive'
 dats$system[dats$system == 1] = 'Each Beat'
-dats$system[dats$system == 2] = 'Phase'
+dats$system[dats$system == 2] = 'Beat Bopper'
 #dat$system = as.factor(dat$system)
 dats$system = factor(dats$system,
-                      levels=c('Each Beat','Borch','Phase'))
+                      levels=c('Naive','Each Beat','Beat Bopper'))
 dats$question = factor(dats$question,levels=unique(dats$question))
 dats$rater = factor(dats$rater,levels=unique(dats$rater))
 dats$likert.f = factor(dats$likert, ordered = TRUE,levels = c('1','2','3','4','5'))
@@ -105,7 +105,8 @@ library(likert)
 library(FSA)
 library(multcompView)
 library(ggplot2)
-#library("descr")
+library("descr")
+library('rcompanion')
 
 ########## KRUSKAL WALLIS TEST
 ###       OVERALL
@@ -121,15 +122,15 @@ quest=c("1. I found the system to be intuitive",
         "9. I would use this system in a performance",
         "10. I would use this system to explore expressivity")
 
-myColor = c('#c2185b',
-            '#eb9366',
-            '#fff3bc',
-            '#97c694',
-            '#009688')
+myColor = c('#ef5675',
+            '#f7a8b1',
+            '#f1f1f1',
+            '#8093a3',
+            '#003f5c')
 #myColor <- c('#FF5352', '#E8A8D9', '#C5CAE9', '#BBA9E8','#303F9F')
 
 Res = get_stats(dats,'Overall') #OVERALL
-plot(Res$res,type='bar',col=myColor)+theme_minimal()+ggtitle('Overal Likert plot for SUS')
+plot(Res$res,type='bar',col=myColor)+theme_classic()#+ggtitle('Overal Likert plot for SUS')
 
 PT = Res$dun$res
 cldList(P.adj ~ Comparison,
@@ -149,8 +150,8 @@ p <- ggplot(Res$sum,
 p + geom_errorbar(aes(ymin = Percentile.lower, ymax = Percentile.upper), width = 0.2) +
   geom_point(shape = c(15,17,16),
              size  = 4)+
-  labs(title="Median Likert Scores", x="System", y = "Median Likert Scores")+
-  theme_minimal()+
+  labs(x="System", y = "Median Likert Scores")+
+  theme_classic()+
   theme(legend.position = "none")+
   scale_colour_manual(values= c("#003f5c", "#7a5195", "#ef5675"))+
   ylim(1,5.5)+

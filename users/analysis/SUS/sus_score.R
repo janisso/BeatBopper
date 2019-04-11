@@ -54,7 +54,7 @@ group_by(sus_df, system) %>%
 p<-ggplot(sus_df, aes(x=system, y=score, color=system)) +
   geom_boxplot()+
   labs(title="System Usability Scale Comparison", x="System", y = "SUS Score")+
-  theme_minimal()+
+  theme_classic()+
   theme(legend.position = "none")+
   scale_colour_manual(values= c("#003f5c", "#7a5195", "#ef5675"))
 p
@@ -148,3 +148,15 @@ keeps[keeps$instr=='No',]$practice=NA
 keeps$num_instr
 
 sus_scores$years = keeps$years
+sus_scores$years[is.na(sus_scores$years)] = 0
+
+
+names(arbuthnot) <- c("years", "Men", "Women")
+
+arbuthnot.melt <- melt(arbuthnot, id.vars = 'Year', variable.name = 'Sex', 
+                       value.name = 'Rate')
+
+ggplot(arbuthnot.melt, aes(x = Year, y = Rate, shape = Sex, color = Sex))+
+  geom_point() + scale_color_manual(values = c("Women" = '#ff00ff','Men' = '#3399ff')) + 
+  scale_shape_manual(values = c('Women' = 17, 'Men' = 16))
+

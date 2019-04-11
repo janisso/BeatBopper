@@ -1,0 +1,111 @@
+--- 
+title: "RMSE Anova Analysis" 
+output: html_document 
+fig_width: 8 
+fig_height: 2 
+--- 
+
+Below are my adventures into ANOVA analysis of RMSE derived from user studies where the user had to match a tempo fluctuating template. During the study the participant had to listen to an excerpt of music with varying tempo. She then had to match the excerpt using three different methods. Figure below shows the resulting Inter Onset Intervals (IOIs) of three different methods. The solid black line depicts IOIs from the template. Rest of the lines depict IOIs derived from user playing with three different methods
+
+```{r echo=FALSE,fig1, fig.height = 3, fig.width = 8}
+library(ggplot2)
+df = read.csv("/Users/mb/Desktop/Janis.so/06_qmul/BeatBopper/users/analysis/SPQ/rmse_plot/ioi_sig.csv", header = TRUE)
+
+beat = rep(df$beat,4)
+Signal = c(rep('Template',16),rep('Each Beat',16),rep('Naive',16),rep('Beat Bopper',16))
+ioi = c(df$m_ioi,df$e_ioi,df$b_ioi,df$p_ioi)
+
+new_df = data.frame(beat,Signal,ioi)
+new_df$Signal = factor(new_df$Signal,
+                     levels=c('Template','Naive','Each Beat','Beat Bopper'))
+ggplot(new_df, aes(x=beat, y=ioi, group=Signal)) +
+  geom_line(aes(linetype=Signal, color=Signal))+
+  scale_color_manual(values=c("black","#003f5c", "#7a5195", "#ef5675"))+
+  scale_linetype_manual(values=c("solid","dashed", "dotted","twodash"))+
+  labs(x="Score Time (beats)", y = "IOI (s)")+
+  xlim(0, 16)+
+  #geom_rect(aes(xmin = 7, xmax = 12, ymin = -Inf, ymax = Inf),fill="blue")+
+  theme_classic()
+```
+
+I want to calculate which is the best method accross all of the templates for all of the users. I have run into multiple problems. Mainly, do I normalise data from different excerpts? Different excerpts have different lengths, therefore I feel that comparing RMSEs from all of the excerpts in a single ANOVA is unfair. I will try to demonstrate steps taken here.
+
+$RMSError = \sqrt(\frac{\sum_{i=1}^{n}(\hat{y}_i-y_i)^2}{n})$ where $y$ is the template and $\hat{y}$ is the signal which we want to get RMSE for. Once the data from the study has been collected. I wonder if need to normalize it. 
+
+## Non-Normalised
+
+Below are bar boxplots for non-noramlised data for all three excerpts.
+
+```{r echo=FALSE,fig2, fig.height = 3, fig.width = 3}
+dats = read.csv("/Users/mb/Desktop/Janis.so/06_qmul/BeatBopper/users/analysis/SPQ/intention_rmse.csv", header = TRUE)
+
+excerpt = c(rep('e1',81),rep('e2',81),rep('e3',81))
+rmse = c(dats$e1_n,dats$e1_c,dats$e1_p,dats$e2_n,dats$e2_c,dats$e2_p,dats$e3_n,dats$e3_c,dats$e3_p)
+systems = c(c(rep('Naive',27),rep('Each Beat',27),rep('Beat Bopper',27)),c(rep('Naive',27),rep('Each Beat',27),rep('Beat Bopper',27)),c(rep('Naive',27),rep('Each Beat',27),rep('Beat Bopper',27)))
+my_data = data.frame(excerpt,rmse,systems)
+my_data$systems = ordered(my_data$systems,
+                          levels = c('Naive','Each Beat','Beat Bopper'))
+
+myColor = c('#c2185b',
+            '#eb9366',
+            '#fff3bc')
+library(ggplot2)
+# Change  automatically color by groups
+bp <- ggplot(my_data, aes(x=systems, y=rmse, fill=systems)) + 
+  geom_boxplot() +
+  labs(x="System", y = "NON-Normalised RMSE")
+bp + scale_fill_manual(values=c("#003f5c", "#7a5195", "#ef5675")) +   theme_classic()+
+  theme(legend.position = "none")
+```
+
+In general data is stored like this. First column is the excerpt, second is the RMSE, and the third is the system under test.
+```{r echo = FALSE}
+head(my_data)
+```
+
+When we conduct anova we get a significant difference of $p<0.05$
+
+```{r echo = FALSE}
+res.aov <- aov(rmse ~ systems, data = my_data)
+summary(res.aov)
+```
+
+Conducting a Tukey post-hoc test we see that there is a significant interaction between Each Beat and Naive, and significant interaction between Beat Bopper and Each Beat.
+
+```{r echo = FALSE}
+TukeyHSD(res.aov)
+```
+
+###Testing ANOVA assumptions
+####Homogeneity of variances
+Below we see that there are few outliers
+
+```{r echo = FALSE, fig3, fig.height = 3, fig.width = 3}
+plot(res.aov, 1)
+```
+
+We can also use Levene's test, which is less sensitive to outliers. We can see below that p-value is not significant, therefoer we can assume that there is no evidence to suggest that variances in our groups are significally different.
+
+```{r echo = FALSE}
+library(car)
+leveneTest(rmse ~ systems, data = my_data)
+```
+
+####Normality assumptions
+
+Plot belw shows that data is not normally distributed
+
+```{r echo = FALSE, fig4, fig.height = 6, fig.width = 3}
+plot(res.aov, 2)
+```
+
+This is confirmed by Shapiro-Wilk test
+
+```{r echo = FALSE}
+# Extract the residuals
+aov_residuals <- residuals(object = res.aov )
+# Run Shapiro-Wilk test
+shapiro.test(x = aov_residuals )
+```
+
+

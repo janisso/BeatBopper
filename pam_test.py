@@ -13,16 +13,21 @@ import phase_est
 
 
 
-def play_collected(palm_pos, hand_vel, hand_span, stop_all,save_path):
+def play_collected(palm_pos, hand_vel, hand_span, stop_all,save_path,arm_flag,play_flag):
     lib.time.sleep(2)
     sample_data = lib.np.genfromtxt("/Users/mb/Desktop/Janis.so/06_qmul/BeatBopper/users/analysis/DRIFT/get_samples.csv",
                                 delimiter=',', names=True)
     f = open(save_path + '/get_samples.csv', 'w+')
     f.write('time,palm_pos,palm_vel,span\n')
+    arm_flag.value = True
+    count = 0
     for i in sample_data:
+        if count == 45:
+            play_flag.value = True
         palm_pos.value = i['palm_pos']
         hand_vel.value = i['palm_vel']
         f.write("%f, %f, %f, %f\n" % (lib.time.time(), i['palm_pos'], i['palm_vel'], i['span']))
+        count += 1
         lib.time.sleep(0.005)
         if stop_all.value:
             break
@@ -253,8 +258,8 @@ def play(save_path,midi_device, tempo_method, countoff):
     hand_vel = lib.multiprocessing.Value('d',0.0)
     hand_span = lib.multiprocessing.Value('d',0.0)
 
-    arm_flag = lib.multiprocessing.Value('i', True)            # boolean variable
-    play_flag = lib.multiprocessing.Value('i', True)            # boolean variable
+    arm_flag = lib.multiprocessing.Value('i', False)            # boolean variable
+    play_flag = lib.multiprocessing.Value('i', False)            # boolean variable
 
     midi_device_nr = lib.multiprocessing.Value('i', midi_device)
 
@@ -272,7 +277,7 @@ def play(save_path,midi_device, tempo_method, countoff):
         p_tempo = lib.multiprocessing.Process(target=naive.naive_tempo, args=(palm_pos, hand_vel, hand_span, midi_vel, stop_all, arm_flag, play_flag, tempo, save_path, countoff))
         #p_osc_cursor = lib.multiprocessing.Process(target=osc_cursor, args=(beats, stop_all))
         p_get_samples = lib.multiprocessing.Process(target=play_collected,
-                                                    args=(palm_pos, hand_vel, hand_span, stop_all, save_path))
+                                                    args=(palm_pos, hand_vel, hand_span, stop_all, save_path,arm_flag,play_flag))
         #p_count_off = lib.multiprocessing.Process(target=count_off, args=(midi_path, play_flag, midi_device_nr,tempo))
 
     if tempo_method == 1:
@@ -281,7 +286,7 @@ def play(save_path,midi_device, tempo_method, countoff):
         p_tempo = lib.multiprocessing.Process(target=naive.naive_tempo, args=(palm_pos, hand_vel, hand_span, midi_vel, stop_all, arm_flag, play_flag, tempo, save_path, countoff))
         #p_osc_cursor = lib.multiprocessing.Process(target=osc_cursor, args=(beats, stop_all))
         p_get_samples = lib.multiprocessing.Process(target=play_collected,
-                                                    args=(palm_pos, hand_vel, hand_span, stop_all, save_path))
+                                                    args=(palm_pos, hand_vel, hand_span, stop_all, save_path,arm_flag,play_flag))
         #p_count_off = lib.multiprocessing.Process(target=count_off, args=(midi_path, play_flag, midi_device_nr, tempo))
     if tempo_method == 2:
         r = phase_est.REG(400, 1)
@@ -296,7 +301,7 @@ def play(save_path,midi_device, tempo_method, countoff):
         p_phase_advance = lib.multiprocessing.Process(target=phase_advance_bb,args=(increment, beats, up_thresh, stop_all,play_flag))                   # process to count phase informatioin
         p_tempo = lib.multiprocessing.Process(target=phase_est.phase_tempo, args=(q, palm_pos, hand_vel, hand_span, stop_all, arm_flag, play_flag, u_phase, up_thresh, save_path, midi_vel,countoff))
         p_get_samples = lib.multiprocessing.Process(target=play_collected,
-                                                    args=(palm_pos, hand_vel, hand_span, stop_all, save_path))
+                                                    args=(palm_pos, hand_vel, hand_span, stop_all, save_path,arm_flag,play_flag))
         #p_count_off = lib.multiprocessing.Process(target=count_off, args=(midi_path, play_flag, midi_device_nr, tempo))
 
     if tempo_method == 3:

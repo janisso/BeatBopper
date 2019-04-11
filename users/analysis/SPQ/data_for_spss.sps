@@ -1,4 +1,3 @@
-* Encoding: ISO-8859-1.
 SET DECIMAL=DOT.
 
 DATA LIST FILE= "/Users/mb/Desktop/Janis.so/06_qmul/BeatBopper/users/analysis/SPQ/data_for_spss.csv"  free (",")
