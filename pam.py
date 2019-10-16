@@ -180,6 +180,11 @@ def osc_cursor(beats,stop_all):
 
 # Function to send MIDI messages
 def play_midi(midi_path, save_path, beats, midi_vel, stop_all,midi_device_nr):
+    from mingus.midi import fluidsynth
+    from mingus.containers.note import Note
+
+    fluidsynth.init("/Users/js/Desktop/sounds/Nice-Keys-PlusSteinway-JNv2.0.sf2")
+
     f = open(save_path + '/play_midi.csv', 'w+')                # open file to save log values
     f.write('time,beats,midi_note,midi_vel\n')                  # write first line with corresponding titles
     mid = lib.mido.MidiFile(midi_path+'.mid')                          # save parsed MIDI file using mido library
@@ -209,6 +214,12 @@ def play_midi(midi_path, save_path, beats, midi_vel, stop_all,midi_device_nr):
                 f.write(                                        # store values for later analysis
                     "%f, %f, %f, %f\n" % (lib.time.time(), beats.value, all_messages[int(yo[0, 0])].note, midi_vel.value))
                 msgMIDI.channel = 0
+                note = Note(all_messages[int(yo[0, 0])].note-12)
+                note.velocity = msgMIDI.velocity
+                if msgMIDI.type == 'note_on':
+                    fluidsynth.play_Note(note)
+                if msgMIDI.type == 'note_off':
+                    fluidsynth.stop_Note(note)
                 port.send(msgMIDI)                              # send the message using predefined port (midi device)
                 yo = lib.np.delete(yo, 0, 0)                    # once the note has been played delete the first message
                 #print beats.value/2

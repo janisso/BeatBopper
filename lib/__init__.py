@@ -12,6 +12,8 @@ from collections import deque
 import Leap
 import subprocess
 
+
+
 #SET UP WINDOW LENGTH AND HOP SIZE FOR REGRESSION
 #window_length = 100
 #SET UP FILTER

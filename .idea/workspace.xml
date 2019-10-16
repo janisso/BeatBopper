@@ -2,13 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2e055b4a-3002-428c-843e-fcf4854b63ed" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml___jb_tmp___" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users/analysis/SPQ/01_test_gg.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users/analysis/SPQ/ggplot_example" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users/analysis/SPQ/ggplot_example.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users/analysis/SPQ/test_gg.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fluidsynth_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/BeatBopper.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/BeatBopper.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/analysis/SPQ/intention_signal.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/analysis/SPQ/intention_signal.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pam.py" beforeDir="false" afterPath="$PROJECT_DIR$/pam.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/999/01_pref_studies/0_2/do_reg.csv" beforeDir="false" afterPath="$PROJECT_DIR$/users/999/01_pref_studies/0_2/do_reg.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/999/01_pref_studies/0_2/get_samples.csv" beforeDir="false" afterPath="$PROJECT_DIR$/users/999/01_pref_studies/0_2/get_samples.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/999/01_pref_studies/0_2/phase_phase.csv" beforeDir="false" afterPath="$PROJECT_DIR$/users/999/01_pref_studies/0_2/phase_phase.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/999/01_pref_studies/0_2/phase_tempo_data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/users/999/01_pref_studies/0_2/phase_tempo_data.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/999/01_pref_studies/0_2/play_midi.csv" beforeDir="false" afterPath="$PROJECT_DIR$/users/999/01_pref_studies/0_2/play_midi.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/999/01_pref_studies/0_2/print_phase.csv" beforeDir="false" afterPath="$PROJECT_DIR$/users/999/01_pref_studies/0_2/print_phase.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/999/02_intention_studies/0/0_0/0_p/get_samples.csv" beforeDir="false" afterPath="$PROJECT_DIR$/users/999/02_intention_studies/0/0_0/0_p/get_samples.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/999/02_intention_studies/0/0_0/0_p/play_midi.csv" beforeDir="false" afterPath="$PROJECT_DIR$/users/999/02_intention_studies/0/0_0/0_p/play_midi.csv" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,62 +23,8 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FUSProjectUsageTrigger">
-    <session id="492851201">
-      <usages-collector id="statistics.lifecycle.project">
-        <counts>
-          <entry key="project.closed" value="38" />
-          <entry key="project.open.time.0" value="3" />
-          <entry key="project.open.time.1" value="3" />
-          <entry key="project.open.time.10" value="5" />
-          <entry key="project.open.time.11" value="3" />
-          <entry key="project.open.time.12" value="1" />
-          <entry key="project.open.time.13" value="3" />
-          <entry key="project.open.time.16" value="1" />
-          <entry key="project.open.time.17" value="2" />
-          <entry key="project.open.time.2" value="2" />
-          <entry key="project.open.time.20" value="1" />
-          <entry key="project.open.time.24" value="1" />
-          <entry key="project.open.time.3" value="2" />
-          <entry key="project.open.time.32" value="1" />
-          <entry key="project.open.time.4" value="2" />
-          <entry key="project.open.time.41" value="1" />
-          <entry key="project.open.time.50" value="1" />
-          <entry key="project.open.time.6" value="2" />
-          <entry key="project.open.time.7" value="4" />
-          <entry key="project.open.time.8" value="5" />
-          <entry key="project.open.time.9" value="11" />
-          <entry key="project.opened" value="54" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.edit">
-        <counts>
-          <entry key="dummy" value="3" />
-          <entry key="py" value="24298" />
-          <entry key="txt" value="2694" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.edit">
-        <counts>
-          <entry key="PLAIN_TEXT" value="2697" />
-          <entry key="Python" value="24298" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.open">
-        <counts>
-          <entry key="csv" value="1" />
-          <entry key="md" value="3" />
-          <entry key="py" value="66" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.open">
-        <counts>
-          <entry key="Markdown" value="3" />
-          <entry key="PLAIN_TEXT" value="1" />
-          <entry key="Python" value="66" />
-        </counts>
-      </usages-collector>
-    </session>
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
   </component>
   <component name="FavoritesManager">
     <favorites_list name="BeatBopper" />
@@ -81,18 +34,9 @@
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/leap_data_collect.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="285">
-                  <caret line="20" column="24" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="24" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/pam_test.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="525">
+                <state relative-caret-position="555">
                   <caret line="37" column="42" selection-start-line="37" selection-start-column="42" selection-end-line="37" selection-end-column="42" />
                   <folding>
                     <element signature="e#436#446#0" expanded="true" />
@@ -119,11 +63,32 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/naive.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="371">
-                  <caret line="77" column="71" selection-start-line="77" selection-start-column="61" selection-end-line="77" selection-end-column="71" />
+                <state relative-caret-position="1515">
+                  <caret line="101" column="30" selection-start-line="101" selection-start-column="30" selection-end-line="101" selection-end-column="30" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state>
+                  <caret column="34" selection-start-column="34" selection-end-column="34" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/fluidsynth_test.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="60">
+                  <caret line="4" selection-start-line="4" selection-end-line="4" selection-end-column="37" />
+                  <folding>
+                    <element signature="e#0#34#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -164,7 +129,7 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/gestures.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1215">
+                <state relative-caret-position="1290">
                   <caret line="86" column="36" selection-start-line="86" selection-start-column="36" selection-end-line="86" selection-end-column="36" />
                   <folding>
                     <element signature="e#568#578#0" expanded="true" />
@@ -180,7 +145,7 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/pref_study.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="2040">
+                <state relative-caret-position="2070">
                   <caret line="138" column="30" selection-start-line="57" selection-end-line="138" selection-end-column="30" />
                   <folding>
                     <element signature="e#110#125#0" expanded="true" />
@@ -189,11 +154,11 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/pam.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="2595">
-                  <caret line="175" column="8" selection-start-line="175" selection-start-column="8" selection-end-line="175" selection-end-column="28" />
+                <state relative-caret-position="433">
+                  <caret line="221" column="40" selection-start-line="221" selection-start-column="40" selection-end-line="221" selection-end-column="40" />
                   <folding>
                     <element signature="e#436#446#0" expanded="true" />
                   </folding>
@@ -201,11 +166,11 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/lib/__init__.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="615">
-                  <caret line="55" column="46" selection-start-line="55" selection-start-column="46" selection-end-line="55" selection-end-column="46" />
+                <state relative-caret-position="210">
+                  <caret line="14" selection-start-line="14" selection-end-line="14" />
                   <folding>
                     <element signature="e#0#11#0" expanded="true" />
                   </folding>
@@ -289,21 +254,23 @@
         <option value="$PROJECT_DIR$/gestures.py" />
         <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/analysis/inscore_signals.py" />
-        <option value="$PROJECT_DIR$/pam.py" />
         <option value="$PROJECT_DIR$/pref_study.py" />
         <option value="$PROJECT_DIR$/intention_study.py" />
         <option value="$PROJECT_DIR$/leap_data_collect.py" />
         <option value="$PROJECT_DIR$/comp_test.py" />
-        <option value="$PROJECT_DIR$/lib/__init__.py" />
         <option value="$PROJECT_DIR$/pam_test.py" />
+        <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch.py" />
+        <option value="$PROJECT_DIR$/fluidsynth_test.py" />
+        <option value="$PROJECT_DIR$/lib/__init__.py" />
+        <option value="$PROJECT_DIR$/pam.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1" />
-    <option name="y" value="22" />
-    <option name="width" value="1919" />
-    <option name="height" value="1024" />
+    <option name="x" value="5" />
+    <option name="y" value="27" />
+    <option name="width" value="2142" />
+    <option name="height" value="859" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -313,17 +280,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="BeatBopper" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BeatBopper" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="Scope">
         <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
           <expand>
@@ -340,17 +296,30 @@
           <select />
         </subPane>
       </pane>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="BeatBopper" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BeatBopper" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="Python" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
+    <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
+    <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
@@ -366,7 +335,28 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.midi_play">
+  <component name="RunManager" selected="Python.fluidsynth_test">
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="delta_t_analysis" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="BeatBopper" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -388,7 +378,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="fluidsynth_test" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="BeatBopper" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -400,8 +390,8 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
-      <option name="PARAMETERS" value="-u 0 -mf waltz -md 0" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/fluidsynth_test.py" />
+      <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -473,19 +463,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.midi_play" />
-      <item itemvalue="Python.main" />
       <item itemvalue="Python.delta_t_analysis" />
-      <item itemvalue="Python.naive" />
+      <item itemvalue="Python.midi_play" />
       <item itemvalue="Python.midi_select" />
+      <item itemvalue="Python.naive" />
+      <item itemvalue="Python.fluidsynth_test" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.midi_play" />
-        <item itemvalue="Python.midi_select" />
-        <item itemvalue="Python.naive" />
-        <item itemvalue="Python.main" />
+        <item itemvalue="Python.fluidsynth_test" />
         <item itemvalue="Python.delta_t_analysis" />
+        <item itemvalue="Python.naive" />
+        <item itemvalue="Python.midi_select" />
+        <item itemvalue="Python.midi_play" />
       </list>
     </recent_temporary>
   </component>
@@ -849,29 +839,27 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1" y="22" width="1919" height="1024" extended-state="0" />
+    <frame x="5" y="27" width="2142" height="859" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4992" visible="true" weight="0.13119073" />
-      <window_info id="Structure" order="1" sideWeight="0.5008" side_tool="true" weight="0.14375" />
-      <window_info id="Favorites" order="2" sideWeight="0.5008" side_tool="true" weight="0.14375" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18340406" />
+      <window_info id="Structure" order="1" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32939914" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4978903" weight="0.32939914" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39806867" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32073012" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39895698" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.31780538" />
-      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.4990177" weight="0.32939914" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32919255" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50098234" side_tool="true" weight="0.22317597" />
-      <window_info anchor="bottom" id="Python Console" order="10" weight="0.32939914" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Python Console" order="8" weight="0.3285528" />
+      <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.31681877" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
-  </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="added method selection, started phase estimation" />
@@ -902,46 +890,31 @@
     <option name="LAST_COMMIT_MESSAGE" value="added phase analysis files" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/users/0/play_midi.csv" />
     <entry file="file:///System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/multiprocessing/process.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="461">
+        <state>
           <caret line="146" column="37" selection-start-line="146" selection-start-column="37" selection-end-line="146" selection-end-column="37" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/users/delta_t_analysis.py" />
-    <entry file="file://$PROJECT_DIR$/lib/leap_input.py" />
-    <entry file="file://$PROJECT_DIR$/analysis/expr_perf_tempo.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/Leap.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-28768">
-          <caret line="331" column="27" lean-forward="true" selection-start-line="331" selection-start-column="27" selection-end-line="331" selection-end-column="27" />
+        <state>
+          <caret line="331" column="27" selection-start-line="331" selection-start-column="27" selection-end-line="331" selection-end-column="27" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="165">
-            <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md" />
     <entry file="file://$PROJECT_DIR$/borch_comp.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1125">
+        <state>
           <caret line="75" column="41" selection-start-line="75" selection-start-column="41" selection-end-line="75" selection-end-column="41" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2715">
+        <state>
           <caret line="183" column="22" selection-start-line="183" selection-start-column="22" selection-end-line="183" selection-end-column="22" />
         </state>
       </provider>
@@ -955,7 +928,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pam_test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
+        <state relative-caret-position="555">
           <caret line="37" column="42" selection-start-line="37" selection-start-column="42" selection-end-line="37" selection-end-column="42" />
           <folding>
             <element signature="e#436#446#0" expanded="true" />
@@ -974,6 +947,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="3" column="45" selection-start-line="3" selection-start-column="45" selection-end-line="3" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naive.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1515">
+          <caret line="101" column="30" selection-start-line="101" selection-start-column="30" selection-end-line="101" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="34" selection-start-column="34" selection-end-column="34" />
         </state>
       </provider>
     </entry>
@@ -996,7 +983,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/gestures.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1215">
+        <state relative-caret-position="1290">
           <caret line="86" column="36" selection-start-line="86" selection-start-column="36" selection-end-line="86" selection-end-column="36" />
           <folding>
             <element signature="e#568#578#0" expanded="true" />
@@ -1004,29 +991,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/naive.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="371">
-          <caret line="77" column="71" selection-start-line="77" selection-start-column="61" selection-end-line="77" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pref_study.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2040">
+        <state relative-caret-position="2070">
           <caret line="138" column="30" selection-start-line="57" selection-end-line="138" selection-end-column="30" />
           <folding>
             <element signature="e#110#125#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pam.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2595">
-          <caret line="175" column="8" selection-start-line="175" selection-start-column="8" selection-end-line="175" selection-end-column="28" />
-          <folding>
-            <element signature="e#436#446#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1041,12 +1011,32 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/fluidsynth_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" selection-start-line="4" selection-end-line="4" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#34#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/lib/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="615">
-          <caret line="55" column="46" selection-start-line="55" selection-start-column="46" selection-end-line="55" selection-end-column="46" />
+        <state relative-caret-position="210">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pam.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="433">
+          <caret line="221" column="40" selection-start-line="221" selection-start-column="40" selection-end-line="221" selection-end-column="40" />
+          <folding>
+            <element signature="e#436#446#0" expanded="true" />
           </folding>
         </state>
       </provider>
