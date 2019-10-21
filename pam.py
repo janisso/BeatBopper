@@ -189,7 +189,7 @@ def play_midi(midi_path, save_path, beats, midi_vel, stop_all,midi_device_nr):
     f.write('time,beats,midi_note,midi_vel\n')                  # write first line with corresponding titles
     mid = lib.mido.MidiFile(midi_path+'.mid')                          # save parsed MIDI file using mido library
     s_times = []  # np.zeros((times[0],2))                      # create an empty array to storenote events in the MIDI file
-    port = lib.mido.open_output(lib.mido.get_output_names()[midi_device_nr.value]) # open port to send MIDI messages
+    #port = lib.mido.open_output(lib.mido.get_output_names()[midi_device_nr.value]) # open port to send MIDI messages
     all_time = 0                                                # aggregate time for all the messages
     msg_count = 0                                               # this is to count MIDI messages with note information
     all_messages = []                                           # create an ampty array to only store note information and their position in the score
@@ -215,12 +215,13 @@ def play_midi(midi_path, save_path, beats, midi_vel, stop_all,midi_device_nr):
                     "%f, %f, %f, %f\n" % (lib.time.time(), beats.value, all_messages[int(yo[0, 0])].note, midi_vel.value))
                 msgMIDI.channel = 0
                 note = Note(all_messages[int(yo[0, 0])].note-12)
+                #print note
                 note.velocity = msgMIDI.velocity
                 if msgMIDI.type == 'note_on':
                     fluidsynth.play_Note(note)
                 if msgMIDI.type == 'note_off':
                     fluidsynth.stop_Note(note)
-                port.send(msgMIDI)                              # send the message using predefined port (midi device)
+                #port.send(msgMIDI)                              # send the message using predefined port (midi device)
                 yo = lib.np.delete(yo, 0, 0)                    # once the note has been played delete the first message
                 #print beats.value/2
         else:                                                   # if there are no more notes to play
@@ -251,9 +252,7 @@ def play(midi_path,save_path,midi_device, tempo_method, countoff):
     midi_device_nr = lib.multiprocessing.Value('i', midi_device)
 
     #print 'Tempo Method ',tempo_method
-
     #p_user_input = lib.multiprocessing.Process(target=user_input, args=(newstdin,tempo,midi_vel))
-
 
     ######DECLARE PROCESSES
     p_play_midi = lib.multiprocessing.Process(target=play_midi,args=(midi_path,save_path,beats,midi_vel,stop_all,midi_device_nr))  # process to play MIDI

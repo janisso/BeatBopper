@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2e055b4a-3002-428c-843e-fcf4854b63ed" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/fluidsynth_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/BeatBopper.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/BeatBopper.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fluidsynth_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/fluidsynth_test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pam.py" beforeDir="false" afterPath="$PROJECT_DIR$/pam.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/users/999/01_pref_studies/0_2/do_reg.csv" beforeDir="false" afterPath="$PROJECT_DIR$/users/999/01_pref_studies/0_2/do_reg.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/users/999/01_pref_studies/0_2/get_samples.csv" beforeDir="false" afterPath="$PROJECT_DIR$/users/999/01_pref_studies/0_2/get_samples.csv" afterDir="false" />
@@ -14,8 +11,6 @@
       <change beforePath="$PROJECT_DIR$/users/999/01_pref_studies/0_2/phase_tempo_data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/users/999/01_pref_studies/0_2/phase_tempo_data.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/users/999/01_pref_studies/0_2/play_midi.csv" beforeDir="false" afterPath="$PROJECT_DIR$/users/999/01_pref_studies/0_2/play_midi.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/users/999/01_pref_studies/0_2/print_phase.csv" beforeDir="false" afterPath="$PROJECT_DIR$/users/999/01_pref_studies/0_2/print_phase.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/999/02_intention_studies/0/0_0/0_p/get_samples.csv" beforeDir="false" afterPath="$PROJECT_DIR$/users/999/02_intention_studies/0/0_0/0_p/get_samples.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/999/02_intention_studies/0/0_0/0_p/play_midi.csv" beforeDir="false" afterPath="$PROJECT_DIR$/users/999/02_intention_studies/0/0_0/0_p/play_midi.csv" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -36,7 +31,7 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/pam_test.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="555">
+                <state relative-caret-position="525">
                   <caret line="37" column="42" selection-start-line="37" selection-start-column="42" selection-end-line="37" selection-end-column="42" />
                   <folding>
                     <element signature="e#436#446#0" expanded="true" />
@@ -85,7 +80,7 @@
             <entry file="file://$PROJECT_DIR$/fluidsynth_test.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="60">
-                  <caret line="4" selection-start-line="4" selection-end-line="4" selection-end-column="37" />
+                  <caret line="4" column="33" selection-start-line="4" selection-start-column="33" selection-end-line="4" selection-end-column="33" />
                   <folding>
                     <element signature="e#0#34#0" expanded="true" />
                   </folding>
@@ -120,8 +115,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/phase_est.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="360">
-                  <caret line="24" column="36" selection-start-line="24" selection-start-column="36" selection-end-line="24" selection-end-column="36" />
+                <state relative-caret-position="315">
+                  <caret line="21" selection-start-line="21" selection-end-line="21" />
                 </state>
               </provider>
             </entry>
@@ -129,7 +124,7 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/gestures.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1290">
+                <state relative-caret-position="1215">
                   <caret line="86" column="36" selection-start-line="86" selection-start-column="36" selection-end-line="86" selection-end-column="36" />
                   <folding>
                     <element signature="e#568#578#0" expanded="true" />
@@ -145,7 +140,7 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/pref_study.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="2070">
+                <state relative-caret-position="2040">
                   <caret line="138" column="30" selection-start-line="57" selection-end-line="138" selection-end-column="30" />
                   <folding>
                     <element signature="e#110#125#0" expanded="true" />
@@ -157,8 +152,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/pam.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="433">
-                  <caret line="221" column="40" selection-start-line="221" selection-start-column="40" selection-end-line="221" selection-end-column="40" />
+                <state relative-caret-position="15">
+                  <caret line="211" column="21" selection-start-line="211" selection-start-column="21" selection-end-line="211" selection-end-column="21" />
                   <folding>
                     <element signature="e#436#446#0" expanded="true" />
                   </folding>
@@ -169,7 +164,7 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/lib/__init__.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="210">
+                <state relative-caret-position="30">
                   <caret line="14" selection-start-line="14" selection-end-line="14" />
                   <folding>
                     <element signature="e#0#11#0" expanded="true" />
@@ -260,17 +255,16 @@
         <option value="$PROJECT_DIR$/comp_test.py" />
         <option value="$PROJECT_DIR$/pam_test.py" />
         <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch.py" />
-        <option value="$PROJECT_DIR$/fluidsynth_test.py" />
         <option value="$PROJECT_DIR$/lib/__init__.py" />
+        <option value="$PROJECT_DIR$/fluidsynth_test.py" />
         <option value="$PROJECT_DIR$/pam.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="5" />
-    <option name="y" value="27" />
-    <option name="width" value="2142" />
-    <option name="height" value="859" />
+    <option name="y" value="23" />
+    <option name="width" value="1440" />
+    <option name="height" value="837" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -313,7 +307,7 @@
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="Python" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -826,7 +820,14 @@
       <option name="project" value="LOCAL" />
       <updated>1553623106698</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="added soundfont functionality">
+      <created>1571263309939</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1571263309939</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TodoView">
@@ -839,22 +840,21 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="5" y="27" width="2142" height="859" extended-state="0" />
-    <editor active="true" />
+    <frame x="0" y="23" width="1440" height="837" extended-state="0" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18340406" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18322763" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32073012" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.31946307" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39895698" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="8" weight="0.3285528" />
-      <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.31681877" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.3167785" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -862,7 +862,6 @@
     </layout>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added method selection, started phase estimation" />
     <MESSAGE value="in previous commit/push added phase estimation, still needs tweaking" />
     <MESSAGE value="added envelope follower to get MIDI velocity" />
     <MESSAGE value="Created an empty function in pam.py to advance a cursor for the demo. The tempo and loudness that the user should follow." />
@@ -887,7 +886,8 @@
     <MESSAGE value="Added some Likert analysis" />
     <MESSAGE value="Collected data from studies" />
     <MESSAGE value="added phase analysis files" />
-    <option name="LAST_COMMIT_MESSAGE" value="added phase analysis files" />
+    <MESSAGE value="added soundfont functionality" />
+    <option name="LAST_COMMIT_MESSAGE" value="added soundfont functionality" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file:///System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/multiprocessing/process.py">
@@ -928,7 +928,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pam_test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
+        <state relative-caret-position="525">
           <caret line="37" column="42" selection-start-line="37" selection-start-column="42" selection-end-line="37" selection-end-column="42" />
           <folding>
             <element signature="e#436#446#0" expanded="true" />
@@ -976,14 +976,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/phase_est.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="36" selection-start-line="24" selection-start-column="36" selection-end-line="24" selection-end-column="36" />
+        <state relative-caret-position="315">
+          <caret line="21" selection-start-line="21" selection-end-line="21" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/gestures.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1290">
+        <state relative-caret-position="1215">
           <caret line="86" column="36" selection-start-line="86" selection-start-column="36" selection-end-line="86" selection-end-column="36" />
           <folding>
             <element signature="e#568#578#0" expanded="true" />
@@ -991,12 +991,32 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/fluidsynth_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="33" selection-start-line="4" selection-start-column="33" selection-end-line="4" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#34#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/pref_study.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2070">
+        <state relative-caret-position="2040">
           <caret line="138" column="30" selection-start-line="57" selection-end-line="138" selection-end-column="30" />
           <folding>
             <element signature="e#110#125#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1011,30 +1031,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/fluidsynth_test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" selection-start-line="4" selection-end-line="4" selection-end-column="37" />
-          <folding>
-            <element signature="e#0#34#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pam.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="433">
-          <caret line="221" column="40" selection-start-line="221" selection-start-column="40" selection-end-line="221" selection-end-column="40" />
+        <state relative-caret-position="15">
+          <caret line="211" column="21" selection-start-line="211" selection-start-column="21" selection-end-line="211" selection-end-column="21" />
           <folding>
             <element signature="e#436#446#0" expanded="true" />
           </folding>
