@@ -183,7 +183,7 @@ def play_midi(midi_path, save_path, beats, midi_vel, stop_all,midi_device_nr):
     from mingus.midi import fluidsynth
     from mingus.containers.note import Note
 
-    fluidsynth.init("/Users/js/Desktop/sounds/Nice-Keys-PlusSteinway-JNv2.0.sf2")
+    fluidsynth.init("/Users/mb/Desktop/sounds/Nice-Keys-PlusSteinway-JNv2.0.sf2")
 
     f = open(save_path + '/play_midi.csv', 'w+')                # open file to save log values
     f.write('time,beats,midi_note,midi_vel\n')                  # write first line with corresponding titles
@@ -215,7 +215,7 @@ def play_midi(midi_path, save_path, beats, midi_vel, stop_all,midi_device_nr):
                     "%f, %f, %f, %f\n" % (lib.time.time(), beats.value, all_messages[int(yo[0, 0])].note, midi_vel.value))
                 msgMIDI.channel = 0
                 note = Note(all_messages[int(yo[0, 0])].note-12)
-                #print note
+                print note
                 note.velocity = msgMIDI.velocity
                 if msgMIDI.type == 'note_on':
                     fluidsynth.play_Note(note)
