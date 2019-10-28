@@ -2,18 +2,64 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2e055b4a-3002-428c-843e-fcf4854b63ed" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/mems/juggle_data.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mems/read_acc_data.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mems/receive_osc.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/xml_files/import_xml.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fluidsynth_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/fluidsynth_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pam.py" beforeDir="false" afterPath="$PROJECT_DIR$/pam.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/999/01_pref_studies/0_2/do_reg.csv" beforeDir="false" afterPath="$PROJECT_DIR$/users/999/01_pref_studies/0_2/do_reg.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/999/01_pref_studies/0_2/get_samples.csv" beforeDir="false" afterPath="$PROJECT_DIR$/users/999/01_pref_studies/0_2/get_samples.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/999/01_pref_studies/0_2/phase_phase.csv" beforeDir="false" afterPath="$PROJECT_DIR$/users/999/01_pref_studies/0_2/phase_phase.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/999/01_pref_studies/0_2/phase_tempo_data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/users/999/01_pref_studies/0_2/phase_tempo_data.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/999/01_pref_studies/0_2/play_midi.csv" beforeDir="false" afterPath="$PROJECT_DIR$/users/999/01_pref_studies/0_2/play_midi.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/999/01_pref_studies/0_2/print_phase.csv" beforeDir="false" afterPath="$PROJECT_DIR$/users/999/01_pref_studies/0_2/print_phase.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mems/juggle_data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/mems/juggle_data.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mems/read_acc_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/mems/read_acc_data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/xml_files/mazurka/CKSUM" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/xml_files/mazurka/convert2xml.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/xml_files/mazurka/convertmidi.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/xml_files/mazurka/convertxml.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/xml_files/mazurka/hum2xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/xml_files/mazurka/mazurka06-1.krn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/xml_files/mazurka/mazurka06-2.krn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/xml_files/mazurka/mazurka06-3.krn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/xml_files/mazurka/mazurka06-4.krn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/xml_files/mazurka/mazurka07-1.krn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/xml_files/mazurka/mazurka07-2.krn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/xml_files/mazurka/mazurka07-3.krn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/xml_files/mazurka/mazurka07-4.krn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/xml_files/mazurka/mazurka07-5.krn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/xml_files/mazurka/mazurka17-1.krn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/xml_files/mazurka/mazurka17-2.krn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/xml_files/mazurka/mazurka17-3.krn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/xml_files/mazurka/mazurka17-4.krn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/xml_files/mazurka/mazurka24-1.krn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/xml_files/mazurka/mazurka24-2.krn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/xml_files/mazurka/mazurka24-3.krn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/xml_files/mazurka/mazurka24-4.krn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/xml_files/mazurka/mazurka30-1.krn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/xml_files/mazurka/mazurka30-2.krn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/xml_files/mazurka/mazurka30-3.krn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/xml_files/mazurka/mazurka30-4.krn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/xml_files/mazurka/mazurka33-1.krn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/xml_files/mazurka/mazurka33-2.krn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/xml_files/mazurka/mazurka33-3.krn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/xml_files/mazurka/mazurka33-4.krn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/xml_files/mazurka/mazurka41-1.krn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/xml_files/mazurka/mazurka41-2.krn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/xml_files/mazurka/mazurka41-3.krn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/xml_files/mazurka/mazurka41-4.krn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/xml_files/mazurka/mazurka50-1.krn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/xml_files/mazurka/mazurka50-2.krn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/xml_files/mazurka/mazurka50-3.krn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/xml_files/mazurka/mazurka56-1.krn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/xml_files/mazurka/mazurka56-2.krn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/xml_files/mazurka/mazurka56-3.krn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/xml_files/mazurka/mazurka59-1.krn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/xml_files/mazurka/mazurka59-2.krn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/xml_files/mazurka/mazurka59-3.krn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/xml_files/mazurka/mazurka63-1.krn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/xml_files/mazurka/mazurka63-2.krn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/xml_files/mazurka/mazurka63-3.krn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/xml_files/mazurka/mazurka67-1.krn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/xml_files/mazurka/mazurka67-2.krn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/xml_files/mazurka/mazurka67-3.krn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/xml_files/mazurka/mazurka67-4.krn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/xml_files/mazurka/mazurka68-1.krn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/xml_files/mazurka/mazurka68-2.krn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/xml_files/mazurka/mazurka68-3.krn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/xml_files/mazurka/mazurka68-4.krn" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -28,33 +74,38 @@
     <session id="492851201">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="5" />
-          <entry key="project.open.time.0" value="2" />
+          <entry key="project.closed" value="10" />
+          <entry key="project.open.time.0" value="3" />
           <entry key="project.open.time.3" value="1" />
-          <entry key="project.open.time.5" value="2" />
+          <entry key="project.open.time.4" value="2" />
+          <entry key="project.open.time.5" value="3" />
           <entry key="project.open.time.6" value="1" />
-          <entry key="project.opened" value="6" />
+          <entry key="project.opened" value="11" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="py" value="5" />
+          <entry key="inscore" value="4" />
+          <entry key="py" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Python" value="5" />
+          <entry key="PLAIN_TEXT" value="4" />
+          <entry key="Python" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="Python Console" value="17" />
-          <entry key="py" value="99" />
+          <entry key="Python Console" value="58" />
+          <entry key="py" value="278" />
+          <entry key="txt" value="27" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="116" />
+          <entry key="PLAIN_TEXT" value="27" />
+          <entry key="Python" value="336" />
         </counts>
       </usages-collector>
     </session>
@@ -65,25 +116,19 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/mems/read_acc_data.py">
+        <entry file="file://$PROJECT_DIR$/xml_files/import_xml.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="484">
-              <caret line="76" column="49" lean-forward="true" selection-start-line="76" selection-start-column="49" selection-end-line="76" selection-end-column="49" />
-              <folding>
-                <element signature="e#105#123#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="637">
+              <caret line="89" column="24" lean-forward="true" selection-start-line="89" selection-start-column="24" selection-end-line="89" selection-end-column="24" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mems/receive_osc.py">
+        <entry file="file://$PROJECT_DIR$/pref_study.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="34" column="33" selection-start-line="34" selection-start-column="33" selection-end-line="34" selection-end-column="33" />
-              <folding>
-                <element signature="e#23#48#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="401">
+              <caret line="110" column="26" lean-forward="true" selection-start-line="110" selection-start-column="26" selection-end-line="110" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -161,14 +206,15 @@
         <option value="$PROJECT_DIR$/pam.py" />
         <option value="$PROJECT_DIR$/mems/receive_osc.py" />
         <option value="$PROJECT_DIR$/mems/read_acc_data.py" />
+        <option value="$PROJECT_DIR$/xml_files/import_xml.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="51" />
     <option name="y" value="23" />
-    <option name="width" value="1440" />
-    <option name="height" value="1070" />
+    <option name="width" value="1188" />
+    <option name="height" value="1412" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -199,7 +245,7 @@
             <path>
               <item name="BeatBopper" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="mems" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="xml_files" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
           </expand>
           <select />
@@ -234,7 +280,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.read_acc_data">
+  <component name="RunManager" selected="Python.import_xml">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -277,7 +323,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="midi_select" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="import_xml" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="BeatBopper" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -285,11 +331,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/xml_files" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/midi_select.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/xml_files/import_xml.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -362,19 +408,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.midi_select" />
       <item itemvalue="Python.naive" />
       <item itemvalue="Python.fluidsynth_test" />
       <item itemvalue="Python.receive_osc" />
       <item itemvalue="Python.read_acc_data" />
+      <item itemvalue="Python.import_xml" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.import_xml" />
         <item itemvalue="Python.read_acc_data" />
         <item itemvalue="Python.receive_osc" />
         <item itemvalue="Python.fluidsynth_test" />
         <item itemvalue="Python.naive" />
-        <item itemvalue="Python.midi_select" />
       </list>
     </recent_temporary>
   </component>
@@ -388,13 +434,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1541946605767</updated>
-    </task>
-    <task id="LOCAL-00001" summary="First commit">
-      <created>1541947222376</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1541947222376</updated>
     </task>
     <task id="LOCAL-00002" summary="Testing commits from PyCharm">
       <created>1541947863257</created>
@@ -732,7 +771,14 @@
       <option name="project" value="LOCAL" />
       <updated>1571263309939</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="accelerometer calculations">
+      <created>1571950072327</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1571950072328</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TodoView">
@@ -745,21 +791,22 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="51" y="23" width="1440" height="1070" extended-state="0" />
+    <frame x="51" y="23" width="1188" height="1412" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18322763" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22279349" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3190184" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.23636363" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.398773" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32924336" />
-      <window_info anchor="bottom" id="Python Console" order="8" weight="0.32719836" />
-      <window_info anchor="bottom" id="Terminal" order="9" weight="0.31595093" />
+      <window_info anchor="bottom" id="Python Console" order="8" visible="true" weight="0.32575756" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.3159091" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -770,7 +817,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="in previous commit/push added phase estimation, still needs tweaking" />
     <MESSAGE value="added envelope follower to get MIDI velocity" />
     <MESSAGE value="Created an empty function in pam.py to advance a cursor for the demo. The tempo and loudness that the user should follow." />
     <MESSAGE value="Added envelope follower to phase estimation, still need to readjust the MIDI velocities. Quiet parts sound too quiet" />
@@ -795,7 +841,8 @@
     <MESSAGE value="Collected data from studies" />
     <MESSAGE value="added phase analysis files" />
     <MESSAGE value="added soundfont functionality" />
-    <option name="LAST_COMMIT_MESSAGE" value="added soundfont functionality" />
+    <MESSAGE value="accelerometer calculations" />
+    <option name="LAST_COMMIT_MESSAGE" value="accelerometer calculations" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file:///System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/multiprocessing/process.py">
@@ -884,13 +931,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pref_study.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2040">
-          <caret line="138" column="30" selection-start-line="57" selection-end-line="138" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -902,9 +942,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="4" selection-start-line="4" selection-end-line="4" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#34#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -922,9 +959,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/menu/main_menu.inscore">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/menu/load_next.inscore">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/menu/listen_record.inscore">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/menu/listen.inscore">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mems/read_acc_data.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="36" lean-forward="true" selection-start-line="20" selection-start-column="36" selection-end-line="20" selection-end-column="36" />
+          <folding>
+            <element signature="e#106#124#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/mems/receive_osc.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
+        <state relative-caret-position="390">
           <caret line="34" column="33" selection-start-line="34" selection-start-column="33" selection-end-line="34" selection-end-column="33" />
           <folding>
             <element signature="e#23#48#0" expanded="true" />
@@ -932,13 +991,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mems/read_acc_data.py">
+    <entry file="file://$PROJECT_DIR$/pref_study.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="76" column="49" lean-forward="true" selection-start-line="76" selection-start-column="49" selection-end-line="76" selection-end-column="49" />
-          <folding>
-            <element signature="e#105#123#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="401">
+          <caret line="110" column="26" lean-forward="true" selection-start-line="110" selection-start-column="26" selection-end-line="110" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xml_files/import_xml.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="637">
+          <caret line="89" column="24" lean-forward="true" selection-start-line="89" selection-start-column="24" selection-end-line="89" selection-end-column="24" />
         </state>
       </provider>
     </entry>

@@ -1,5 +1,6 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
+
 """
 Created on Wed Jul 25 14:55:52 2018
 
@@ -8,7 +9,12 @@ Created on Wed Jul 25 14:55:52 2018
 
 import numpy as np
 from numpy import genfromtxt
+import matplotlib
+matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
+import scipy as scipy
+from scipy import optimize
+#matplotlib.use('TkAgg')
 
 class acc_data(object):
     def __init__(self,data):
@@ -58,8 +64,6 @@ for i in range(0,len(linx)-1):
     velocityy.append(velocityy[-1] + liny[i] * (jug.t[i+1])-jug.t[i])
     velocityz.append(velocityz[-1] + linz[i] * (jug.t[i+1])-jug.t[i])
 
-
-
 #velx = np.cumsum(linx[1:])*np.diff(jug.t)
 #vely = np.cumsum(liny[1:])*np.diff(jug.t)
 #velz = np.cumsum(linz[1:])*np.diff(jug.t)
@@ -69,8 +73,28 @@ axarr[0].plot(jug.t,velocityx)
 axarr[1].plot(jug.t,velocityy)
 axarr[2].plot(jug.t,velocityz)
 
-x_drift = np.polyfit(np.log(jug.t[1:]),velocityx[1:],1)
-y = x_drift[0]*np.log(jug.t[1:])+x_drift[1]
+poptx, pcovx = scipy.optimize.curve_fit(lambda t,a,b,c,d: -a*np.exp(b/d*t)+c,  jug.t,  velocityx)
+popty, pcovy = scipy.optimize.curve_fit(lambda t,a,b,c,d: -a*np.exp(b/d*t)+c,  jug.t,  velocityy)
+poptz, pcovz = scipy.optimize.curve_fit(lambda t,a,b,c,d: -a*np.exp(b/d*t)+c,  jug.t,  velocityz)
+
+
+def func(x,a,b,c,d):
+    return -a*np.exp(b/d*x)+c
+
+#plt.figure()
+#plt.plot(jug.t,velocityx)
+f, axarr = plt.subplots(3,sharex=True)
+axarr[0].plot(jug.t,velocityx-func(jug.t,poptx[0],poptx[1],poptx[2],poptx[3]))
+axarr[1].plot(jug.t,velocityy-func(jug.t,popty[0],popty[1],popty[2],popty[3]))
+axarr[2].plot(jug.t,velocityz-func(jug.t,poptz[0],poptz[1],poptz[2],poptz[3]))
+
+plt.show()
+
+#x_drift = np.polyfit(np.log(jug.t[1:]),velocityx[1:],1)
+#y = x_drift[0]*np.log(jug.t[1:])#+x_drift[1]
+
+#plt.figure()
+#plt.plot(jug.t[1:],y)
 
 #plt.plot(velocityx[1:]-y)
 #plt.figure()
