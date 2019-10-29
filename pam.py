@@ -182,7 +182,7 @@ def osc_cursor(beats,stop_all):
 def play_midi(midi_path, save_path, beats, midi_vel, stop_all,midi_device_nr):
     from mingus.midi import fluidsynth
     from mingus.containers.note import Note
-
+    curr_path = lib.os.path.dirname(lib.os.path.abspath(__file__))
     fluidsynth.init("/Users/mb/Desktop/sounds/Nice-Keys-PlusSteinway-JNv2.0.sf2")
 
     f = open(save_path + '/play_midi.csv', 'w+')                # open file to save log values
@@ -348,5 +348,5 @@ def play(midi_path,save_path,midi_device, tempo_method, countoff):
         p_count_off.join()
 
 
-    lib.time.sleep(0.5)
+    #lib.time.sleep(0.5)
     p_phase_advance.join()

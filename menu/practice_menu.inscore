@@ -1,0 +1,19 @@
+/ITL/scene/* del;
+
+/ITL/scene/piece set rect 0.66 0.66;
+/ITL/scene/piece x -0.66;
+/ITL/scene/piece y 0;
+/ITL/scene/piece color 255 128 0;
+#/ITL/scene/piece effect blur 32;
+
+/ITL/scene/section set rect 0.66 0.66;
+/ITL/scene/section x 0;
+/ITL/scene/section y 0;
+/ITL/scene/section color 192 64 64;
+#/ITL/scene/section effect blur 32;
+
+/ITL/scene/quit set rect 0.66 0.66;
+/ITL/scene/quit x 0.66;
+/ITL/scene/quit y 0;
+/ITL/scene/quit color 128 0 0;
+#/ITL/scene/quit effect blur 32;

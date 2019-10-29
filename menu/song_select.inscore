@@ -1,30 +1,30 @@
 /ITL/scene/* del;
 
-/ITL/scene/section_0 set rect 0.36 0.36;
+/ITL/scene/section_0 set rect 0.4 0.4;
 /ITL/scene/section_0 x -0.8;
 /ITL/scene/section_0 y 0;
 /ITL/scene/section_0 color 255 128 0;
 #/ITL/scene/section_0 effect blur 32;
 
-/ITL/scene/section_1 set rect 0.36 0.36;
+/ITL/scene/section_1 set rect 0.4 0.4;
 /ITL/scene/section_1 x -0.4;
 /ITL/scene/section_1 y 0;
 /ITL/scene/section_1 color 192 64 64;
 #/ITL/scene/section_1 effect blur 32;
 
-/ITL/scene/section_2 set rect 0.36 0.36;
+/ITL/scene/section_2 set rect 0.4 0.4;
 /ITL/scene/section_2 x 0;
 /ITL/scene/section_2 y 0;
 /ITL/scene/section_2 color 128 0 0;
 #/ITL/scene/section_2 effect blur 32;
 
-/ITL/scene/section_3 set rect 0.36 0.36;
+/ITL/scene/section_3 set rect 0.4 0.4;
 /ITL/scene/section_3 x 0.4;
 /ITL/scene/section_3 y 0;
 /ITL/scene/section_3 color 64 64 192;
 #/ITL/scene/section_3 effect blur 32;
 
-/ITL/scene/section_4 set rect 0.36 0.36;
+/ITL/scene/section_4 set rect 0.4 0.4;
 /ITL/scene/section_4 x 0.8;
 /ITL/scene/section_4 y 0;
 /ITL/scene/section_4 color 0 128 255;
