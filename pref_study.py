@@ -78,6 +78,9 @@ if __name__ == '__main__':
     if not lib.os.path.exists(save_path):                                               # if the path does not exist create it
          lib.os.makedirs(save_path)
 
+    #import os
+    #dirname = os.path.dirname(__file__)
+
     print 'User ID: ', user_id                                                      # Printing stuff for debugging
     print 'MIDI File: ', midi_path
     print 'Save Path: ', save_path
@@ -100,7 +103,7 @@ if __name__ == '__main__':
 
     #SELECTING SOCRES AND MENU
     for i in range(len(ms)):
-        osc_send_i('/ITL/scene', ['load', '/Users/mb/Desktop/Janis.so/06_qmul/BeatBopper/menu/main_menu.inscore'])
+        osc_send_i('/ITL/scene', ['load', curr_path+'/menu/main_menu.inscore'])
         osc_send_i('/ITL/scene/demoText', ['set', 'txt', 'Start method '+str(seq)])
         lib.time.sleep(1)
         lib.os.system('open -a Terminal')
@@ -122,7 +125,7 @@ if __name__ == '__main__':
 
 
     osc_send_i('/ITL/scene/*', ['del'])
-    osc_send_i('/ITL/scene', ['load', '/Users/mb/Desktop/Janis.so/06_qmul/BeatBopper/menu/load_next.inscore'])
+    osc_send_i('/ITL/scene', ['load', curr_path+'/menu/load_next.inscore'])
 
     osc_send_i('/ITL/scene/sysid', ['set', 'txt', 'SUS '+ str(seq)])
     osc_send_i('/ITL/scene/sysid', ['fontSize', 18])

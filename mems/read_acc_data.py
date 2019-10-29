@@ -9,8 +9,8 @@ Created on Wed Jul 25 14:55:52 2018
 
 import numpy as np
 from numpy import genfromtxt
-import matplotlib
-matplotlib.use('TkAgg')
+#import matplotlib
+#matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 import scipy as scipy
 from scipy import optimize

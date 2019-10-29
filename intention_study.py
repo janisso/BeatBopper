@@ -315,7 +315,7 @@ if __name__ == '__main__':
         count = 0
         lib.time.sleep(3)
         osc_send_i('/ITL/scene/*', 'del')
-        osc_send_i('/ITL/scene', ['load', '/Users/mb/Desktop/Janis.so/06_qmul/BeatBopper/menu/main_menu.inscore'])
+        osc_send_i('/ITL/scene', ['load', curr_path+'/menu/main_menu.inscore'])
         osc_send_i('/ITL/scene/demoText', ['set', 'txt', "Start Method "+str(i+1)])
         lib.time.sleep(1)
         lib.os.system('open -a Terminal')
@@ -356,10 +356,10 @@ if __name__ == '__main__':
             osc_client = lib.OSC.OSCClient()
             osc_client.connect(('localhost', 7000))  # INSCORE
             if r == 0:
-                osc_send_i('/ITL/scene', ['load', '/Users/mb/Desktop/Janis.so/06_qmul/BeatBopper/menu/listen.inscore'])
+                osc_send_i('/ITL/scene', ['load', curr_path+'/menu/listen.inscore'])
                 p0 = lib.multiprocessing.Process(target=retryMenu, args=(retry,))
             else:
-                osc_send_i('/ITL/scene', ['load', '/Users/mb/Desktop/Janis.so/06_qmul/BeatBopper/menu/listen_record.inscore'])
+                osc_send_i('/ITL/scene', ['load', curr_path+'/menu/listen_record.inscore'])
                 p0 = lib.multiprocessing.Process(target=retryMenu1, args=(retry,))
             lib.os.system('open -a Terminal')
             lib.time.sleep(2)
@@ -377,7 +377,7 @@ if __name__ == '__main__':
                 break
             #count += 1
     osc_send_i('/ITL/scene/*', ['del'])
-    osc_send_i('/ITL/scene', ['load', '/Users/mb/Desktop/Janis.so/06_qmul/BeatBopper/menu/load_next.inscore'])
+    osc_send_i('/ITL/scene', ['load', curr_path+'/menu/load_next.inscore'])
 
     osc_send_i('/ITL/scene/sysid', ['set', 'txt', 'SPQ '+ str(int(excerpt)+1)])
     osc_send_i('/ITL/scene/sysid', ['fontSize', 18])
