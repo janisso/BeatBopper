@@ -16,8 +16,8 @@ for file in glob.glob(path+"beat_time/*.csv"):
     if name not in not_these:
         filename = save_path+name+'/'+name+'.mid'
         #print filename
-        os.system("cd /libs/MIDIFILE_RB/EXAMPLES")
-        os.system("./SMFformat0 "+filename+" "+filename)
+        #os.system("cd /libs/MIDIFILE_RB/EXAMPLES")
+        #os.system("./SMFformat0 "+filename+" "+filename)
         '''f=open(save_path+name+'/'+name+'.inscore','w+')
         f.write('/ITL/scene/* del;\n')
         f.write('/ITL get musicxml-version;\n')

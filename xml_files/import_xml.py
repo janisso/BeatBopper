@@ -1,6 +1,6 @@
-#import sys
-#reload(sys)
-#sys.setdefaultencoding('utf-8')
+import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
 import music21
 music21.environment.UserSettings()['warnings'] = 0
 
@@ -93,6 +93,22 @@ sections.append(section5)
 #section3_a.show('text')
 
 for i, section in enumerate(sections):
+    
     fp = section.write('xml', fp=dirname+'/M07-1/section_'+str(i)+'.xml')
-    fp = section.write('midi',
-					   fp=dirname+'/M07-1/section_' + str(i) + '.mid')
+    filename = dirname+'/M07-1/section_' + str(i) + '.mid'
+    os.system("mscore " + dirname+'/M07-1/section_'+str(i)+'.xml -o '+filename)
+    #fp = section.write('midi',
+	#				   fp=dirname+'/M07-1/section_' + str(i) + '.mid')
+    
+    os.system("cd /libs/MIDIFILE_RB/EXAMPLES")
+    os.system("./SMFformat0 "+filename+" "+filename)
+    f=open(dirname+'/M07-1/section_'+str(i)+'.inscore','w+')
+    f.write('/ITL/scene/* del;\n')
+    f.write('/ITL get musicxml-version;\n')
+    f.write('/ITL/scene/score set musicxmlf "section_'+str(i)+'.xml";\n')
+    f.write('/ITL/scene/score columns 1;\n')
+    f.write('/ITL/scene/score scale 0.25;\n')
+    f.write('/ITL/scene/cursor set rect 0.02 0.8;\n')
+    f.write('/ITL/scene/cursor color 0 0 255;\n')
+    f.write('/ITL/scene/sync cursor score;\n')
+    f.close()

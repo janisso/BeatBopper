@@ -10,7 +10,7 @@
   <identification>
     <creator type="composer">Music21</creator>
     <encoding>
-      <encoding-date>2019-10-28</encoding-date>
+      <encoding-date>2019-10-30</encoding-date>
       <software>Music21</software>
       <supports attribute="new-system" element="print" type="yes" value="yes" />
       <supports attribute="new-page" element="print" type="yes" value="yes" />
@@ -25,20 +25,20 @@
   <part-list>
     <score-part id="P1">
       <part-name>Piano</part-name>
-      <score-instrument id="I56e4be11985dcdc621ae631c355c3260">
+      <score-instrument id="Icfcfb016665504a3c19293e31eabe58a">
         <instrument-name>Piano</instrument-name>
         </score-instrument>
-      <midi-instrument id="I56e4be11985dcdc621ae631c355c3260">
+      <midi-instrument id="Icfcfb016665504a3c19293e31eabe58a">
         <midi-channel>1</midi-channel>
         <midi-program>1</midi-program>
         </midi-instrument>
       </score-part>
-    <score-part id="P613ea7e7e2f107147a59ff509f0936d8">
+    <score-part id="Pec9dd05ca75c464d2b76c8e0432af38f">
       <part-name>Piano</part-name>
-      <score-instrument id="I21329ace26ffacf49eb274223715f1d0">
+      <score-instrument id="I933e674ec1c82b48a2fccfdf62fa362a">
         <instrument-name>Piano</instrument-name>
         </score-instrument>
-      <midi-instrument id="I21329ace26ffacf49eb274223715f1d0">
+      <midi-instrument id="I933e674ec1c82b48a2fccfdf62fa362a">
         <midi-channel>2</midi-channel>
         <midi-program>1</midi-program>
         </midi-instrument>
@@ -2246,7 +2246,7 @@
         </barline>
       </measure>
     </part>
-  <part id="P613ea7e7e2f107147a59ff509f0936d8">
+  <part id="Pec9dd05ca75c464d2b76c8e0432af38f">
     <measure number="46" width="192.43">
       <attributes>
         <divisions>10080</divisions>

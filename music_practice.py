@@ -248,8 +248,16 @@ if __name__ == '__main__':
             select_p = lib.multiprocessing.Process(target=sectionMenu, args=(section_select,))
             select_p.start()
             select_p.join()  # Give some time to laod
-            osc_client.close()
             print('You selected section_'+str(section_select.value))
+            lib.os.system('open ' + midi_path + 'section_'+str(section_select.value)+'.inscore')
+            lib.time.sleep(1)
+            #osc_client = lib.OSC.OSCClient()  # Create an OSC client
+            #osc_client.connect(('localhost', 7000))
+            osc_send_i('/ITL/scene', ['load', midi_path+'section_'+str(section_select.value)+'.inscore'])
+            #lib.os.system('open -a Terminal')
+            osc_client.close()
+            lib.os.system('open -a Terminal')
+            pam.play(midi_path+'section_'+str(section_select.value), save_path + '/' + str(0) + '_' + str(ms), midi_device, 2, 0)
         if retry.value == 2:
             print('Quit')
             break
