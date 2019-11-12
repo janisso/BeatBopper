@@ -183,7 +183,7 @@ def play_midi(midi_path, save_path, beats, midi_vel, stop_all,midi_device_nr):
     from mingus.midi import fluidsynth
     from mingus.containers.note import Note
     curr_path = lib.os.path.dirname(lib.os.path.abspath(__file__))
-    fluidsynth.init("/Users/mb/Desktop/sounds/Nice-Keys-PlusSteinway-JNv2.0.sf2")
+    fluidsynth.init("/Users/js/Desktop/sounds/Nice-Keys-PlusSteinway-JNv2.0.sf2")
 
     f = open(save_path + '/play_midi.csv', 'w+')                # open file to save log values
     f.write('time,beats,midi_note,midi_vel\n')                  # write first line with corresponding titles

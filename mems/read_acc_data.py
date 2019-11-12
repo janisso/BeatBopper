@@ -39,15 +39,16 @@ axarr[4].plot(jug.t,jug.gy)
 axarr[5].plot(jug.t,jug.gz)
 
 magn = np.sqrt(jug.ax**2+jug.ay**2+jug.az**2)
-norm = 1/magn
+#norm = 1/magn
+norm = magn
 
 linx = jug.ax*norm-jug.ax
 liny = jug.ay*norm-jug.ay
 linz = jug.az*norm-jug.az
 
-linx = linx - linx.mean()
-liny = liny - liny.mean()
-linz = linz - linz.mean()
+#linx = linx - linx.mean()
+#liny = liny - liny.mean()
+#linz = linz - linz.mean()
 
 f, axarr = plt.subplots(5,sharex=True)
 axarr[0].plot(jug.t,magn-1)
@@ -73,7 +74,7 @@ axarr[0].plot(jug.t,velocityx)
 axarr[1].plot(jug.t,velocityy)
 axarr[2].plot(jug.t,velocityz)
 
-poptx, pcovx = scipy.optimize.curve_fit(lambda t,a,b,c,d: -a*np.exp(b/d*t)+c,  jug.t,  velocityx)
+'''poptx, pcovx = scipy.optimize.curve_fit(lambda t,a,b,c,d: -a*np.exp(b/d*t)+c,  jug.t,  velocityx)
 popty, pcovy = scipy.optimize.curve_fit(lambda t,a,b,c,d: -a*np.exp(b/d*t)+c,  jug.t,  velocityy)
 poptz, pcovz = scipy.optimize.curve_fit(lambda t,a,b,c,d: -a*np.exp(b/d*t)+c,  jug.t,  velocityz)
 
@@ -88,7 +89,7 @@ axarr[0].plot(jug.t,velocityx-func(jug.t,poptx[0],poptx[1],poptx[2],poptx[3]))
 axarr[1].plot(jug.t,velocityy-func(jug.t,popty[0],popty[1],popty[2],popty[3]))
 axarr[2].plot(jug.t,velocityz-func(jug.t,poptz[0],poptz[1],poptz[2],poptz[3]))
 
-plt.show()
+plt.show()'''
 
 #x_drift = np.polyfit(np.log(jug.t[1:]),velocityx[1:],1)
 #y = x_drift[0]*np.log(jug.t[1:])#+x_drift[1]
