@@ -1,3 +1,12 @@
+###### Activate / Deactivate vent
+######python 2.7 for interaction
+source shmac/bin/activate
+deactivate
+
+######python 3.7 for analysis
+source /libs/bin/activate
+deactivate
+
 https://goo.gl/forms/73G63oaFLdAQt0f22
 
 ####### Pref Studies
@@ -12,4 +21,7 @@ python intention_study.py -u 027 -f M63-3_e1 -d 0 -m 012 -e 2
 
 python pref_study.py -u 999 -f demo -d 0 -m 2 -s 1
 python intention_study.py -u 999 -f M68-2_e1 -d 0 -m 012 -e 0
+
+####### Section Practice
+python music_practice.py -u 999 -f demo -d 0 -m 2 -s 1
 

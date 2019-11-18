@@ -11,9 +11,7 @@ import argparse
 
 #tempo = raw_input('Enter Tempo ')
 
-savePath = '/Users/mb/Desktop/Janis.so/06_qmul/BeatBopper/mems/'
-f = open(savePath+'juggle_data.csv','w+')
-f.write('time, a_x, a_y, a_z, g_x, g_y, g_z \n')
+
 
 #def write_lines(args):
 #	f.write("%f, %s, %f, %f, %f\n"%(time.time(),args[0],args[1],args[2],args[3]))
@@ -25,7 +23,11 @@ def handle_timeout(self):
     self.timed_out = True
 
 def acc_callback(path, tags, args, source):
-    f.write("%f, %f, %f, %f, %f, %f, %f\n"%(time.time(),args[0],args[1],args[2],args[3],args[4],args[5]))
+    f.write("%f, %f, %f, %f, %f, %f, %f, %f\n"%(time.time(),args[0],args[1],args[2],args[3],args[4],args[5],args[6]))
+    print args
+
+def eul_callback(path, tags, args, source):
+    e.write("%f, %f, %f, %f\n"%(time.time(),args[0],args[1],args[2]))
     print args
 
 # user script that's called by the game engine every frame
@@ -45,6 +47,7 @@ def frame(savePath):
     run = True
     server.handle_timeout = types.MethodType(handle_timeout, server)
     server.addMsgHandler( "/acc", acc_callback )
+    server.addMsgHandler("/e", eul_callback)
     while True:
         each_frame(server)
         #print 'hello'
@@ -53,16 +56,23 @@ def frame(savePath):
 
 
 if __name__ == "__main__":
-	#print 'play sound'
-	q = multiprocessing.Queue()
-	savePath = '/Users/mb/Desktop/Janis.so/06_qmul/BeatBopper/mems/'#'/Users/mb/Desktop/Janis.so/06_qmul/CHI_2019/audio/tempo_midi/python_audio/'
-	frame_ting = multiprocessing.Process(target=frame,args=(savePath,))
-	#play_ting = multiprocessing.Process(target=play_sound,args=(savePath,q))
-	#play_the_sound = multiprocessing.Process(target=play_the_sound,args=(q,))
-	frame_ting.start()
-	#play_ting.start()
-	#play_the_sound.start()
-	frame_ting.join()
-	#play_ting.join()
-	#play_the_sound.join()
-	print 'starting'
+    savePath = '/Users/mb/Desktop/Janis.so/06_qmul/BeatBopper/mems/'
+    f = open(savePath + 'juggle_data.csv', 'w+')
+    f.write('time, a_x, a_y, a_z, g_x, g_y, g_z, deltat \n')
+
+    e = open(savePath + 'euler_data.csv', 'w+')
+    e.write('time, roll, pitch, heading \n')
+
+    #print 'play sound'
+    q = multiprocessing.Queue()
+    savePath = '/Users/mb/Desktop/Janis.so/06_qmul/BeatBopper/mems/'#'/Users/mb/Desktop/Janis.so/06_qmul/CHI_2019/audio/tempo_midi/python_audio/'
+    frame_ting = multiprocessing.Process(target=frame,args=(savePath,))
+    #play_ting = multiprocessing.Process(target=play_sound,args=(savePath,q))
+    #play_the_sound = multiprocessing.Process(target=play_the_sound,args=(q,))
+    frame_ting.start()
+    #play_ting.start()
+    #play_the_sound.start()
+    frame_ting.join()
+    #play_ting.join()
+    #play_the_sound.join()
+    print 'starting'
