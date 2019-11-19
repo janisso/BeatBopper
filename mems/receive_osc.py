@@ -24,11 +24,15 @@ def handle_timeout(self):
 
 def acc_callback(path, tags, args, source):
     f.write("%f, %f, %f, %f, %f, %f, %f, %f\n"%(time.time(),args[0],args[1],args[2],args[3],args[4],args[5],args[6]))
+    #print args
+
+def raw_callback(path, tags, args, source):
+    r.write("%i, %i, %i, %i, %i, %i, %i, %f\n"%(time.time(),args[0],args[1],args[2],args[3],args[4],args[5],args[6]))
     print args
 
 def eul_callback(path, tags, args, source):
     e.write("%f, %f, %f, %f\n"%(time.time(),args[0],args[1],args[2]))
-    print args
+    #print args
 
 # user script that's called by the game engine every frame
 def each_frame(server):  
@@ -48,6 +52,7 @@ def frame(savePath):
     server.handle_timeout = types.MethodType(handle_timeout, server)
     server.addMsgHandler( "/acc", acc_callback )
     server.addMsgHandler("/e", eul_callback)
+    server.addMsgHandler("/raw", raw_callback)
     while True:
         each_frame(server)
         #print 'hello'
@@ -59,6 +64,9 @@ if __name__ == "__main__":
     savePath = '/Users/mb/Desktop/Janis.so/06_qmul/BeatBopper/mems/'
     f = open(savePath + 'juggle_data.csv', 'w+')
     f.write('time, a_x, a_y, a_z, g_x, g_y, g_z, deltat \n')
+
+    r = open(savePath + 'raw_juggle_data.csv', 'w+')
+    r.write('time, a_x, a_y, a_z, g_x, g_y, g_z, deltat \n')
 
     e = open(savePath + 'euler_data.csv', 'w+')
     e.write('time, roll, pitch, heading \n')

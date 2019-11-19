@@ -2,29 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2e055b4a-3002-428c-843e-fcf4854b63ed" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/mems/display_cube.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mems/IMU_Zero/IMU_Zero.ino" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mems/calibraxis.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mems/raw_juggle_data.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/analysis/trigger_script" beforeDir="false" afterPath="$PROJECT_DIR$/analysis/trigger_script" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mems/euler_data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/mems/euler_data.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mems/juggle_data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/mems/juggle_data.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mems/read_acc_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/mems/read_acc_data.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mems/receive_osc.py" beforeDir="false" afterPath="$PROJECT_DIR$/mems/receive_osc.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/music_practice/users/999/express_studies/0_2/do_reg.csv" beforeDir="false" afterPath="$PROJECT_DIR$/music_practice/users/999/express_studies/0_2/do_reg.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/music_practice/users/999/express_studies/0_2/get_samples.csv" beforeDir="false" afterPath="$PROJECT_DIR$/music_practice/users/999/express_studies/0_2/get_samples.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/music_practice/users/999/express_studies/0_2/phase_phase.csv" beforeDir="false" afterPath="$PROJECT_DIR$/music_practice/users/999/express_studies/0_2/phase_phase.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/music_practice/users/999/express_studies/0_2/phase_tempo_data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/music_practice/users/999/express_studies/0_2/phase_tempo_data.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/music_practice/users/999/express_studies/0_2/play_midi.csv" beforeDir="false" afterPath="$PROJECT_DIR$/music_practice/users/999/express_studies/0_2/play_midi.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/music_practice/users/999/express_studies/0_2/print_phase.csv" beforeDir="false" afterPath="$PROJECT_DIR$/music_practice/users/999/express_studies/0_2/print_phase.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/999/01_pref_studies/0_2/do_reg.csv" beforeDir="false" afterPath="$PROJECT_DIR$/users/999/01_pref_studies/0_2/do_reg.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/999/01_pref_studies/0_2/get_samples.csv" beforeDir="false" afterPath="$PROJECT_DIR$/users/999/01_pref_studies/0_2/get_samples.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/999/01_pref_studies/0_2/phase_phase.csv" beforeDir="false" afterPath="$PROJECT_DIR$/users/999/01_pref_studies/0_2/phase_phase.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/999/01_pref_studies/0_2/phase_tempo_data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/users/999/01_pref_studies/0_2/phase_tempo_data.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/999/01_pref_studies/0_2/play_midi.csv" beforeDir="false" afterPath="$PROJECT_DIR$/users/999/01_pref_studies/0_2/play_midi.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/999/01_pref_studies/0_2/print_phase.csv" beforeDir="false" afterPath="$PROJECT_DIR$/users/999/01_pref_studies/0_2/print_phase.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/xml_files/M07-1/section_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/xml_files/M07-1/section_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/xml_files/M07-1/section_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/xml_files/M07-1/section_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/xml_files/M07-1/section_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/xml_files/M07-1/section_2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/xml_files/M07-1/section_3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/xml_files/M07-1/section_3.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/xml_files/M07-1/section_4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/xml_files/M07-1/section_4.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -64,14 +49,14 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="inscore" value="147" />
-          <entry key="py" value="667" />
-          <entry key="txt" value="50" />
+          <entry key="py" value="700" />
+          <entry key="txt" value="102" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="197" />
-          <entry key="Python" value="667" />
+          <entry key="PLAIN_TEXT" value="249" />
+          <entry key="Python" value="700" />
         </counts>
       </usages-collector>
     </session>
@@ -93,8 +78,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mems/receive_osc.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="30" column="14" lean-forward="true" selection-start-line="30" selection-start-column="14" selection-end-line="30" selection-end-column="14" />
+            <state relative-caret-position="198">
+              <caret line="29" column="43" selection-start-line="29" selection-start-column="43" selection-end-line="29" selection-end-column="43" />
             </state>
           </provider>
         </entry>
@@ -229,11 +214,6 @@
             <path>
               <item name="BeatBopper" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-            </path>
-            <path>
-              <item name="BeatBopper" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="mems" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
           </expand>
           <select />
@@ -434,20 +414,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1541946605767</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Added comments to main.py and midi_play.py">
-      <created>1541972025835</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1541972025835</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Added comments to main.py and midi_play.py">
-      <created>1541972137099</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1541972137099</updated>
     </task>
     <task id="LOCAL-00007" summary="Added comments to main.py and midi_play.py">
       <created>1541972156179</created>
@@ -778,7 +744,21 @@
       <option name="project" value="LOCAL" />
       <updated>1572434933127</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="addind mems analysis">
+      <created>1574071080897</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1574071080898</updated>
+    </task>
+    <task id="LOCAL-00055" summary="added mems analysis">
+      <created>1574071170480</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1574071170480</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TodoView">
@@ -792,7 +772,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="213" y="194" width="1188" height="987" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22279349" />
       <window_info id="Structure" order="1" weight="0.25" />
@@ -854,8 +833,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added envelope follower to phase estimation, still need to readjust the MIDI velocities. Quiet parts sound too quiet" />
-    <MESSAGE value="insocre and midi files are all in the same folder now" />
     <MESSAGE value="Added epxressive MIDI playback synthesis from MazurkaBL" />
     <MESSAGE value="Expressive MIDI exported prior to playback" />
     <MESSAGE value="Added count_off for demo_playback" />
@@ -879,7 +856,9 @@
     <MESSAGE value="accelerometer calculations" />
     <MESSAGE value="added main menu" />
     <MESSAGE value="added section selection" />
-    <option name="LAST_COMMIT_MESSAGE" value="added section selection" />
+    <MESSAGE value="addind mems analysis" />
+    <MESSAGE value="added mems analysis" />
+    <option name="LAST_COMMIT_MESSAGE" value="added mems analysis" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file:///System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/multiprocessing/process.py">
@@ -1098,8 +1077,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mems/receive_osc.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="30" column="14" lean-forward="true" selection-start-line="30" selection-start-column="14" selection-end-line="30" selection-end-column="14" />
+        <state relative-caret-position="198">
+          <caret line="29" column="43" selection-start-line="29" selection-start-column="43" selection-end-line="29" selection-end-column="43" />
         </state>
       </provider>
     </entry>
