@@ -67,8 +67,8 @@ void setup() {
 
   // initialize device
   accelgyro.initialize();
-  //accelgyro.setFullScaleGyroRange(MPU6050_GYRO_FS_2000);
-  //accelgyro.setFullScaleGyroRange(MPU6050_ACCEL_FS_16);
+  accelgyro.setFullScaleGyroRange(0x03);
+  accelgyro.setFullScaleAccelRange(0x03);
   // wait for ready
   while (Serial.available() && Serial.read()); // empty buffer
   while (!Serial.available()){
