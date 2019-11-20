@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2e055b4a-3002-428c-843e-fcf4854b63ed" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/mems/IMU_Zero/IMU_Zero.ino" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mems/calibraxis.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mems/raw_juggle_data.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mems/euler_data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/mems/euler_data.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mems/juggle_data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/mems/juggle_data.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mems/read_acc_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/mems/read_acc_data.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mems/receive_osc.py" beforeDir="false" afterPath="$PROJECT_DIR$/mems/receive_osc.py" afterDir="false" />
-    </list>
+    <list default="true" id="2e055b4a-3002-428c-843e-fcf4854b63ed" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,7 +15,7 @@
     <session id="492851201">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="9" />
+          <entry key="project.closed" value="10" />
           <entry key="project.open.time.0" value="3" />
           <entry key="project.open.time.13" value="1" />
           <entry key="project.open.time.21" value="1" />
@@ -50,12 +41,12 @@
         <counts>
           <entry key="inscore" value="147" />
           <entry key="py" value="700" />
-          <entry key="txt" value="102" />
+          <entry key="txt" value="135" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="249" />
+          <entry key="PLAIN_TEXT" value="282" />
           <entry key="Python" value="700" />
         </counts>
       </usages-collector>
@@ -78,7 +69,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mems/receive_osc.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
+            <state relative-caret-position="315">
               <caret line="29" column="43" selection-start-line="29" selection-start-column="43" selection-end-line="29" selection-end-column="43" />
             </state>
           </provider>
@@ -415,20 +406,6 @@
       <option name="presentableId" value="Default" />
       <updated>1541946605767</updated>
     </task>
-    <task id="LOCAL-00007" summary="Added comments to main.py and midi_play.py">
-      <created>1541972156179</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1541972156179</updated>
-    </task>
-    <task id="LOCAL-00008" summary="Changed midi_play.py to pam.py (Phase Advancement Mechanism)">
-      <created>1542013014098</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1542013014099</updated>
-    </task>
     <task id="LOCAL-00009" summary="Added InScore page turning and repeat">
       <created>1542017466683</created>
       <option name="number" value="00009" />
@@ -758,7 +735,21 @@
       <option name="project" value="LOCAL" />
       <updated>1574071170480</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL-00056" summary="added mems calibration">
+      <created>1574152258486</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1574152258486</updated>
+    </task>
+    <task id="LOCAL-00057" summary="added mems calibration procedures">
+      <created>1574167044621</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1574167044621</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TodoView">
@@ -833,8 +824,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added epxressive MIDI playback synthesis from MazurkaBL" />
-    <MESSAGE value="Expressive MIDI exported prior to playback" />
     <MESSAGE value="Added count_off for demo_playback" />
     <MESSAGE value="Added count_off for method 0 and 1, still to add to 2" />
     <MESSAGE value="Added intro menu" />
@@ -858,7 +847,9 @@
     <MESSAGE value="added section selection" />
     <MESSAGE value="addind mems analysis" />
     <MESSAGE value="added mems analysis" />
-    <option name="LAST_COMMIT_MESSAGE" value="added mems analysis" />
+    <MESSAGE value="added mems calibration" />
+    <MESSAGE value="added mems calibration procedures" />
+    <option name="LAST_COMMIT_MESSAGE" value="added mems calibration procedures" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file:///System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/multiprocessing/process.py">
@@ -1077,7 +1068,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mems/receive_osc.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
+        <state relative-caret-position="315">
           <caret line="29" column="43" selection-start-line="29" selection-start-column="43" selection-end-line="29" selection-end-column="43" />
         </state>
       </provider>
